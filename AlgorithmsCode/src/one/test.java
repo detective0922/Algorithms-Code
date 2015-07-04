@@ -1,5 +1,18 @@
 package one;
 
+import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
+import java.awt.geom.Rectangle2D;
+import java.awt.geom.Point2D;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import javax.swing.*;
+
 public class test {
 	
 	public static void main(String args[]){
@@ -10,12 +23,23 @@ public class test {
 		long time1 = System.nanoTime();
 		//String string = Long.toBinaryString(Long.MAX_VALUE);
 		//String string = toBinaryString(Long.MAX_VALUE);
-		int a = lg(1023);
+		//int a = lg(1023);
+		EventQueue.invokeLater(new Runnable() 
+		{
+			public void run() 
+			{
+				PointFrame frame = new PointFrame();
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.setVisible(true);
+
+			}
+		});
+		
 		long time2 = System.nanoTime();
 		System.out.println(time1);
 		System.out.println(time2);
 		System.out.println(time2 - time1);
-		System.out.println(a);
+		System.out.println();
 	}
 	
 	//1.1.18
@@ -72,6 +96,9 @@ public class test {
 		
 	}
 	
+	public static boolean isCircularkString(String s){
+		return false;
+	}
 	
 	final static char[] digits = {
 		'0' , '1' , '2' , '3' , '4' , '5' ,
@@ -81,5 +108,70 @@ public class test {
 		'o' , 'p' , 'q' , 'r' , 's' , 't' ,
 		'u' , 'v' , 'w' , 'x' , 'y' , 'z'
 	    };
+	
+}
 
+//1.2.1
+class PointFrame extends JFrame {
+	
+	public PointFrame() {
+		setTitle("PointTest");
+		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+
+		DrawComponent component = new DrawComponent();
+		add(component);
+	}
+
+	private static final int DEFAULT_WIDTH = 400;
+	private static final int DEFAULT_HEIGHT = 400;
+}
+
+class DrawComponent extends JComponent {
+	
+	public void paintComponent(Graphics g) {
+		Graphics2D g2 = (Graphics2D) g;
+
+		double leftX = 100;
+		double topY = 100;
+		double width = 1;
+		double height = 1;
+		points = new ArrayList<Point>();
+		
+		for (int i = 0; i < N; i++) {
+			int x = new Random().nextInt(200);
+			int y = new Random().nextInt(200);
+
+			points.add(new Point(leftX + x, topY+ y));
+			
+		}
+		
+		for (Point p : points) {
+			Rectangle2D rect = new Rectangle2D.Double(p.getX(), p.getY(),
+					width, height);
+			g2.draw(rect);
+		}
+		
+	}
+	
+	private int N = 10000;
+	private List<Point> points;
+	
+}
+
+class Point{
+	public Point(double x, double y){
+		this.x = x;
+		this.y = y;
+	}
+	
+	public double getX() {
+		return this.x;
+	}
+
+	public double getY() {
+		return this.y;
+	}
+	
+	private double x = 0;
+	private double y = 0;
 }
