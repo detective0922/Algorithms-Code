@@ -25,6 +25,10 @@ public class Test1_1_27 {
 		//0.14446444809436798
 		//count: 65774
 		//estimatedTime: 919665ns
+		//after improved:
+		//0.14446444809436798
+		//count: 375
+		//estimatedTime: 97037ns
 	}
 
 	public static long count = 0;
@@ -41,6 +45,11 @@ public class Test1_1_27 {
 	public static double betterBinomial(int N, int k, double p) {
 		
 		double[][] fArray = new double[N + 1][k + 1];
+		for (int i = 0; i < N + 1; i++) {
+			for (int j = 0; j < k + 1; j++) {
+				fArray[i][j] = -1;
+			}
+		}
 		return betterBinomial(fArray, N, k, p);
 		
 	}
@@ -52,7 +61,7 @@ public class Test1_1_27 {
 			return 1.0;
 		if (N < 0 || k < 0)
 			return 0.0;
-		if (fArray[N][k] == 0.0) {
+		if (fArray[N][k] == -1) {
 			count++;
 			fArray[N][k] = (1.0 - p) * betterBinomial(fArray, N - 1, k, p) + p
 					* betterBinomial(fArray, N - 1, k - 1, p);
