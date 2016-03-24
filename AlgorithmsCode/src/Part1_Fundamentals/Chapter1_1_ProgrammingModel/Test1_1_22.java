@@ -29,13 +29,13 @@ public class Test1_1_22 {
 	}
 	
 	public static int rank(int key, int[] a, int lo, int hi, int depth) {
-		if (lo > hi)
-			return -1;
-		int mid = lo + (hi - lo) / 2;		
 		String outStr = "lo: " + lo + ",hi: " + hi;
 		String format = "%" + (depth + outStr.length()) + "s\n";
 		StdOut.printf(format, outStr);
 		depth++;
+		if (lo > hi)
+			return -1;
+		int mid = lo + (hi - lo) / 2;		
 		if (key < a[mid])
 			return rank(key, a, lo, mid - 1, depth);
 		else if (key > a[mid])
