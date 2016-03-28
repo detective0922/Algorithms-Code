@@ -94,10 +94,4 @@ public class Test1_3_3 {
 	//push 9
 	//pop 9 0
 	
-	
-	
-	
-	
-	
-	
 }
