@@ -55,4 +55,9 @@ class Stack<Item>{
 		return item;
 	}
 	
+	//1.3.7
+	public Item peek() {
+		return first.item;
+	}
+	
 }
