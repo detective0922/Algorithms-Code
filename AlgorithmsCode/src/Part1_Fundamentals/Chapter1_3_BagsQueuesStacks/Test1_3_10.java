@@ -8,7 +8,16 @@ import edu.princeton.cs.algs4.StdOut;
 public class Test1_3_10 {
 	
 	public static void main(String[] args) {
+		
+		String inputStr = "( ( 1 + 2 ) * ( ( 3 - 4 ) * ( 5 - 6 ) ) )";
+		StdOut.println(inputStr);	
+		StdOut.println(infixToPostfix(inputStr));
+		//output:
+		//( ( 1 + 2 ) * ( ( 3 - 4 ) * ( 5 - 6 ) ) ) 
+		//12+34-56-**
+    }
 	
+	public static String infixToPostfix(String infix){
 		Map<String, Integer> priorityMap = new HashMap<String, Integer>();
 		priorityMap.put("+", 0);
 		priorityMap.put("-", 0);
@@ -16,9 +25,7 @@ public class Test1_3_10 {
 		priorityMap.put("/", 1);
 		priorityMap.put("(", -1);
 		
-		String inputStr = "( ( 1 + 2 ) * ( ( 3 - 4 ) * ( 5 - 6 ) ) )";
-		String[] strs = inputStr.split(" ");
-		StdOut.println(inputStr);
+		String[] strs = infix.split(" ");
 		
         Stack<String> ops  = new Stack<String>();
         StringBuffer newExpression = new StringBuffer();
@@ -54,10 +61,7 @@ public class Test1_3_10 {
 			if (!op.equals("("))
 				newExpression.append(op);
 		}
-		StdOut.print(newExpression.toString());		
-		//output:
-		//( ( 1 + 2 ) * ( ( 3 - 4 ) * ( 5 - 6 ) ) ) 
-		//12+34-56-**
-    }
+		return newExpression.toString();	
+	}
 
 }
