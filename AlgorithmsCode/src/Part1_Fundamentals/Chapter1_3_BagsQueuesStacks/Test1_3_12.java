@@ -6,10 +6,8 @@ import edu.princeton.cs.algs4.StdOut;
 
 public class Test1_3_12 {
 	
-public static void main(String[] args) {
-		
-		
-		
+	public static void main(String[] args) {
+			
 		String infix = "( ( 1 + 2 ) * ( ( 3 - 4 ) * ( 5 - 6 ) ) )";
 		StdOut.println(infix);
 		String[] strs = infix.split(" ");
