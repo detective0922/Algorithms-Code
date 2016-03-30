@@ -94,7 +94,8 @@ class Stack<Item> implements Iterable<Item>{
 		@Override
 		public void remove() {
 			// TODO Auto-generated method stub
-
+			currect.item = null;
+			currect = currect.next;
 		}
 
 	}
