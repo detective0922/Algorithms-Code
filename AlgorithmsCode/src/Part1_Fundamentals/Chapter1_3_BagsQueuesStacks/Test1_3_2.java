@@ -1,5 +1,7 @@
 package Part1_Fundamentals.Chapter1_3_BagsQueuesStacks;
 
+import java.util.Iterator;
+
 import edu.princeton.cs.algs4.StdOut;
 
 public class Test1_3_2 {
@@ -23,7 +25,7 @@ public class Test1_3_2 {
 }
 
 
-class Stack<Item>{
+class Stack<Item> implements Iterable<Item>{
 	private Node first;
 	private int N;
 	
@@ -58,6 +60,43 @@ class Stack<Item>{
 	//1.3.7
 	public Item peek() {
 		return first.item;
+	}
+
+	
+	//1.3.12
+	@Override
+	public Iterator<Item> iterator() {
+		// TODO Auto-generated method stub
+		return new ListIterator(first);
+	}
+	
+	private class ListIterator implements Iterator<Item> {
+		private Node currect;
+		
+		public ListIterator(Node first){
+			this.currect = first;
+		}
+
+		@Override
+		public boolean hasNext() {
+			// TODO Auto-generated method stub
+			return currect != null;
+		}
+
+		@Override
+		public Item next() {
+			// TODO Auto-generated method stub
+			Item item = currect.item;
+			currect = currect.next;
+			return item;
+		}
+
+		@Override
+		public void remove() {
+			// TODO Auto-generated method stub
+
+		}
+
 	}
 	
 }
