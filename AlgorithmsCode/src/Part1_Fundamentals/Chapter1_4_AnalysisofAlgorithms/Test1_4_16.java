@@ -21,20 +21,17 @@ public class Test1_4_16 {
 	public static void min(double[] a) {
 		Arrays.sort(a);
 		int N = a.length;
-		double[] minArray = new double[N - 1];
-		for (int i = 0; i < N - 1; i++) {
-			minArray[i] = Math.abs(a[i] - a[i + 1]);
-		}
-		double min = minArray[0];
+		double min = Double.MAX_VALUE;
 		int minIndex = 0;
+		double diffabs = 0;
 		for (int i = 0; i < N - 1; i++) {
-			if (minArray[i] < min) {
-				min = minArray[i];
+			diffabs = Math.abs(a[i] - a[i + 1]);
+			if (diffabs < min) {
+				min = diffabs;
 				minIndex = i;
 			}
-
 		}
-		StdOut.println("min pair: " + minArray[minIndex] + ", " + a[minIndex] + ", "
+		StdOut.println("min pair: " + min + ", " + a[minIndex] + ", "
 				+ a[minIndex + 1]);
 	}
 
