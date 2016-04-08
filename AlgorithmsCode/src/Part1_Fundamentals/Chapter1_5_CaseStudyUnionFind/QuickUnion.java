@@ -4,14 +4,16 @@ import java.io.File;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.Stopwatch;
 
 public class QuickUnion {
 	
 	public static void main(String[] args) {
-		File tFile = new File("algs4-data//tinyUF.txt");
+		File tFile = new File("algs4-data//mediumUF.txt");
 		In in = new In(tFile);
 		int N = in.readInt();
 		QuickUnion qu = new QuickUnion(N);
+		Stopwatch timer = new Stopwatch();
 		//the tinyUF.txt has a empty line at the end of file
 		try {
 			while (in.hasNextLine()) {
@@ -20,12 +22,13 @@ public class QuickUnion {
 				if (qu.connected(p, q))
 					continue;
 				qu.union(p, q);
-				StdOut.println(p + ", " + q);
+				//StdOut.println(p + ", " + q);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		
+		StdOut.println(timer.elapsedTime());
 		StdOut.println(qu.count + "components");
 
 	}
