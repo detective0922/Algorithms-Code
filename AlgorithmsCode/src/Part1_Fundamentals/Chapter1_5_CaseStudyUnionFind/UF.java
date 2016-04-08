@@ -12,13 +12,18 @@ public class UF {
 		In in = new In(tFile);
 		int N = in.readInt();
 		UF uf = new UF(N);
-		while (in.isEmpty()) {
-			int p = in.readInt();
-			int q = in.readInt();
-			if (uf.connected(p, q))
-				continue;
-			uf.union(p, q);
-			StdOut.println(p + ", " + q);
+		//the tinyUF.txt has a empty line at the end of file
+		try {
+			while (in.hasNextLine()) {
+				int p = in.readInt();
+				int q = in.readInt();
+				if (uf.connected(p, q))
+					continue;
+				uf.union(p, q);
+				StdOut.println(p + ", " + q);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		StdOut.println(uf.count + "components");
@@ -37,7 +42,16 @@ public class UF {
 	}
 	
 	public void union(int p, int q){
-		id[p] = id[q];
+		int pId = find(p);
+		int qId = find(q);
+		if (pId == qId)
+			return;
+		
+		for (int i = 0; i < id.length; i++) {
+			if (id[i] == pId)
+				id[i] = qId;
+		}
+		count--;
 	}
 	
 	public int find(int p){
