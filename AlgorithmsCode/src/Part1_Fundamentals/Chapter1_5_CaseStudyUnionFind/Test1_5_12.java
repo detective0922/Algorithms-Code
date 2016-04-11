@@ -63,9 +63,10 @@ class PathCompressionQuickUnion {
 		while (pRoot != id[pRoot]) {
 			pRoot = id[pRoot];
 		}
-		while (p != id[p]) {
-			p = id[p];
+		while (p != pRoot) {
+			int tempP = id[p];
 			id[p] = pRoot;
+			p = tempP;
 		}
 		return pRoot;
 	}
