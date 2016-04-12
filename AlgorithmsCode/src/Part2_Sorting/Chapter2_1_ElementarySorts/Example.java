@@ -1,13 +1,21 @@
 package Part2_Sorting.Chapter2_1_ElementarySorts;
 
 
+import java.io.File;
+import java.util.Arrays;
+
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
 public class Example {
 	
 	public static void main(String[] args){
-		String[] a = In.readStrings();
+		File tFile = new File("algs4-data//8Kints.txt");
+		int[] inList = new In(tFile).readAllInts();
+		Integer[] a = new Integer[inList.length];
+		for(int i=0;i<inList.length;i++){
+			a[i] = inList[i];		
+		}
 		sort(a);
 		assert isSorted(a);
 		show(a);
