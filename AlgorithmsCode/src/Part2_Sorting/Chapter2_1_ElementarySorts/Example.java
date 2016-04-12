@@ -10,7 +10,7 @@ import edu.princeton.cs.algs4.StdOut;
 public class Example {
 	
 	public static void main(String[] args){
-		File tFile = new File("algs4-data//8Kints.txt");
+		/*File tFile = new File("algs4-data//8Kints.txt");
 		int[] inList = new In(tFile).readAllInts();
 		Integer[] a = new Integer[inList.length];
 		for(int i=0;i<inList.length;i++){
@@ -18,7 +18,13 @@ public class Example {
 		}
 		sort(a);
 		assert isSorted(a);
-		show(a);
+		show(a);*/
+		File tFile = new File("algs4-data//tiny.txt");
+		String[] inList = new In(tFile).readAllStrings();
+		show(inList);
+		sort(inList);
+		assert isSorted(inList);
+		show(inList);
 	}
 
 	public static void sort(Comparable[] a) {
