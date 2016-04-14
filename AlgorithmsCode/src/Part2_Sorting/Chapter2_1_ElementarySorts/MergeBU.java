@@ -26,7 +26,24 @@ public class MergeBU {
 			//for (int lo = 0; lo < a.length; lo = lo + sz) {
 			for (int lo = 0; lo < N - sz; lo = lo + sz*2) { // merge two sz arrays, so add sz*2, not sz
 				int hi = lo + sz * 2 - 1;
-				int mid = (lo + hi) / 2;
+				/*if (hi >= N - 1) {
+					hi = N - 1;
+				}*/
+				//int mid = lo + sz -1
+				int mid = (lo + hi) / 2;				
+				// we want to merge two arrays, 
+				// when hi <= N-1, 
+				// one array is lo ~ lo + sz -1, the other one is lo + sz ~ lo + 2*sz -1, 
+				// in this case, mid = (lo + hi) / 2 is ok;
+				// but when hi >= N-1,
+				// one array is lo ~ lo + sz -1, the other one is lo + sz ~ N -1,
+				// in this case, mid = (lo + hi) / 2 is incorrect, it will merge two arrays with 
+				// incorrect length.
+				// Solution 1: change mid = (lo + hi) / 2 to mid = lo + sz -1;
+				// Solution 2: move hi = N-1 code to belew, after mid = (lo + hi) / 2;
+				if (hi >= N - 1) {
+					hi = N - 1;
+				}
 				StdOut.println(lo + "," + mid + "," + hi);
 				merge(a, lo, mid, hi);
 			}
@@ -37,7 +54,7 @@ public class MergeBU {
 		int left = lo;
 		int right = mid +1;
 		int N = a.length;
-		for (int i = lo; i <= hi; i++) { //not 0-N !
+		for (int i = lo; i <= hi; i++) { //not 0~N !
 			aux[i] = a[i];
 		}
 		/*int i = 0;
