@@ -20,11 +20,14 @@ public class MergeBU {
 	private static Comparable[] aux;
 
 	public static void sort(Comparable[] a) {
-		aux = new Comparable[a.length];
-		for (int sz = 1; sz < a.length; sz = sz + sz) {
-			for (int lo = 0; lo < a.length; lo = lo + sz) {
-				int hi = lo + sz;
+		int N = a.length;
+		aux = new Comparable[N];
+		for (int sz = 1; sz < N; sz = sz + sz) {
+			//for (int lo = 0; lo < a.length; lo = lo + sz) {
+			for (int lo = 0; lo < N - sz; lo = lo + sz*2) { // merge two sz arrays, so add sz*2, not sz
+				int hi = lo + sz * 2 - 1;
 				int mid = (lo + hi) / 2;
+				StdOut.println(lo + "," + mid + "," + hi);
 				merge(a, lo, mid, hi);
 			}
 		}
