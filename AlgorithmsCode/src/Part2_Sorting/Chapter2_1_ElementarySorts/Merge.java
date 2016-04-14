@@ -2,8 +2,6 @@ package Part2_Sorting.Chapter2_1_ElementarySorts;
 
 import java.io.File;
 
-import com.sun.org.apache.regexp.internal.recompile;
-
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
