@@ -37,7 +37,7 @@ public class Merge {
 		int left = lo;
 		int right = mid +1;
 		int N = a.length;
-		for (int i = lo; i <= hi; i++) { //not 0-N !
+		for (int i = lo; i <= hi; i++) { //not 0~N !
 			aux[i] = a[i];
 		}
 		/*int i = 0;
