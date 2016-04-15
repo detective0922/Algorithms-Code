@@ -1,4 +1,4 @@
-package Part2_Sorting.Chapter2_1_ElementarySorts;
+package Part2_Sorting.Chapter2_2_Mergesort;
 
 import java.io.File;
 import java.util.Iterator;
