@@ -24,14 +24,14 @@ public class Quicksort {
 	private static void sort(Comparable[] a, int lo, int hi) {
 		if(hi<=lo)
 			return;
-		int j = partition(a, lo, hi);
+		int j = myPartition(a, lo, hi);
 		//int j = partitionOnBook(a, lo, hi);
 		StdOut.println(j + "," + a[j]);
 		sort(a, lo, j - 1);
 		sort(a, j + 1, hi);
 	}
 	
-	private static int partition(Comparable[] a, int lo, int hi){
+	private static int myPartition(Comparable[] a, int lo, int hi){
 		int i = lo + 1;
 		int j = hi;
 		Comparable v = a[lo];
