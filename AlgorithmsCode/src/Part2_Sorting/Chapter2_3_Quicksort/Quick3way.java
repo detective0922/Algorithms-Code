@@ -23,19 +23,17 @@ public class Quick3way {
 	private static void sort(Comparable[] a, int lo, int hi) {
 		if (hi <= lo)
 			return;
-		int lt = lo, i = lo, gt = hi;
+		int lt = lo, /*i = lo*/ i = lo + 1, gt = hi;
 		Comparable v = a[lo];
 		while (gt >= i) {
 			if (a[i].compareTo(v) < 0) {
 				exch(a, i, lt);
 				lt++;
 				i++;
-			}
-			if (a[i].compareTo(v) > 0) {
+			} else if (a[i].compareTo(v) > 0) {
 				exch(a, i, gt);
 				gt--;
-			}
-			if (a[i].compareTo(v) == 0) {
+			} else if (a[i].compareTo(v) == 0) {
 				i++;
 			}
 		}
