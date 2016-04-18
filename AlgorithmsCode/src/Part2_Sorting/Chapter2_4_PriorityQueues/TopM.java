@@ -84,9 +84,9 @@ class MaxPQ<Key extends Comparable<Key>> {
 	}
 	
 	private void swim(int k){
-		while(less(k, k/2)){
-			exch(k, k/2);
-			k = k/2;
+		while (k > 1 && less(k / 2, k)) {
+			exch(k / 2, k);
+			k = k / 2;
 		}
 	}
 	
