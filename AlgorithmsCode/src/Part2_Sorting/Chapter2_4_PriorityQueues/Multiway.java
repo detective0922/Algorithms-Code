@@ -10,24 +10,16 @@ import edu.princeton.cs.algs4.Transaction;
 public class Multiway {
 	
 	public static void main(String[] args) {
-		File tFile = new File("algs4-data//tinyBatch.txt");
-		String[] inList = new In(tFile).readAllLines();
-		int M = inList.length;
-		MaxPQ<Transaction> pq = new MaxPQ<Transaction>(M + 1);
-		for (int i = 0; i < inList.length; i++) {
-			pq.insert(new Transaction(inList[i]));
-			if (pq.size() > M) {
-				pq.delMax();
-			}
-		}
-
-		Stack<Transaction> stack = new Stack<Transaction>();
-		while (!pq.isEmpty()) {
-			stack.push(pq.delMax());
-		}
-		for (Transaction t : stack) {
-			StdOut.println(t);
-		}	
+		File File0 = new File("algs4-data//m1.txt");
+		File File1 = new File("algs4-data//m2.txt");
+		File File2 = new File("algs4-data//m3.txt");
+		
+		int N = 3;
+		In[] streams = new In[N];
+		streams[0] = new In(File0);
+		streams[1] = new In(File1);
+		streams[2] = new In(File2);
+		merge(streams);
 	}
 	
 	public static void merge(In[] streams) {
@@ -52,19 +44,21 @@ public class Multiway {
 
 class IndexMinPQ<Item extends Comparable<Item>> {
 	
-	private Item[] pq;
+	private int[] indexs;
+ 	private Item[] pq;
 	private int N = 0;
 	
-	public IndexMinPQ(int max) {
-		pq = (Key[]) new Comparable[max + 1];
+	public IndexMinPQ(int maxN) {
+		pq = (Item[]) new Comparable[maxN + 1];
+		indexs = new int[maxN + 1];
 	}
 	
 	public void insert(int k, Item Item){
 		
 	}
 
-	public void change(int k, Item Item) {
-
+	public void change(int k, Item item) {
+		pq[k] = item;
 	}
 	
 	public boolean contains(int k){
@@ -76,11 +70,11 @@ class IndexMinPQ<Item extends Comparable<Item>> {
 	}
 	
 	public Item min(){
-		
+		return pq[N];
 	}
 	
 	public int minIndex(){
-		
+		return indexs[N];
 	}
 	
 	public int delMin(){
@@ -100,7 +94,7 @@ class IndexMinPQ<Item extends Comparable<Item>> {
 	}
 	
 	private void exch(int i, int j){
-		Key t = pq[i];
+		Item t = pq[i];
 		pq[i] = pq[j];
 		pq[j] = t;
 	}
