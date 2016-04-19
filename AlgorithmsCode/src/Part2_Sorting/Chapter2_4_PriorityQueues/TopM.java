@@ -60,8 +60,10 @@ class MaxPQ<Key extends Comparable<Key>> {
 	
 	public Key delMax(){
 		Key key = pq[1];
-		pq[1] = pq[N];
-		sink(N);
+		exch(1, N);
+		pq[N] = null;
+		N--;
+		sink(1);
 		return key;
 	}
 	
