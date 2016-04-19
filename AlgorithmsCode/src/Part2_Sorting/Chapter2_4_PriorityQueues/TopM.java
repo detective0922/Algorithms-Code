@@ -11,7 +11,7 @@ public class TopM {
 	
 	public static void main(String[] args) {
 		File tFile = new File("algs4-data//tinyBatch.txt");
-		String[] inList = new In(tFile).readAllStrings();
+		String[] inList = new In(tFile).readAllLines();
 		int M = inList.length;
 		MaxPQ<Transaction> pq = new MaxPQ<Transaction>(M + 1);
 		for (int i = 0; i < inList.length; i++) {
@@ -22,7 +22,7 @@ public class TopM {
 		}
 
 		Stack<Transaction> stack = new Stack<Transaction>();
-		while (stack.isEmpty()) {
+		while (!pq.isEmpty()) {
 			stack.push(pq.delMax());
 		}
 		for (Transaction t : stack) {
@@ -91,10 +91,21 @@ class MaxPQ<Key extends Comparable<Key>> {
 	}
 	
 	private void sink(int k) {
-		while (less(k, k * 2)) {
-			exch(k, k * 2);
-			k = k * 2;
+		int sun = 0;
+		
+		while (2 * k <= N) {
+			if (2 * k < N && less(2 * k, 2 * k + 1)) {
+				sun = 2 * k + 1;
+			} else {
+				sun = 2 * k;
+			}
+			
+			if(!less(k, sun))
+				break;
+			exch(k, sun);
+			k = sun;
 		}
+		
 	}
 
 }
