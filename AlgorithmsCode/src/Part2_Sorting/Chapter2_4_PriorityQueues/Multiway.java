@@ -44,6 +44,9 @@ public class Multiway {
 
 class IndexMinPQ<Item extends Comparable<Item>> {
 	
+	//pq posToIndex
+	//qp indexToPos
+	
 	private int[] indexToPos;
 	private int[] posToIndex;
  	private Item[] pq;
@@ -51,49 +54,61 @@ class IndexMinPQ<Item extends Comparable<Item>> {
 	
 	public IndexMinPQ(int maxN) {
 		pq = (Item[]) new Comparable[maxN + 1];
-		//indexs = new int[maxN + 1];
+		indexToPos = new int[maxN + 1];
 		posToIndex = new int[maxN + 1];
 		for (int i = 0; i < posToIndex.length; i++) {
-			posToIndex[i] = -1;
+			indexToPos[i] = -1;
 		}
 		
 	}
 	
-	public void insert(int k, Item item){
+	public void insert(int index, Item item){
 		N++;
-		indexs[N] = k;
-		posToIndex[N] = k;	
-		pq[k] = item;
+		indexToPos[index] = N;
+		posToIndex[N] = index;	
+		pq[index] = item;
 	}
 
-	public void change(int k, Item item) {
-		pq[k] = item;
+	public void change(int index, Item item) {
+		pq[index] = item;
 	}
 	
-	public boolean contains(int k){
-		return positions[k] != -1;
+	public boolean contains(int index){
+		return indexToPos[index] != -1;
 	}
 	
-	public void delete(int k) {
-		int position = positions[k];
+	public void delete(int index) {
+		int position = indexToPos[index];
 		exch(position, N);
 		N--;
 		swim(position);
 		sink(position);
-		pq[k] = null;
-		positions[k] = -1;	
+		pq[index] = null;
+		indexToPos[index] = -1;	
 	}
 	
 	public Item min(){
-		return pq[positions[1]];
+		return pq[posToIndex[1]];
 	}
 	
 	public int minIndex(){
-		return positions[1];
+		return posToIndex[1];
 	}
 	
 	public int delMin(){
-		
+		int minIndex = posToIndex[1];
+		exch(1, N);
+		pq[posToIndex[N]] = null;
+		N--;
+		sink(1);
+		indexToPos[minIndex] = -1;
+		posToIndex[1] = -1;
+		/*N--;
+		sink(1);
+		pq[N] = null;
+		indexToPos[minIndex] = -1;
+		posToIndex[1] = -1;*/
+		return minIndex;
 	}
 	
 	public boolean isEmpty() {
@@ -108,10 +123,12 @@ class IndexMinPQ<Item extends Comparable<Item>> {
 		return pq[i].compareTo(pq[j]) > 0;
 	}
 	
-	private void exch(int i, int j){
-		Item t = pq[i];
-		pq[i] = pq[j];
-		pq[j] = t;
+	private void exch(int posi, int posj){
+		int index = posToIndex[posi];
+		posToIndex[posi] = posToIndex[posj];
+		posToIndex[posj] = index;
+		indexToPos[posToIndex[posi]] = posj;
+		indexToPos[posToIndex[posj]] = posi;
 	}
 	
 	private void swim(int k){
