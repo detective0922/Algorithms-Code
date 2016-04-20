@@ -51,10 +51,15 @@ class IndexMinPQ<Item extends Comparable<Item>> {
 	public IndexMinPQ(int maxN) {
 		pq = (Item[]) new Comparable[maxN + 1];
 		indexs = new int[maxN + 1];
+		for (int i = 0; i < indexs.length; i++) {
+			indexs[i] = -1;
+		}
+		
 	}
 	
-	public void insert(int k, Item Item){
-		
+	public void insert(int k, Item item){
+		indexs[N] = k;
+		pq[k] = item;
 	}
 
 	public void change(int k, Item item) {
@@ -62,10 +67,11 @@ class IndexMinPQ<Item extends Comparable<Item>> {
 	}
 	
 	public boolean contains(int k){
-		
+		return indexs[k] != -1;
 	}
 	
 	public void delete(int k) {
+		
 
 	}
 	
