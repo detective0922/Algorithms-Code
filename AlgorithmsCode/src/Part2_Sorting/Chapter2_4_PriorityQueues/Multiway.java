@@ -98,11 +98,11 @@ class IndexMinPQ<Item extends Comparable<Item>> {
 	public int delMin(){
 		int minIndex = posToIndex[1];
 		exch(1, N);
-		pq[posToIndex[N]] = null;
 		N--;
 		sink(1);
 		indexToPos[minIndex] = -1;
-		posToIndex[1] = -1;
+		pq[posToIndex[N+1]] = null;
+		posToIndex[N+1] = -1;
 		/*N--;
 		sink(1);
 		pq[N] = null;
