@@ -44,21 +44,25 @@ public class Multiway {
 
 class IndexMinPQ<Item extends Comparable<Item>> {
 	
-	private int[] indexs;
+	private int[] indexToPos;
+	private int[] posToIndex;
  	private Item[] pq;
 	private int N = 0;
 	
 	public IndexMinPQ(int maxN) {
 		pq = (Item[]) new Comparable[maxN + 1];
-		indexs = new int[maxN + 1];
-		for (int i = 0; i < indexs.length; i++) {
-			indexs[i] = -1;
+		//indexs = new int[maxN + 1];
+		posToIndex = new int[maxN + 1];
+		for (int i = 0; i < posToIndex.length; i++) {
+			posToIndex[i] = -1;
 		}
 		
 	}
 	
 	public void insert(int k, Item item){
+		N++;
 		indexs[N] = k;
+		posToIndex[N] = k;	
 		pq[k] = item;
 	}
 
@@ -67,20 +71,25 @@ class IndexMinPQ<Item extends Comparable<Item>> {
 	}
 	
 	public boolean contains(int k){
-		return indexs[k] != -1;
+		return positions[k] != -1;
 	}
 	
 	public void delete(int k) {
-		
-
+		int position = positions[k];
+		exch(position, N);
+		N--;
+		swim(position);
+		sink(position);
+		pq[k] = null;
+		positions[k] = -1;	
 	}
 	
 	public Item min(){
-		return pq[N];
+		return pq[positions[1]];
 	}
 	
 	public int minIndex(){
-		return indexs[N];
+		return positions[1];
 	}
 	
 	public int delMin(){
@@ -95,8 +104,8 @@ class IndexMinPQ<Item extends Comparable<Item>> {
 		return N;
 	}
 	
-	private boolean less(int i, int j) {
-		return pq[i].compareTo(pq[j]) < 0;
+	private boolean greater(int i, int j) {
+		return pq[i].compareTo(pq[j]) > 0;
 	}
 	
 	private void exch(int i, int j){
@@ -106,7 +115,7 @@ class IndexMinPQ<Item extends Comparable<Item>> {
 	}
 	
 	private void swim(int k){
-		while (k > 1 && less(k / 2, k)) {
+		while (k > 1 && greater(k / 2, k)) {
 			exch(k / 2, k);
 			k = k / 2;
 		}
@@ -116,13 +125,13 @@ class IndexMinPQ<Item extends Comparable<Item>> {
 		int sun = 0;
 		
 		while (2 * k <= N) {
-			if (2 * k < N && less(2 * k, 2 * k + 1)) {
+			if (2 * k < N && greater(2 * k, 2 * k + 1)) {
 				sun = 2 * k + 1;
 			} else {
 				sun = 2 * k;
 			}
 			
-			if(!less(k, sun))
+			if(!greater(k, sun))
 				break;
 			exch(k, sun);
 			k = sun;
