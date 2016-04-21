@@ -24,7 +24,7 @@ public class Multiway {
 	
 	public static void merge(In[] streams) {
 		int N = streams.length;
-		IndexMinPQ<String> pq = new IndexMinPQ<String>(N);
+		edu.princeton.cs.algs4.IndexMinPQ<String> pq = new edu.princeton.cs.algs4.IndexMinPQ<String>(N);
 		for (int i = 0; i < N; i++) {
 			if (!streams[i].isEmpty()) {
 				pq.insert(i, streams[i].readString());
@@ -32,7 +32,7 @@ public class Multiway {
 		}
 		
 		while (!pq.isEmpty()) {
-			StdOut.println(pq.min());
+			StdOut.println(pq.minKey());
 			int i = pq.delMin();
 			if (!streams[i].isEmpty()) {
 				pq.insert(i, streams[i].readString());
@@ -67,6 +67,7 @@ class IndexMinPQ<Item extends Comparable<Item>> {
 		indexToPos[index] = N;
 		posToIndex[N] = index;	
 		pq[index] = item;
+		swim(N);
 	}
 
 	public void change(int index, Item item) {
@@ -98,10 +99,11 @@ class IndexMinPQ<Item extends Comparable<Item>> {
 	public int delMin(){
 		int minIndex = posToIndex[1];
 		exch(1, N);
+		pq[posToIndex[N]] = null;
 		N--;
 		sink(1);
 		indexToPos[minIndex] = -1;
-		pq[posToIndex[N+1]] = null;
+		
 		posToIndex[N+1] = -1;
 		/*N--;
 		sink(1);
@@ -119,8 +121,8 @@ class IndexMinPQ<Item extends Comparable<Item>> {
 		return N;
 	}
 	
-	private boolean greater(int i, int j) {
-		return pq[i].compareTo(pq[j]) > 0;
+	private boolean greater(int posi, int posj) {
+		return pq[posToIndex[posi]].compareTo(pq[posToIndex[posj]]) > 0;
 	}
 	
 	private void exch(int posi, int posj){
