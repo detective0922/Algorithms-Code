@@ -17,11 +17,36 @@ public class Heapsort {
 	}
 
 	public static void sort(Comparable[] a) {
-		//TODO
+		int N = a.length;
+		for(int i = N/2;i>0;i--){
+			sink(a,i,N);
+		}
+		while(N>1){
+			exch(a, 1, N--);
+			sink(a,1,N);
+		}
+	}
+	
+	private static void sink(Comparable[] a,int k,int N) {
+		int sun = 0;
+		
+		while (2 * k <= N) {
+			if (2 * k < N && less(a, 2 * k, 2 * k + 1)) {
+				sun = 2 * k + 1;
+			} else {
+				sun = 2 * k;
+			}
+			
+			if(!less(a, k,sun))
+				break;
+			exch(a,k, sun);
+			k = sun;
+		}
+		
 	}
 
-	private static boolean less(Comparable v, Comparable w) {
-		return v.compareTo(w) < 0;
+	private static boolean less(Comparable[] a, int i, int j) {
+		return a[i-1].compareTo(a[j-1]) < 0;
 	}
 
 	private static void exch(Comparable[] a, int i, int j) {
@@ -39,7 +64,7 @@ public class Heapsort {
 
 	public static boolean isSorted(Comparable[] a) {
 		for (int i = 1; i < a.length; i++) {
-			if (less(a[i], a[i - 1])) {
+			if (less(a,i,i-1)) {
 				return false;
 			}
 		}
