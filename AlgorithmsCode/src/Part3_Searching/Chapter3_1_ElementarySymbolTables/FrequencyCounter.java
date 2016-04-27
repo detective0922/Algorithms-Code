@@ -14,7 +14,7 @@ public class FrequencyCounter {
 		int minlen = 1;
 		SequentialSearchST<String, Integer> ssst = new SequentialSearchST<String, Integer>();
 		File tFile = new File("algs4-data//tinyTale.txt");
-		String[] inList = new In(tFile).readAllLines();
+		String[] inList = new In(tFile).readAllStrings();
 		
 		for (int i = 0; i < inList.length; i++) {
 			String word = inList[i];
@@ -54,14 +54,21 @@ class SequentialSearchST<Key, Value>{
 	
 	public Value get(Key key) {
 		Node node = first;
-		while (!key.equals(node.key)) {
+		while (node != null) {
+			if (key.equals(node.key)) {
+				return node.value;
+			}
 			node = node.next;
 		}
-		return node.value;
+		return null;
 	}
 	
 	public void put(Key key, Value value) {
 		Node node = new Node(key, value, null);
+		if (first == null) {
+			first = node;
+			return;
+		}
 		Node current = first;
 		while (current.next != null) {
 			current = current.next;
@@ -70,6 +77,8 @@ class SequentialSearchST<Key, Value>{
 	}
 	
 	public boolean contains(Key key) {
+		if (first == null)
+			return false;
 		return get(key) != null;
 	}
 	
