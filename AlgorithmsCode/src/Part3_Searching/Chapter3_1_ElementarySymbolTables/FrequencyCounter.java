@@ -69,16 +69,15 @@ class SequentialSearchST<Key, Value>{
 	}
 	
 	public void put(Key key, Value value) {
-		Node node = new Node(key, value, null);
-		if (first == null) {
-			first = node;
-			return;
-		}
 		Node current = first;
-		while (current.next != null) {
+		while (current != null) {
+			if (key.equals(current.key)) {
+				current.value = value;
+				return;
+			}
 			current = current.next;
 		}
-		current.next = node;
+		first = new Node(key, value, first);
 	}
 	
 	public boolean contains(Key key) {
