@@ -53,12 +53,17 @@ class SequentialSearchST<Key, Value>{
 	}
 	
 	public Value get(Key key) {
-		Node node = first;
+		/*Node node = first;
 		while (node != null) {
 			if (key.equals(node.key)) {
 				return node.value;
 			}
 			node = node.next;
+		}*/
+		for (Node node = first; node != null; node = node.next) {
+			if (key.equals(node.key)) {
+				return node.value;
+			}
 		}
 		return null;
 	}
