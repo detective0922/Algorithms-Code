@@ -11,9 +11,13 @@ import edu.princeton.cs.algs4.Transaction;
 
 public class FrequencyCounter {
 	public static void main(String[] args) {
-		int minlen = 1;
 		SequentialSearchST<String, Integer> ssst = new SequentialSearchST<String, Integer>();
-		File tFile = new File("algs4-data//tinyTale.txt");
+		//int minlen = 1;
+		int minlen = 8;
+		//int minlen = 10;
+		//File tFile = new File("algs4-data//tinyTale.txt");
+		File tFile = new File("algs4-data//tale.txt");
+		//File tFile = new File("algs4-data//leipzig1M.txt");
 		String[] inList = new In(tFile).readAllStrings();
 		
 		for (int i = 0; i < inList.length; i++) {
