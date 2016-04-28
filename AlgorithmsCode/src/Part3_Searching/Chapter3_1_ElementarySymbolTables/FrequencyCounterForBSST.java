@@ -44,6 +44,12 @@ class BinarySearchST<Key extends Comparable<Key>, Value>{
 	private Value[] vals;
 	private int N;
 	
+	public BinarySearchST(int Capacity) {
+		keys = (Key[]) new Comparable[Capacity];
+		vals = (Value[]) new Object[Capacity];
+		N = 0;
+	}
+	
 	public int rank(Key key){
 		
 	}
@@ -70,6 +76,10 @@ class BinarySearchST<Key extends Comparable<Key>, Value>{
 		} else{
 			vals[pos] = value;
 		}
+	}
+	
+	public boolean isEmpty(){
+		return N == 0;
 	}
 	
 	public boolean contains(Key key) {
