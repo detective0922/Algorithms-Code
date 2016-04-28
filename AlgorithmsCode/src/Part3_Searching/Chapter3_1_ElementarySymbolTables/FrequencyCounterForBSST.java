@@ -62,12 +62,11 @@ class BinarySearchST<Key extends Comparable<Key>, Value>{
 					keys[i+1] = keys[i];
 					vals[i+1] = vals[i];
 				} else {
-					keys[i+1] = keys[i];
-					vals[i+1] = vals[i];
-					keys[i] = key;	
-					vals[i] = value;
+					keys[i+1] = key;
+					vals[i+1] = value;
 				}
 			}
+			N++;
 		} else{
 			vals[pos] = value;
 		}
