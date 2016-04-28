@@ -56,12 +56,20 @@ class BinarySearchST<Key extends Comparable<Key>, Value>{
 	
 	public Value get(Key key) {
 		
-		int pos = rank(key);
-		return vals[pos];
+		/*int pos = rank(key);
+		return vals[pos];*/
+		if(isEmpty())
+			return null;
+		int index = rank(key);
+		if (index < N && keys[index].compareTo(key) == 0) {
+			return vals[index];
+		} else {
+			return null;
+		}
 	}
 	
 	public void put(Key key, Value value) {
-		int pos = rank(key);
+		/*int pos = rank(key);
 		if(pos == -1){
 			for (int i = N; i >= 0; i--) {
 				if (keys[i].compareTo(key) > 0) {
@@ -75,7 +83,19 @@ class BinarySearchST<Key extends Comparable<Key>, Value>{
 			N++;
 		} else{
 			vals[pos] = value;
+		}*/
+		int index = rank(key);
+		if (index < N && keys[index].compareTo(key) == 0) {
+			vals[index] = value;
+			return;
 		}
+		for (int i = N; i >index; i--) {
+			keys[i] = keys[i-1];
+			vals[i] = vals[i-1];
+		}
+		keys[index] = key;
+		vals[index] = value;			
+		
 	}
 	
 	public boolean isEmpty(){
