@@ -51,7 +51,18 @@ class BinarySearchST<Key extends Comparable<Key>, Value>{
 	}
 	
 	public int rank(Key key) {
-		return rank(key, 0, N - 1);
+		// return rank(key, 0, N - 1);
+		int lo = 0, hi = N - 1;
+		while (lo <= hi) {
+			int mid = lo + (hi - lo) / 2;
+			if (key.compareTo(keys[mid]) < 0)
+				hi = mid - 1;
+			else if (key.compareTo(keys[mid]) > 0)
+				lo = mid + 1;
+			else
+				return mid;
+		}
+		return lo;
 	}
 	
 	private int rank(Key key, int lo, int hi) {
