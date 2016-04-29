@@ -1,40 +1,66 @@
 package Part3_Searching.Chapter3_1_ElementarySymbolTables;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.Stopwatch;
 
 public class FrequencyCounterForBSST {
 	public static void main(String[] args) {
-		SequentialSearchST<String, Integer> ssst = new SequentialSearchST<String, Integer>();
+		BinarySearchST<String, Integer> bsst = new BinarySearchST<String, Integer>(40000000);
 		//int minlen = 1;
 		int minlen = 8;
 		//int minlen = 10;
 		//File tFile = new File("algs4-data//tinyTale.txt");
 		File tFile = new File("algs4-data//tale.txt");
 		//File tFile = new File("algs4-data//leipzig1M.txt");
-		String[] inList = new In(tFile).readAllStrings();
+		//String[] inList = new In(tFile).readAllStrings();
+		/*In in = new In(tFile);
+		List<String> lineList = new ArrayList<String>();
+		List<String> strList = new ArrayList<String>();
+		while(in.hasNextLine()){
+			lineList.add(in.readLine());
+		}
+		for(String line:lineList){
+			strList.addAll(Arrays.asList(line.split(" ")));
+		}
+		String[] inList = strList.toArray(new String[strList.size()]);*/
 		
-		for (int i = 0; i < inList.length; i++) {
-			String word = inList[i];
+		try {
+			System.setIn(new FileInputStream(tFile.getAbsolutePath()));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Stopwatch timer = new Stopwatch();
+		while(!StdIn.isEmpty()){
+		//for (int i = 0; i < inList.length; i++) {
+			//String word = inList[i];
+			String word = StdIn.readString();
 			if (word.length() < minlen)
 				continue;
-			if (!ssst.contains(word))
-				ssst.put(word, 1);
+			if (!bsst.contains(word))
+				bsst.put(word, 1);
 			else
-				ssst.put(word, ssst.get(word) + 1);
+				bsst.put(word, bsst.get(word) + 1);
 		}
 
 		String max = " ";
-		ssst.put(max, 0);
-		for (String word : ssst.keys()) {
-			if (ssst.get(word) > ssst.get(max))
+		bsst.put(max, 0);
+		for (String word : bsst.keys()) {
+			if (bsst.get(word) > bsst.get(max))
 				max = word;
 		}
-		StdOut.println(max + ", " + ssst.get(max));
+		
+		StdOut.println(max + ", " + bsst.get(max));
+		StdOut.println(timer.elapsedTime());
 	}
 }
 
