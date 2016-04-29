@@ -16,11 +16,11 @@ public class FrequencyCounterForBSST {
 	public static void main(String[] args) {
 		BinarySearchST<String, Integer> bsst = new BinarySearchST<String, Integer>(40000000);
 		//int minlen = 1;
-		int minlen = 8;
-		//int minlen = 10;
+		//int minlen = 8;
+		int minlen = 10;
 		//File tFile = new File("algs4-data//tinyTale.txt");
-		File tFile = new File("algs4-data//tale.txt");
-		//File tFile = new File("algs4-data//leipzig1M.txt");
+		//File tFile = new File("algs4-data//tale.txt");
+		File tFile = new File("algs4-data//leipzig1M.txt");
 		//String[] inList = new In(tFile).readAllStrings();
 		/*In in = new In(tFile);
 		List<String> lineList = new ArrayList<String>();
@@ -54,13 +54,17 @@ public class FrequencyCounterForBSST {
 
 		String max = " ";
 		bsst.put(max, 0);
-		for (String word : bsst.keys()) {
+		Iterable<String> keyList = bsst.keys();
+		for (String word : keyList) {
 			if (bsst.get(word) > bsst.get(max))
 				max = word;
 		}
-		
+				
 		StdOut.println(max + ", " + bsst.get(max));
 		StdOut.println(timer.elapsedTime());
+		//output:
+		//government, 24763
+		//71.175
 	}
 }
 
@@ -144,8 +148,8 @@ class BinarySearchST<Key extends Comparable<Key>, Value>{
 			vals[i] = vals[i-1];
 		}
 		keys[index] = key;
-		vals[index] = value;			
-		
+		vals[index] = value;	
+		N++;
 	}
 	
 	public boolean isEmpty(){
@@ -153,10 +157,14 @@ class BinarySearchST<Key extends Comparable<Key>, Value>{
 	}
 	
 	public boolean contains(Key key) {
-		return rank(key) != -1;
+		return get(key) != null;
 	}
 	
-	public Key[] keys(){
-		return keys;		
+	public Iterable<Key> keys() {
+		List<Key> tmpkeys = new ArrayList<Key>();
+		for (int i = 0; i < N; i++) {
+			tmpkeys.add(keys[i]);
+		}
+		return tmpkeys;
 	}
 }
