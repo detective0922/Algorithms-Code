@@ -18,11 +18,11 @@ public class FrequencyCounter {
 	public static void main(String[] args) {
 		SequentialSearchST<String, Integer> ssst = new SequentialSearchST<String, Integer>();
 		//int minlen = 1;
-		int minlen = 8;
-		//int minlen = 10;
+		//int minlen = 8;
+		int minlen = 10;
 		//File tFile = new File("algs4-data//tinyTale.txt");
-		File tFile = new File("algs4-data//tale.txt");
-		//File tFile = new File("algs4-data//leipzig1M.txt");
+		//File tFile = new File("algs4-data//tale.txt");
+		File tFile = new File("algs4-data//leipzig1M.txt");
 		/*In in = new In(tFile);
 		List<String> lineList = new ArrayList<String>();
 		List<String> strList = new ArrayList<String>();
@@ -61,6 +61,9 @@ public class FrequencyCounter {
 		}
 		StdOut.println(max + ", " + ssst.get(max));
 		StdOut.println(timer.elapsedTime());
+		//output:
+		//government, 24763
+		//73.177
 	}
 }
 
