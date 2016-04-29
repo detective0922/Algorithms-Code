@@ -95,10 +95,40 @@ class BST<Key extends Comparable<Key>, Value>{
 	}
 	
 	public Value get(Key key) {
-		
+		if(isEmpty())
+			return null;
+		Node node = root;
+		while(key.compareTo(node.key)!=0){
+			if(key.compareTo(node.key)>0){
+				node = node.right;
+			} else {
+				node = node.left;
+			}
+			if(node == null){
+				return null;
+			}
+		}
+		return node.value;
 	}
 	
 	public void put(Key key, Value value) {
+		if (isEmpty()) {
+			root = new Node(key, value, 1);
+			return;
+		}
+		
+		Node node = root;
+		while(key.compareTo(node.key)!=0){
+			if(key.compareTo(node.key)>0){
+				node = node.right;
+			} else {
+				node = node.left;
+			}
+			if(node == null){
+				return null;
+			}
+		}
+		return node.value;
 		
 	}
 	
