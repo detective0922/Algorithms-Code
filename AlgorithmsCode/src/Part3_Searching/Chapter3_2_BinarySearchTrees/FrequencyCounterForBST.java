@@ -119,17 +119,19 @@ class BST<Key extends Comparable<Key>, Value>{
 		
 		Node node = root;
 		while(key.compareTo(node.key)!=0){
+			int nodeN = node.N;
 			if(key.compareTo(node.key)>0){
 				node = node.right;
 			} else {
 				node = node.left;
 			}
 			if(node == null){
-				return null;
+				node = new Node(key, value, nodeN + 1);
+				return;
 			}
 		}
-		return node.value;
 		
+		node = new Node(key, value, node.N + 1);
 	}
 	
 	public boolean isEmpty(){
@@ -138,5 +140,13 @@ class BST<Key extends Comparable<Key>, Value>{
 	
 	public boolean contains(Key key) {
 		return get(key) != null;
+	}
+	
+	public Iterable<Key> keys() {
+		List<Key> tmpkeys = new ArrayList<Key>();
+		for (int i = 0; i < N; i++) {
+			tmpkeys.add(keys[i]);
+		}
+		return tmpkeys;
 	}
 }
