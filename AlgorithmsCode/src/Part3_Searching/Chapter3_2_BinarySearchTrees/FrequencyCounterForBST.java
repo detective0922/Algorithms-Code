@@ -12,7 +12,7 @@ import edu.princeton.cs.algs4.Stopwatch;
 
 public class FrequencyCounterForBST {
 	public static void main(String[] args) {
-		BST<String, Integer> bsst = new BST<String, Integer>(40000000);
+		BST<String, Integer> bsst = new BST<String, Integer>();
 		//int minlen = 1;
 		//int minlen = 8;
 		int minlen = 10;
