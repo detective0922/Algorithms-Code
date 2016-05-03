@@ -145,7 +145,7 @@ class BST<Key extends Comparable<Key>, Value>{
 	public Iterable<Key> keys() {
 		List<Key> tmpkeys = new ArrayList<Key>();
 		for (int i = 0; i < N; i++) {
-			tmpkeys.add(keys[i]);
+			tmpkeys.add(root.key);
 		}
 		return tmpkeys;
 	}
