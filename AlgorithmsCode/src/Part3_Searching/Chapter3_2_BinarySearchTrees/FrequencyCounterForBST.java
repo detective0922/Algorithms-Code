@@ -177,10 +177,22 @@ class BST<Key extends Comparable<Key>, Value>{
 	}
 	
 	public Iterable<Key> keys() {
-		List<Key> tmpkeys = new ArrayList<Key>();
-		for (int i = 0; i < N; i++) {
-			tmpkeys.add(root.key);
-		}
-		return tmpkeys;
+		keys(min(), max());
 	}
+	
+	private Iterable<Key> keys(Key lo, Key hi) {
+        List<Key> queue = new ArrayList<Key>();
+        keys(root, queue, lo, hi);
+        return queue;
+    } 
+
+    private void keys(Node x, List<Key> list, Key lo, Key hi) { 
+        if (x == null) return; 
+        int cmplo = lo.compareTo(x.key); 
+        int cmphi = hi.compareTo(x.key); 
+        if (cmplo < 0) keys(x.left, list, lo, hi); 
+        if (cmplo <= 0 && cmphi >= 0) list.add(x.key); 
+        if (cmphi > 0) keys(x.right, list, lo, hi); 
+    } 
+
 }
