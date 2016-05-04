@@ -177,7 +177,7 @@ class BST<Key extends Comparable<Key>, Value>{
 	}
 	
 	public Iterable<Key> keys() {
-		keys(min(), max());
+		return keys(min(), max());
 	}
 	
 	private Iterable<Key> keys(Key lo, Key hi) {
