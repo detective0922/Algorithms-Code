@@ -194,5 +194,32 @@ class BST<Key extends Comparable<Key>, Value>{
         if (cmplo <= 0 && cmphi >= 0) list.add(x.key); 
         if (cmphi > 0) keys(x.right, list, lo, hi); 
     } 
+    
+	public Key min() {
+		if (isEmpty())
+			return null;
+		return min(root).key;
+	}
+
+	private Node min(Node x) {
+		if (x.left == null)
+			return x;
+		else
+			return min(x.left);
+	}
+
+	public Key max() {
+		if (isEmpty())
+			return null;
+		return max(root).key;
+	}
+
+	private Node max(Node x) {
+		if (x.right == null)
+			return x;
+		else
+			return max(x.right);
+	}
+
 
 }
