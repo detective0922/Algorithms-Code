@@ -12,7 +12,7 @@ import edu.princeton.cs.algs4.Stopwatch;
 
 public class FrequencyCounterForBST {
 	public static void main(String[] args) {
-		BST<String, Integer> bsst = new BST<String, Integer>();
+		BST<String, Integer> bst = new BST<String, Integer>();
 		//int minlen = 1;
 		//int minlen = 8;
 		int minlen = 10;
@@ -44,21 +44,21 @@ public class FrequencyCounterForBST {
 			String word = StdIn.readString();
 			if (word.length() < minlen)
 				continue;
-			if (!bsst.contains(word))
-				bsst.put(word, 1);
+			if (!bst.contains(word))
+				bst.put(word, 1);
 			else
-				bsst.put(word, bsst.get(word) + 1);
+				bst.put(word, bst.get(word) + 1);
 		}
 
 		String max = " ";
-		bsst.put(max, 0);
-		Iterable<String> keyList = bsst.keys();
+		bst.put(max, 0);
+		Iterable<String> keyList = bst.keys();
 		for (String word : keyList) {
-			if (bsst.get(word) > bsst.get(max))
+			if (bst.get(word) > bst.get(max))
 				max = word;
 		}
 				
-		StdOut.println(max + ", " + bsst.get(max));
+		StdOut.println(max + ", " + bst.get(max));
 		StdOut.println(timer.elapsedTime());
 		//output:
 		//government, 24763
@@ -159,12 +159,12 @@ class BST<Key extends Comparable<Key>, Value>{
 			return new Node(key, val, 1);
 		int cmp = key.compareTo(x.key);
 		if (cmp < 0)
-			return x.left = put(x.left, key, val);
+			x.left = put(x.left, key, val);
 		else if (cmp > 0)
-			return x.right = put(x.right, key, val);
+			x.right = put(x.right, key, val);
 		else
 			x.value = val;
-		
+		x.N = size(x.left) + size(x.right) + 1;
 		return x;
 	}
 	
