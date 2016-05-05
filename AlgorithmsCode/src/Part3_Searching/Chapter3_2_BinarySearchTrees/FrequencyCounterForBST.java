@@ -94,7 +94,7 @@ class BST<Key extends Comparable<Key>, Value>{
 			return node.N;
 	}
 	
-	/*public Value get(Key key) {
+	public Value get(Key key) {
 		if(isEmpty())
 			return null;
 		Node node = root;
@@ -109,9 +109,9 @@ class BST<Key extends Comparable<Key>, Value>{
 			}
 		}
 		return node.value;
-	}*/
+	}
 	
-	public Value get(Key key) {
+	/*public Value get(Key key) {
 		return get(root, key);
 	}
 	
@@ -125,32 +125,39 @@ class BST<Key extends Comparable<Key>, Value>{
 			return get(x.right, key);
 		else
 			return x.value;
-	}
+	}*/
 	
-	/*public void put(Key key, Value value) {
+	public void put(Key key, Value value) {
 		if (isEmpty()) {
 			root = new Node(key, value, 1);
 			return;
 		}
 		
 		Node node = root;
-		while(key.compareTo(node.key)!=0){
-			int nodeN = node.N;
-			if(key.compareTo(node.key)>0){
-				node = node.right;
+		while(true){
+			node.N = size(node.left) + size(node.right) + 1;
+			if (key.compareTo(node.key) < 0) {
+				if (node.left == null) {
+					node.left = new Node(key, value, 1);
+					break;
+				} else {
+					node = node.left;
+				}
+			} else if (key.compareTo(node.key) > 0) {
+				if (node.right == null) {
+					node.right = new Node(key, value, 1);
+					break;
+				} else {
+					node = node.right;
+				}
 			} else {
-				node = node.left;
-			}
-			if(node == null){
-				node = new Node(key, value, nodeN + 1);
-				return;
+				node.value = value;
+				break;
 			}
 		}
-		
-		node = new Node(key, value, node.N + 1);
-	}*/
+	}
 	
-	public void put(Key key, Value val){
+	/*public void put(Key key, Value val){
 		root = put(root, key, val);
 	}
 	
@@ -166,7 +173,7 @@ class BST<Key extends Comparable<Key>, Value>{
 			x.value = val;
 		x.N = size(x.left) + size(x.right) + 1;
 		return x;
-	}
+	}*/
 	
 	public boolean isEmpty(){
 		return root == null;
