@@ -62,7 +62,7 @@ public class FrequencyCounterForBST {
 		StdOut.println(timer.elapsedTime());
 		//output:
 		//government, 24763
-		//71.175
+		//21.006
 	}
 }
 
