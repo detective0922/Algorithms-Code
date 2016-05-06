@@ -186,9 +186,9 @@ class BST<Key extends Comparable<Key>, Value>{
 	}
 	
 	private Iterable<Key> keys(Key lo, Key hi) {
-        List<Key> queue = new ArrayList<Key>();
-        keys(root, queue, lo, hi);
-        return queue;
+        List<Key> list = new ArrayList<Key>();
+        keys(root, list, lo, hi);
+        return list;
     } 
 
     private void keys(Node x, List<Key> list, Key lo, Key hi) { 
