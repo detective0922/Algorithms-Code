@@ -65,3 +65,7 @@ public class FrequencyCounterForRBBST {
 	}
 
 }
+
+class RBBST{
+	
+}
