@@ -66,6 +66,6 @@ public class FrequencyCounterForRBBST {
 
 }
 
-class RBBST{
+class RBBST<Key extends Comparable<Key>, Value>{
 	
 }
