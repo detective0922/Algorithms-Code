@@ -104,15 +104,21 @@ class RBBST<Key extends Comparable<Key>, Value>{
 		Node x = h.right;
 		h.right = x.left;
 		x.left = h;
-		x.color = RED;
-		h.color = x.color;
+		x.color = h.color;
+		h.color = RED;
 		x.N =  h.N;
 		h.N = size(h.left) + size(h.right) + 1;
 		return x;
 	}
 	
 	public Node rotateRight(Node h){
-		
+		Node x = h.left;
+		h.left = x.right;
+		x.right = h;
+		x.color = h.color;
+		h.color = RED;
+		x.N = h.N;
+		h.N = size(h.left) + size(h.right) + 1;		
 	}
 	
 }
