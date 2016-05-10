@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import Part3_Searching.Chapter3_2_BinarySearchTrees.BST;
+import Part3_Searching.Chapter3_2_BinarySearchTrees.BST.Node;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.Stopwatch;
@@ -67,5 +68,29 @@ public class FrequencyCounterForRBBST {
 }
 
 class RBBST<Key extends Comparable<Key>, Value>{
+	
+	private static final boolean RED = true;
+	private static final boolean BLACK = false;
+	
+	private class Node {
+		private Key key;
+		private Value value;
+		private Node left, right;
+		private int N;
+		private boolean color;
+
+		public Node(Key key, Value val, int N, boolean color) {
+			this.key = key;
+			this.value = val;
+			this.N = N;
+			this.color = color;
+		}
+	}
+	
+	public boolean isRed(Node x) {
+		if (x == null)
+			return false;
+		return x.color == RED;
+	}
 	
 }
