@@ -93,4 +93,26 @@ class RBBST<Key extends Comparable<Key>, Value>{
 		return x.color == RED;
 	}
 	
+	public int size(Node node) {
+		if (node == null)
+			return 0;
+		else
+			return node.N;
+	}
+	
+	public Node rotateLeft(Node h){
+		Node x = h.right;
+		h.right = x.left;
+		x.left = h;
+		x.color = RED;
+		h.color = x.color;
+		x.N =  h.N;
+		h.N = size(h.left) + size(h.right) + 1;
+		return x;
+	}
+	
+	public Node rotateRight(Node h){
+		
+	}
+	
 }
