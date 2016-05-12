@@ -3,16 +3,17 @@ package Part3_Searching.Chapter3_3_BalancedSearchTrees;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
-import Part3_Searching.Chapter3_2_BinarySearchTrees.BST;
-import Part3_Searching.Chapter3_2_BinarySearchTrees.BST.Node;
+import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.Stopwatch;
 
 public class FrequencyCounterForRBBST {
 	public static void main(String[] args) {
-		BST<String, Integer> bst = new BST<String, Integer>();
+		RBBST<String, Integer> bst = new RBBST<String, Integer>();
 		//int minlen = 1;
 		//int minlen = 8;
 		int minlen = 10;
@@ -120,7 +121,8 @@ class RBBST<Key extends Comparable<Key>, Value>{
 		x.color = h.color;
 		h.color = RED;
 		x.N = h.N;
-		h.N = size(h.left) + size(h.right) + 1;		
+		h.N = size(h.left) + size(h.right) + 1;
+		return x;
 	}
 	
 	public void flipColors(Node h){
@@ -131,6 +133,10 @@ class RBBST<Key extends Comparable<Key>, Value>{
 	
 	public boolean isEmpty(){
 		return root == null;
+	}
+	
+	public boolean contains(Key key) {
+		return get(key) != null;
 	}
 	
 	public Value get(Key key) {
@@ -157,25 +163,82 @@ class RBBST<Key extends Comparable<Key>, Value>{
 		}
 		
 		Node node = root;
+		Stack<Node> stack = new Stack<Node>();
+		stack.push(node);
+		
 		while (key.compareTo(node.key) != 0) {
-			node.N = size(node.left) + size(node.right) + 1;
+			
 			if (key.compareTo(node.key) < 0) {
 				if (node.left == null) {
 					node.left = new Node(key, value, 1, RED);
-					break;
-				} else {
-					node = node.left;
 				}
+				node = node.left;				
 			} else if (key.compareTo(node.key) > 0) {
 				if (node.right == null) {
 					node.right = new Node(key, value, 1, RED);
-					break;
-				} else {
-					node = node.right;
 				}
+				node = node.right;
 			}
+			if (!isRed(node.left) && isRed(node.right))
+				node = rotateLeft(node);
+			if (isRed(node.left) && isRed(node.left.left))
+				node = rotateRight(node);
+			if (isRed(node.left) && isRed(node.right))
+				flipColors(node);
+			
+			stack.push(node);
+			//node.N = size(node.left) + size(node.right) + 1;
+		}
+		while (!stack.isEmpty()) {
+			Node tmpNode = stack.pop();
+			tmpNode.N = size(tmpNode.left) + size(tmpNode.right) + 1;
 		}
 		node.value = value;
+	}
+	
+	public Iterable<Key> keys() {
+		return keys(min(), max());
+	}
+	
+	private Iterable<Key> keys(Key lo, Key hi) {
+        List<Key> list = new ArrayList<Key>();
+        keys(root, list, lo, hi);
+        return list;
+    } 
+
+    private void keys(Node x, List<Key> list, Key lo, Key hi) { 
+        if (x == null) return; 
+        int cmplo = lo.compareTo(x.key); 
+        int cmphi = hi.compareTo(x.key); 
+        if (cmplo < 0) keys(x.left, list, lo, hi); 
+        if (cmplo <= 0 && cmphi >= 0) list.add(x.key); 
+        if (cmphi > 0) keys(x.right, list, lo, hi); 
+    } 
+    
+	public Key min() {
+		if (isEmpty())
+			return null;
+		return min(root).key;
+	}
+
+	private Node min(Node x) {
+		if (x.left == null)
+			return x;
+		else
+			return min(x.left);
+	}
+
+	public Key max() {
+		if (isEmpty())
+			return null;
+		return max(root).key;
+	}
+
+	private Node max(Node x) {
+		if (x.right == null)
+			return x;
+		else
+			return max(x.right);
 	}
 	
 }
