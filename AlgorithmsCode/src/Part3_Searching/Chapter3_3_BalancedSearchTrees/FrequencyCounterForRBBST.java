@@ -121,6 +121,12 @@ class RBBST<Key extends Comparable<Key>, Value>{
 		h.N = size(h.left) + size(h.right) + 1;		
 	}
 	
+	public void flipColors(Node h){
+		h.color = RED;
+		h.left.color = BLACK;
+		h.right.color = BLACK;
+	}
+	
 	public void put() {
 		
 	}
