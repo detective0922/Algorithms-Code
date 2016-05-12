@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.Stopwatch;
@@ -134,23 +135,26 @@ class BST<Key extends Comparable<Key>, Value>{
 		}
 		
 		Node node = root;
-		while (key.compareTo(node.key) != 0) {
-			node.N = size(node.left) + size(node.right) + 1;
+		Stack<Node> stack = new Stack<Node>();
+		stack.push(node);
+		while (key.compareTo(node.key) != 0) {				
 			if (key.compareTo(node.key) < 0) {
 				if (node.left == null) {
 					node.left = new Node(key, value, 1);
-					break;
-				} else {
-					node = node.left;
 				}
+				node = node.left;				
 			} else if (key.compareTo(node.key) > 0) {
 				if (node.right == null) {
 					node.right = new Node(key, value, 1);
-					break;
-				} else {
-					node = node.right;
 				}
-			}			
+				node = node.right;
+			}
+			stack.push(node);
+			//node.N = size(node.left) + size(node.right) + 1;
+		}
+		while (!stack.isEmpty()) {
+			Node tmpNode = stack.pop();
+			tmpNode.N = size(tmpNode.left) + size(tmpNode.right) + 1;
 		}
 		node.value = value;
 	}
