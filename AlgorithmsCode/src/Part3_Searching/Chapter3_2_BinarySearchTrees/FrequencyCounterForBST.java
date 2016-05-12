@@ -134,7 +134,8 @@ class BST<Key extends Comparable<Key>, Value>{
 		}
 		
 		Node node = root;
-		while (key.compareTo(node.key) != 0) {			
+		while (key.compareTo(node.key) != 0) {
+			node.N = size(node.left) + size(node.right) + 1;
 			if (key.compareTo(node.key) < 0) {
 				if (node.left == null) {
 					node.left = new Node(key, value, 1);
@@ -149,8 +150,7 @@ class BST<Key extends Comparable<Key>, Value>{
 				} else {
 					node = node.right;
 				}
-			}
-			node.N = size(node.left) + size(node.right) + 1;
+			}			
 		}
 		node.value = value;
 	}
