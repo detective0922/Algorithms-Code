@@ -69,6 +69,8 @@ public class FrequencyCounterForRBBST {
 
 class RBBST<Key extends Comparable<Key>, Value>{
 	
+	private Node root;
+	
 	private static final boolean RED = true;
 	private static final boolean BLACK = false;
 	
@@ -125,6 +127,27 @@ class RBBST<Key extends Comparable<Key>, Value>{
 		h.color = RED;
 		h.left.color = BLACK;
 		h.right.color = BLACK;
+	}
+	
+	public boolean isEmpty(){
+		return root == null;
+	}
+	
+	public Value get(Key key) {
+		if(isEmpty())
+			return null;
+		Node node = root;
+		while(key.compareTo(node.key)!=0){
+			if(key.compareTo(node.key)>0){
+				node = node.right;
+			} else {
+				node = node.left;
+			}
+			if(node == null){
+				return null;
+			}
+		}
+		return node.value;
 	}
 	
 	public void put() {
