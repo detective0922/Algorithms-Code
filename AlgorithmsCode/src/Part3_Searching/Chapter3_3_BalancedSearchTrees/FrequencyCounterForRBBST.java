@@ -150,8 +150,32 @@ class RBBST<Key extends Comparable<Key>, Value>{
 		return node.value;
 	}
 	
-	public void put() {
+	public void put(Key key, Value value) {
+		if (isEmpty()) {
+			root = new Node(key, value, 1);
+			return;
+		}
 		
+		Node node = root;
+		while (key.compareTo(node.key) != 0) {
+			node.N = size(node.left) + size(node.right) + 1;
+			if (key.compareTo(node.key) < 0) {
+				if (node.left == null) {
+					node.left = new Node(key, value, 1);
+					break;
+				} else {
+					node = node.left;
+				}
+			} else if (key.compareTo(node.key) > 0) {
+				if (node.right == null) {
+					node.right = new Node(key, value, 1);
+					break;
+				} else {
+					node = node.right;
+				}
+			}
+		}
+		node.value = value;
 	}
 	
 }
