@@ -241,4 +241,8 @@ class RBBST<Key extends Comparable<Key>, Value>{
 			return max(x.right);
 	}
 	
+	public void delete(){
+		
+	}
+	
 }
