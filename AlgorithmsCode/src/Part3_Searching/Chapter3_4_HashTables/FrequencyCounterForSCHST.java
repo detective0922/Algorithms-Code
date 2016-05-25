@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Part3_Searching.Chapter3_1_ElementarySymbolTables.SequentialSearchST.Node;
 import edu.princeton.cs.algs4.SequentialSearchST;
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdIn;
@@ -104,6 +103,17 @@ class SCHST<Key extends Comparable<Key>, Value>{
 	
 	public boolean contains(Key key) {
 		return get(key) != null;
+	}
+	
+	//3.4.19
+	public Iterable<Key> keys(){
+		List<Key> keys = new ArrayList<Key>();
+		for (int i = 0; i < M; i++) {
+			for(Key key: st[i].keys()){
+				keys.add(key);
+			}
+		}
+		return keys;		
 	}
 	
 }
