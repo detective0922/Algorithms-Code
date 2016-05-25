@@ -63,7 +63,11 @@ public class FrequencyCounterForLPHST {
 		StdOut.println(timer.elapsedTime());
 		//output:
 		//government, 24763
-		//19.608
+		//18.377
+
+		//output of book's implementation
+		//government, 24763
+		//18.324
 
 	}
 }
@@ -95,9 +99,24 @@ class LinearProbingHashST<Key, Value>{
 		}
 		
 		int hashcode = hash(key);
-		while (keys[hashcode] != null && (!key.equals(keys[hashcode]))) {
+		while (keys[hashcode] != null) {
+			if (keys[hashcode].equals(key)) {
+				values[hashcode] = val;
+				return;
+			}
 			hashcode = (hashcode + 1) % M;
 		}
+		
+		
+		//implementation in book
+		/*int hashcode;
+		for (hashcode = hash(key); keys[hashcode] != null; hashcode = (hashcode + 1)
+				% M) {
+			if (keys[hashcode].equals(key)) {
+				values[hashcode] = val;
+				return;
+			}
+		}*/
 		keys[hashcode] = key;
 		values[hashcode] = val;
 		N++;
@@ -105,10 +124,24 @@ class LinearProbingHashST<Key, Value>{
 	
 	public Value get(Key key){
 		int hashcode = hash(key);
-		while (keys[hashcode] != null && (!key.equals(keys[hashcode]))) {
+		while (keys[hashcode] != null) {
+			if (keys[hashcode].equals(key)) {
+				return values[hashcode];
+			}
 			hashcode = (hashcode + 1) % M;
 		}
-		return values[hashcode];
+		return null;
+		
+		//implementation in book
+		/*int hashcode;
+		for (hashcode = hash(key); keys[hashcode] != null; hashcode = (hashcode + 1)
+				% M) {
+			if (keys[hashcode].equals(key)) {
+				return values[hashcode];
+
+			}
+		}
+		return null;*/
 	}
 	
 	public boolean contains(Key key) {
