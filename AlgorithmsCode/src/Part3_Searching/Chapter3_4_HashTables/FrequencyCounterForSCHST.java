@@ -64,7 +64,8 @@ public class FrequencyCounterForSCHST {
 		StdOut.println(timer.elapsedTime());
 		//output:
 		//government, 24763
-		//21.006
+		//30.03
+
 	}
 
 }
