@@ -7,14 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.princeton.cs.algs4.SequentialSearchST;
-import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.Stopwatch;
 
-public class FrequencyCounterForSCHST {
+public class FrequencyCounterForLPHST {
 	public static void main(String[] args) {
-		SeparateChainingHashST<String, Integer> schst = new SeparateChainingHashST<String, Integer>();
+		LinearProbingHashST<String, Integer> lphst = new LinearProbingHashST<String, Integer>();
 		//int minlen = 1;
 		//int minlen = 8;
 		int minlen = 10;
@@ -46,46 +45,44 @@ public class FrequencyCounterForSCHST {
 			String word = StdIn.readString();
 			if (word.length() < minlen)
 				continue;
-			if (!schst.contains(word))
-				schst.put(word, 1);
+			if (!lphst.contains(word))
+				lphst.put(word, 1);
 			else
-				schst.put(word, schst.get(word) + 1);
+				lphst.put(word, lphst.get(word) + 1);
 		}
 
 		String max = " ";
-		schst.put(max, 0);
-		Iterable<String> keyList = schst.keys();
+		lphst.put(max, 0);
+		Iterable<String> keyList = lphst.keys();
 		for (String word : keyList) {
-			if (schst.get(word) > schst.get(max))
+			if (lphst.get(word) > lphst.get(max))
 				max = word;
 		}
 				
-		StdOut.println(max + ", " + schst.get(max));
+		StdOut.println(max + ", " + lphst.get(max));
 		StdOut.println(timer.elapsedTime());
 		//output:
 		//government, 24763
-		//30.03
+		//19.608
 
 	}
-
 }
 
-class SeparateChainingHashST<Key extends Comparable<Key>, Value>{
+class LinearProbingHashST<Key, Value>{
 	
 	private int N;
 	private int M;
-	private SequentialSearchST<Key, Value>[] st;
+	private Key[] keys;
+	private Value[] values;
 	
-	public SeparateChainingHashST() {
-		this(997);		
+	public LinearProbingHashST() {
+		this(16);		
 	}
 	
-	public SeparateChainingHashST(int M) {
+	public LinearProbingHashST(int M) {
 		this.M = M;
-		st = (SequentialSearchST<Key, Value>[]) new SequentialSearchST[M];
-		for (int i = 0; i < M; i++) {
-			st[i] = new SequentialSearchST();
-		}
+		keys = (Key[]) new Object[M];
+		values = (Value[]) new Object[M];
 	}
 	
 	private int hash(Key key) {
@@ -93,28 +90,52 @@ class SeparateChainingHashST<Key extends Comparable<Key>, Value>{
 	}
 	
 	public void put(Key key, Value val) {
+		if (N > M / 2) {
+			resize(2 * M);
+		}
+		
 		int hashcode = hash(key);
-		st[hashcode].put(key, val);
+		while (keys[hashcode] != null && (!key.equals(keys[hashcode]))) {
+			hashcode = (hashcode + 1) % M;
+		}
+		keys[hashcode] = key;
+		values[hashcode] = val;
+		N++;
 	}
 	
 	public Value get(Key key){
 		int hashcode = hash(key);
-		return st[hashcode].get(key);
+		while (keys[hashcode] != null && (!key.equals(keys[hashcode]))) {
+			hashcode = (hashcode + 1) % M;
+		}
+		return values[hashcode];
 	}
 	
 	public boolean contains(Key key) {
 		return get(key) != null;
 	}
 	
-	//3.4.19
-	public Iterable<Key> keys(){
-		List<Key> keys = new ArrayList<Key>();
+	public void resize(int size){
+		LinearProbingHashST<Key,Value> tmpSt = new LinearProbingHashST<Key,Value>(size);
 		for (int i = 0; i < M; i++) {
-			for(Key key: st[i].keys()){
-				keys.add(key);
+			if (keys[i] != null) {
+				tmpSt.put(keys[i], values[i]);
 			}
 		}
-		return keys;		
+		this.M = size;
+		keys = tmpSt.keys;
+		values = tmpSt.values;
+	}
+	
+	//3.4.19
+	public Iterable<Key> keys() {
+		List<Key> retKeys = new ArrayList<Key>();
+		for (Key key : keys) {
+			if (key != null) {
+				retKeys.add(key);
+			}
+		}
+		return retKeys;
 	}
 	
 }
