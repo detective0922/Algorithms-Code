@@ -171,4 +171,8 @@ class LinearProbingHashST<Key, Value>{
 		return retKeys;
 	}
 	
+	public void delete(Key key) {
+
+	}
+	
 }
