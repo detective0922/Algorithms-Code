@@ -43,6 +43,16 @@ class Graph{
 	}
 	
 	public Graph(In in) {
+		this(in.readInt());
+		this.E = in.readInt();
+		for (int i = 0; i < E; i++) {
+			int v = StdIn.readInt();
+			int w = StdIn.readInt();
+			addEdge(v, w);
+		}
+	}
+	
+	public void addEdge(int v, int w){
 		
 	}
 }
