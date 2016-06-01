@@ -52,7 +52,9 @@ class Graph{
 		}
 	}
 	
-	public void addEdge(int v, int w){
-		
+	public void addEdge(int v, int w) {
+		adj[v].add(w);
+		adj[w].add(v);
+		E++;
 	}
 }
