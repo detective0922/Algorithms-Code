@@ -57,4 +57,32 @@ class Graph{
 		adj[w].add(v);
 		E++;
 	}
+	
+	public Iterable<Integer> adj(int v){
+		return adj[v];
+	}
+	
+	public int degree(Graph G, int v){
+		int degree = 0;
+		for(int w:G.adj[v]){
+			degree++;
+		}
+		return degree;
+	}
+	
+	public int maxDegree(Graph G){
+		
+	}
+	
+	public double avgDegree(Graph G){
+		
+	}
+	
+	public int numberOfSelfLoops(Graph G){
+		
+	}
+	
+	public String toString(){
+		
+	}
 }
