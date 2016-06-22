@@ -13,9 +13,9 @@ import edu.princeton.cs.algs4.Stopwatch;
 public class GraphTest {
 	public static void main(String[] args) {
 
-		File tFile = new File("algs4-data//leipzig1M.txt");
+		File tFile = new File("algs4-data//tinyG.txt");
 				
-		try {
+		/*try {
 			System.setIn(new FileInputStream(tFile.getAbsolutePath()));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -24,7 +24,10 @@ public class GraphTest {
 		Stopwatch timer = new Stopwatch();
 		while(!StdIn.isEmpty()){
 
-		}
+		}*/
+		In in = new In(tFile);
+		Graph g = new Graph(in);
+		System.out.println(g);
 	}
 }
 
