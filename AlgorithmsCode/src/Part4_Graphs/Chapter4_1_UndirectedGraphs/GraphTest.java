@@ -48,10 +48,17 @@ class Graph{
 	public Graph(In in) {
 		this(in.readInt());
 		this.E = in.readInt();
-		for (int i = 0; i < E; i++) {
-			int v = StdIn.readInt();
-			int w = StdIn.readInt();
-			addEdge(v, w);
+		try {
+			for (int i = 0; i < E; i++) {
+				if (in.hasNextLine()) {
+					int v = in.readInt();
+					int w = in.readInt();
+					addEdge(v, w);
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
