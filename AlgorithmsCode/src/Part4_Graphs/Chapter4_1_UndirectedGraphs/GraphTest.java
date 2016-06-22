@@ -62,6 +62,10 @@ class Graph{
 		return V;
 	}
 	
+	public int E(){
+		return E;
+	}
+	
 	public Iterable<Integer> adj(int v){
 		return adj[v];
 	}
@@ -85,8 +89,8 @@ class Graph{
 		return max;
 	}
 	
-	public double avgDegree(Graph G){
-		
+	public double avgDegree(Graph G) {
+		return 2 * G.E() / G.V();
 	}
 	
 	public int numberOfSelfLoops(Graph G){
