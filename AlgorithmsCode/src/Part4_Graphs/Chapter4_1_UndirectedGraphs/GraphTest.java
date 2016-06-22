@@ -58,6 +58,10 @@ class Graph{
 		E++;
 	}
 	
+	public int V(){
+		return V;
+	}
+	
 	public Iterable<Integer> adj(int v){
 		return adj[v];
 	}
@@ -71,7 +75,14 @@ class Graph{
 	}
 	
 	public int maxDegree(Graph G){
-		
+		int max = 0;
+		for (int w = 0; w < G.V(); w++) {
+			int degree = degree(G, w);
+			if (degree > max) {
+				max = degree;
+			}
+		}
+		return max;
 	}
 	
 	public double avgDegree(Graph G){
