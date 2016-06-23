@@ -9,19 +9,20 @@ import edu.princeton.cs.algs4.StdOut;
 public class PathTest {
 	public static void main(String[] args){
 		
-		File tFile = new File("algs4-data//tinyG.txt");
+		File tFile = new File("algs4-data//tinyCG.txt");
 		In in = new In(tFile);
 		Graph g = new Graph(in);
-		int s = 9;
+		int s = 0;
 		DepthFirstPath search = new DepthFirstPath(g, s);
 		
 		for (int v = 0; v < g.V(); v++) {
 			StdOut.print(s + " to " + v + ": ");
 			if (search.hasPathTo(v)) {
+				StdOut.print(s);
 				Iterable<Integer> path = search.pathTo(v);
 				for (int w : path) {
 					if (w == s) {
-						StdOut.print(w);
+						continue;
 					} else {
 						StdOut.print("-" + w);
 					}
