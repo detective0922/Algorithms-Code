@@ -228,7 +228,7 @@ class TST<Value> {
 		
 		
 		
-			(prefix);
+			;
 		}
 		
 		Queue<String> tmpKeys = new Queue<String>();
