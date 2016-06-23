@@ -6,7 +6,7 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdOut;
 
-public class PathTest {
+public class DFSPathTest {
 	public static void main(String[] args){
 		
 		File tFile = new File("algs4-data//tinyCG.txt");
