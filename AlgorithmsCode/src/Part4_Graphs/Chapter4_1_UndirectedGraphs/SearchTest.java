@@ -11,7 +11,7 @@ public class SearchTest {
 		File tFile = new File("algs4-data//tinyG.txt");
 		In in = new In(tFile);
 		Graph g = new Graph(in);
-		int s = 0;
+		int s = 9;
 		DepthFirstSearch search = new DepthFirstSearch(g, s);
 		
 		for(int v = 0; v<g.V();v++){
@@ -23,7 +23,13 @@ public class SearchTest {
 		
 		if(search.count()!=g.V()){
 			StdOut.println("Not connected");
-		}			
+		}
+		
+		//output:
+		//s=0:0 1 2 3 4 5 6 
+		//Not connected
+		//s-9:9 10 11 12 
+		//Not connected
 	}
 }
 
