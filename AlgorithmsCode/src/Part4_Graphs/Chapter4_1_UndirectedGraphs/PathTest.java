@@ -65,14 +65,14 @@ class DepthFirstPath {
 			return null;
 		}
 		Stack<Integer> stack = new Stack<Integer>();
-		stack.push(v);
+		/*stack.push(v);
 		while(edgeTo[v]!=s){
 			stack.push(edgeTo[v]);
 			v = edgeTo[v];
-		}
-		/*for(int x = v; x!=s;x = edgeTo[x]){
-			stack.push(x);
 		}*/
+		for(int x = v; x!=s;x = edgeTo[x]){
+			stack.push(x);
+		}
 		stack.push(s);
 		return stack;
 	}
