@@ -37,7 +37,17 @@ class DepthFirstSearch {
 		dfs(g, s);
 	}
 	
-	
+	private void dfs(Graph g, int s) {
+
+		for (int w : g.adj(s)) {
+			if (!marked[w]) {
+				dfs(g, w);
+			} else {
+				marked[w] = true;
+				count++;
+			}
+		}
+	}
 	
 	public boolean marked(int v) {
 		return marked[v];
