@@ -39,12 +39,12 @@ class DepthFirstSearch {
 	
 	private void dfs(Graph g, int s) {
 
-		for (int w : g.adj(s)) {
+		marked[s] = true;
+		count++;
+		Iterable<Integer> sAdj = g.adj(s);
+		for (int w : sAdj) {
 			if (!marked[w]) {
 				dfs(g, w);
-			} else {
-				marked[w] = true;
-				count++;
 			}
 		}
 	}
