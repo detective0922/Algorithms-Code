@@ -3,6 +3,7 @@ package Part4_Graphs.Chapter4_1_UndirectedGraphs;
 import java.io.File;
 
 import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdOut;
 
@@ -47,12 +48,19 @@ class BreadthFirstPath {
 	
 	private void bfs(Graph g, int s) {
 
+		Queue<Integer> queue = new Queue<Integer>();
+		queue.enqueue(s);
 		marked[s] = true;
-		Iterable<Integer> sAdj = g.adj(s);
-		for (int w : sAdj) {
-			if (!marked[w]) {
-				edgeTo[w] = s;
-				dfs(g, w);
+		while (!queue.isEmpty()) {
+			int v = queue.dequeue();
+			//marked[v] = true;
+			Iterable<Integer> vAdj = g.adj(v);
+			for (int w : vAdj) {
+				if (!marked[w]) {
+					edgeTo[w] = v;
+					queue.enqueue(w);
+					marked[w] = true;
+				}
 			}
 		}
 	}
