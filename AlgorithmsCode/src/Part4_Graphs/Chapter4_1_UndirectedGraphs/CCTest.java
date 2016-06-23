@@ -74,5 +74,9 @@ class CC {
 	public int count() {
 		return count;
 	}
+	
+	public boolean connected(int v, int w) {
+		return id[v] == id[w];
+	}
 
 }
