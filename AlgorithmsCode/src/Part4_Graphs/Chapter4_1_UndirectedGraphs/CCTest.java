@@ -11,12 +11,12 @@ import edu.princeton.cs.algs4.StdOut;
 public class CCTest {
 	public static void main(String[] args){
 		
-		File tFile = new File("algs4-data//tinyCG.txt");
+		File tFile = new File("algs4-data//tinyG.txt");
 		In in = new In(tFile);
 		Graph g = new Graph(in);
 		CC c = new CC(g);
 		
-		int M = CC.count();
+		int M = c.count();
 		StdOut.println(M + " components");
 		
 		Bag<Integer>[] components = (Bag<Integer>[])new Bag[M]; 
@@ -24,7 +24,7 @@ public class CCTest {
 			components[i] = new Bag<Integer>();
 		}
 
-		for (int v = 0; i < g.V(); i++) {
+		for (int v = 0; v < g.V(); v++) {
 			components[c.id(v)].add(v);
 		}
 
@@ -39,54 +39,40 @@ public class CCTest {
 
 class CC {
 	private boolean[] marked;
-	private int[] edgeTo;
-	private final int s;
+	private int[] id;
+	private int count;
 	
-	public BreadthFirstPath(Graph g, int s) {
+	public CC(Graph g) {
 		marked = new boolean[g.V()];
-		edgeTo = new int[g.V()];
-		this.s = 0;
-		bfs(g, s);
+		id = new int[g.V()];
+		count = 0;
+		for (int s = 0; s < g.V(); s++) {
+			if (!marked[s]) {
+				dfs(g, s);
+				count++;
+			}
+		}	
 	}
 	
-	private void bfs(Graph g, int s) {
+	private void dfs(Graph g, int s) {
 
-		Queue<Integer> queue = new Queue<Integer>();
-		queue.enqueue(s);
 		marked[s] = true;
-		while (!queue.isEmpty()) {
-			int v = queue.dequeue();
-			//marked[v] = true;
-			Iterable<Integer> vAdj = g.adj(v);
-			for (int w : vAdj) {
-				if (!marked[w]) {
-					edgeTo[w] = v;
-					queue.enqueue(w);
-					marked[w] = true;
-				}
+		id[s] = count;
+		Iterable<Integer> sAdj = g.adj(s);
+		for (int w : sAdj) {
+			if (!marked[w]) {
+				//id[w] = count;
+				dfs(g, w);
 			}
 		}
 	}
-	
-	public boolean hasPathTo(int v) {
-		return marked[v];
+
+	public int id(int v) {
+		return id[v];
 	}
-	
-	public Iterable<Integer> pathTo(int v){
-		if(!hasPathTo(v)){
-			return null;
-		}
-		Stack<Integer> stack = new Stack<Integer>();
-		/*stack.push(v);
-		while(edgeTo[v]!=s){
-			stack.push(edgeTo[v]);
-			v = edgeTo[v];
-		}*/
-		for(int x = v; x!=s;x = edgeTo[x]){
-			stack.push(x);
-		}
-		stack.push(s);
-		return stack;
+
+	public int count() {
+		return count;
 	}
 
 }
