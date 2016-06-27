@@ -2,7 +2,6 @@ package Part4_Graphs.Chapter4_1_UndirectedGraphs;
 
 import java.io.File;
 
-import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
