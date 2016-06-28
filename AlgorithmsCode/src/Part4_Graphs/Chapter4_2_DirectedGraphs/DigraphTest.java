@@ -75,7 +75,7 @@ class Digraph{
 		Digraph rDigraph = new Digraph(V);
 		for (int v = 0; v < V; v++) {
 			for (int w : adj[v]) {
-				addEdge(w, v);
+				rDigraph.addEdge(w, v);
 			}
 		}
 		return rDigraph;
