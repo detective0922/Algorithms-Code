@@ -47,9 +47,9 @@ class Graph{
 	
 	public Graph(In in) {
 		this(in.readInt());
-		this.E = in.readInt();
+		int edge = in.readInt();
 		try {
-			for (int i = 0; i < E; i++) {
+			for (int i = 0; i < edge; i++) {
 				if (in.hasNextLine()) {
 					int v = in.readInt();
 					int w = in.readInt();
