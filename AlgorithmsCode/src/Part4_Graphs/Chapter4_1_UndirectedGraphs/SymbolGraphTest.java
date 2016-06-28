@@ -10,6 +10,8 @@ public class SymbolGraphTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		/*String filename = "algs4-data//routes.txt";
+		String delimiter = " ";*/
 		String filename = "algs4-data//movies.txt";
 		String delimiter = "/";
 		SymbolGraph sg = new SymbolGraph(filename, delimiter);
