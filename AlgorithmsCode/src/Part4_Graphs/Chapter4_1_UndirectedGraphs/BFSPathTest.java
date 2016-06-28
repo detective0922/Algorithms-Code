@@ -42,7 +42,7 @@ class BreadthFirstPath {
 	public BreadthFirstPath(Graph g, int s) {
 		marked = new boolean[g.V()];
 		edgeTo = new int[g.V()];
-		this.s = 0;
+		this.s = s;
 		bfs(g, s);
 	}
 	
