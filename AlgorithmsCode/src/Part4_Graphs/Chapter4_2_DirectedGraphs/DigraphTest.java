@@ -16,17 +16,18 @@ public class DigraphTest {
 		File tFile = new File("algs4-data//tinyDG.txt");
 				
 		In in = new In(tFile);
-		Diraph g = new Diraph(in);
+		Digraph g = new Digraph(in);
 		System.out.println(g);
+		System.out.println(g.reverse());
 	}
 }
 
-class Diraph{
+class Digraph{
 	private int E;
 	private int V;
 	private Bag<Integer>[] adj;
 	
-	public Diraph(int V) {
+	public Digraph(int V) {
 		this.V = V;
 		this.E = 0;
 		adj = (Bag<Integer>[]) new Bag[V];
@@ -35,11 +36,11 @@ class Diraph{
 		}
 	}
 	
-	public Diraph(In in) {
+	public Digraph(In in) {
 		this(in.readInt());
-		this.E = in.readInt();
+		int edge = in.readInt();
 		try {
-			for (int i = 0; i < E; i++) {
+			for (int i = 0; i < edge; i++) {
 				if (in.hasNextLine()) {
 					int v = in.readInt();
 					int w = in.readInt();
@@ -70,7 +71,17 @@ class Diraph{
 		return adj[v];
 	}
 	
-	public int degree(Graph G, int v){
+	public Digraph reverse() {
+		Digraph rDigraph = new Digraph(V);
+		for (int v = 0; v < V; v++) {
+			for (int w : adj[v]) {
+				addEdge(w, v);
+			}
+		}
+		return rDigraph;
+	}
+	
+	/*public int degree(Graph G, int v){
 		int degree = 0;
 		for (int w : G.adj[v]) {
 			degree++;
@@ -103,7 +114,7 @@ class Diraph{
 			}
 		}
 		return count / 2;
-	}
+	}*/
 	
 	public String toString() {
 		String s = V + " vertices, " + E + " edges\n";
