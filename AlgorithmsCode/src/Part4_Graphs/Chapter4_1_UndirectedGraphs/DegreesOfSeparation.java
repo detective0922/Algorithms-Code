@@ -2,6 +2,7 @@ package Part4_Graphs.Chapter4_1_UndirectedGraphs;
 
 import edu.princeton.cs.algs4.StdOut;
 
+
 public class DegreesOfSeparation {
 
 	public static void main(String[] args) {
@@ -26,8 +27,8 @@ public class DegreesOfSeparation {
 		
 		//String sink = "LAS";
 		//String sink = "DFW";
-		//String sink = "Kidman, Nicole";
-		String sink = "Grant, Cary";
+		String sink = "Kidman, Nicole";
+		//String sink = "Grant, Cary";
 		//String sink = "Titanic (1997)";
 		//String sink = "To Catch a Thief (1955)";
 		StdOut.println(sink + ":");
