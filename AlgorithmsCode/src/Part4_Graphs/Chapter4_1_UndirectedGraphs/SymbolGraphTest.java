@@ -15,7 +15,7 @@ public class SymbolGraphTest {
 		SymbolGraph sg = new SymbolGraph(filename, delimiter);
 		Graph G = sg.G();
 
-		String source = "Bacon, Kevin";
+		/*String source = "Bacon, Kevin";
 		StdOut.println(source + ":");
 		if (sg.contains(source)) {
 			int s = sg.index(source);
@@ -24,7 +24,7 @@ public class SymbolGraphTest {
 			}
 		} else {
 			StdOut.println("input not contain '" + source + "'");
-		}
+		}*/
 		
 		/*for (int i = 0; i < G.V(); i++) {
 			StdOut.println(sg.name(i) + ":");
