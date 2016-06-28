@@ -41,7 +41,7 @@ class DepthFirstPath {
 	public DepthFirstPath(Graph g, int s) {
 		marked = new boolean[g.V()];
 		edgeTo = new int[g.V()];
-		this.s = 0;
+		this.s = s;
 		dfs(g, s);
 	}
 	
