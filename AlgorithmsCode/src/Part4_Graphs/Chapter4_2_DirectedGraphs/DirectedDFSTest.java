@@ -13,7 +13,6 @@ public class DirectedDFSTest {
 		In in = new In(tFile);
 		Digraph g = new Digraph(in);
 		
-		int s = 9;
 		Bag<Integer> sources = new Bag<Integer>();
 		sources.add(1);
 		sources.add(2);
