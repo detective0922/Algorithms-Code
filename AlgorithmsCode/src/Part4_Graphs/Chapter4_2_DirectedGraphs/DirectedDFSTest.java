@@ -2,17 +2,24 @@ package Part4_Graphs.Chapter4_2_DirectedGraphs;
 
 import java.io.File;
 
+import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
 public class DirectedDFSTest {
 	public static void main(String[] args){
 		
-		File tFile = new File("algs4-data//tinyG.txt");
+		File tFile = new File("algs4-data//tinyDG.txt");
 		In in = new In(tFile);
 		Digraph g = new Digraph(in);
+		
 		int s = 9;
-		DirectedDFS search = new DirectedDFS(g, s);
+		Bag<Integer> sources = new Bag<Integer>();
+		sources.add(1);
+		sources.add(2);
+		sources.add(6);
+		
+		DirectedDFS search = new DirectedDFS(g, sources);
 		
 		for(int v = 0; v<g.V();v++){
 			if(search.marked(v)){
@@ -21,9 +28,6 @@ public class DirectedDFSTest {
 		}
 		StdOut.println();
 		
-		if(search.count()!=g.V()){
-			StdOut.println("Not connected");
-		}
 		
 		//output:
 		//s=0:0 1 2 3 4 5 6 
@@ -46,8 +50,10 @@ class DirectedDFS {
 	public DirectedDFS(Digraph g, Iterable<Integer> sources) {
 		marked = new boolean[g.V()];
 		count = 0;
-		for(int s: sources){
-			dfs(g, s);
+		for (int s : sources) {
+			if (!marked[s]) {
+				dfs(g, s);
+			}
 		}
 	}
 	
