@@ -38,7 +38,7 @@ class Cycle{
 		Iterable<Integer> sAdj = g.adj(currentV);
 		for (int w : sAdj) {
 			if (!marked[w]) {
-				dfs(g, w, lastV);
+				dfs(g, w, currentV);
 			} else if( w != lastV){
 				hasCycle = true;
 			}
