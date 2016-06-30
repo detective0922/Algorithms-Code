@@ -2,7 +2,6 @@ package Part4_Graphs.Chapter4_2_DirectedGraphs;
 
 import java.io.File;
 
-import edu.princeton.cs.algs4.DepthFirstOrder;
 import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Queue;
@@ -12,16 +11,11 @@ import edu.princeton.cs.algs4.StdOut;
 public class DFSOrderTest {
 	public static void main(String[] args){
 		
-		File tFile = new File("algs4-data//tinyCG.txt");
+		File tFile = new File("algs4-data//tinyDAG.txt");
 		In in = new In(tFile);
 		Digraph G = new Digraph(in);
 
 		DepthFirstOrder dfs = new DepthFirstOrder(G);
-		StdOut.println("   v  pre post");
-		StdOut.println("--------------");
-		for (int v = 0; v < G.V(); v++) {
-			StdOut.printf("%4d %4d %4d\n", v, dfs.pre(v), dfs.post(v));
-		}
 
 		StdOut.print("Preorder:  ");
 		for (int v : dfs.pre()) {
