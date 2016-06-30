@@ -51,7 +51,9 @@ class DirectedCycle{
 		marked[currentV] = true;
 		Iterable<Integer> sAdj = g.adj(currentV);
 		for (int w : sAdj) {
-			if (!marked[w]) {
+			if(hasCycle){
+				return;
+			} else if (!marked[w]) {
 				edgeTo[w] = currentV;
 				dfs(g, w, currentV);
 			} else if( /*w != lastV*/onStack[w]){
