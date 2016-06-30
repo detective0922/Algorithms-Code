@@ -79,5 +79,13 @@ class DepthFirstOrder {
 	public Iterable<Integer> pre(){
 		return pre;
 	}
+	
+	public Iterable<Integer> post(){
+		return post;
+	}
+	
+	public Iterable<Integer> reversePost(){
+		return reversePost;
+	}
 
 }
