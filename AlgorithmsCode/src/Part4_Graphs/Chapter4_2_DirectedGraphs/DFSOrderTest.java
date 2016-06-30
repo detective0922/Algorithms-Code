@@ -52,42 +52,32 @@ class DepthFirstOrder {
 	
 	public DepthFirstOrder(Digraph g) {
 		marked = new boolean[g.V()];
-		edgeTo = new int[g.V()];
-		this.s = s;
-		dfs(g, s);
-	}
-	
-	private void dfs(Graph g, int s) {
-
-		marked[s] = true;
-		Iterable<Integer> sAdj = g.adj(s);
-		for (int w : sAdj) {
-			if (!marked[w]) {
-				edgeTo[w] = s;
-				dfs(g, w);
+		pre = new Queue<Integer>();
+		post = new Queue<Integer>();
+		reversePost = new Stack<Integer>();
+		for (int v = 0; v < g.V(); v++) {
+			if (!marked[v]) {
+				dfs(g, v);
 			}
 		}
 	}
 	
-	public boolean hasPathTo(int v) {
-		return marked[v];
+	private void dfs(Digraph g, int s) {
+
+		pre.enqueue(s);
+		marked[s] = true;
+		Iterable<Integer> sAdj = g.adj(s);
+		for (int w : sAdj) {
+			if (!marked[w]) {
+				dfs(g, w);
+			}
+		}
+		post.enqueue(s);
+		reversePost.push(s);
 	}
 	
-	public Iterable<Integer> pathTo(int v){
-		if(!hasPathTo(v)){
-			return null;
-		}
-		Stack<Integer> stack = new Stack<Integer>();
-		/*stack.push(v);
-		while(edgeTo[v]!=s){
-			stack.push(edgeTo[v]);
-			v = edgeTo[v];
-		}*/
-		for(int x = v; x!=s;x = edgeTo[x]){
-			stack.push(x);
-		}
-		stack.push(s);
-		return stack;
+	public Iterable<Integer> pre(){
+		return pre;
 	}
 
 }
