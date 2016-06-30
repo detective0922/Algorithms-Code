@@ -1,8 +1,8 @@
 package Part4_Graphs.Chapter4_2_DirectedGraphs;
 
+import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.SymbolDigraph;
-import edu.princeton.cs.algs4.Topological;
 
 public class TopologicalTest {
 
@@ -21,5 +21,21 @@ public class TopologicalTest {
 }
 
 class Topological{
+	private Iterable<Integer> order;
 	
+	public Topological(Digraph g){
+		DirectedCycle cycle = new DirectedCycle(g);
+		if(!cycle.hasCycle()){
+			DepthFirstOrder dfsOrder = new DepthFirstOrder(g);
+			order = dfsOrder.reversePost();
+		}
+	}
+	
+	public Iterable<Integer> order(){
+		return order;
+	}
+	
+	public boolean isDAG(){
+		return order != null;
+	}
 }
