@@ -9,8 +9,8 @@ public class TopologicalTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		String filename  = args[0];
-        String delimiter = args[1];
+		String filename  = "algs4-data//jobs.txt";
+        String delimiter = "/";
         SymbolDigraph sg = new SymbolDigraph(filename, delimiter);
         Topological topological = new Topological(sg.G());
         for (int v : topological.order()) {
