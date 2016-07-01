@@ -11,7 +11,7 @@ public class KosarajuCCTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		File tFile = new File("algs4-data//tinyG.txt");
+		File tFile = new File("algs4-data//tinyDG.txt");
 		In in = new In(tFile);
 		Digraph g = new Digraph(in);
 		KosarajuCC c = new KosarajuCC(g);
@@ -48,7 +48,7 @@ class KosarajuCC{
 		marked = new boolean[g.V()];
 		id = new int[g.V()];
 		count = 0;
-		DepthFirstOrder dfsOrder = new DepthFirstOrder(g);
+		DepthFirstOrder dfsOrder = new DepthFirstOrder(g.reverse());
 		Iterable<Integer> reversePost = dfsOrder.reversePost();
 		for (int s : reversePost) {
 			if (!marked[s]) {
