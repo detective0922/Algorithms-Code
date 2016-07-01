@@ -2,6 +2,7 @@ package Part4_Graphs.Chapter4_2_DirectedGraphs;
 
 import java.io.File;
 
+import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
@@ -13,7 +14,7 @@ public class KosarajuCCTest {
 		File tFile = new File("algs4-data//tinyG.txt");
 		In in = new In(tFile);
 		Digraph g = new Digraph(in);
-		CC c = new CC(g);
+		KosarajuCC c = new KosarajuCC(g);
 		
 		int M = c.count();
 		StdOut.println(M + " components");
@@ -47,12 +48,14 @@ class KosarajuCC{
 		marked = new boolean[g.V()];
 		id = new int[g.V()];
 		count = 0;
-		for (int s = 0; s < g.V(); s++) {
+		DepthFirstOrder dfsOrder = new DepthFirstOrder(g);
+		Iterable<Integer> reversePost = dfsOrder.reversePost();
+		for (int s : reversePost) {
 			if (!marked[s]) {
 				dfs(g, s);
 				count++;
 			}
-		}	
+		}
 	}
 	
 	private void dfs(Digraph g, int s) {
