@@ -81,41 +81,6 @@ class Digraph{
 		return rDigraph;
 	}
 	
-	/*public int degree(Graph G, int v){
-		int degree = 0;
-		for (int w : G.adj[v]) {
-			degree++;
-		}
-		return degree;
-	}
-	
-	public int maxDegree(Graph G){
-		int max = 0;
-		for (int v = 0; v < G.V(); v++) {
-			int degree = degree(G, v);
-			if (degree > max) {
-				max = degree;
-			}
-		}
-		return max;
-	}
-	
-	public double avgDegree(Graph G) {
-		return 2 * G.E() / G.V();
-	}
-	
-	public int numberOfSelfLoops(Graph G){
-		int count = 0;
-		for(int v = 0;v<G.V();v++){
-			for(int w: G.adj[v]){
-				if(v == w){
-					count++;
-				}
-			}
-		}
-		return count / 2;
-	}*/
-	
 	public String toString() {
 		String s = V + " vertices, " + E + " edges\n";
 		for (int v = 0; v < V; v++) {
