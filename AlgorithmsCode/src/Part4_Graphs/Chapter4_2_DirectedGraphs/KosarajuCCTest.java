@@ -65,7 +65,6 @@ class KosarajuCC{
 		Iterable<Integer> sAdj = g.adj(s);
 		for (int w : sAdj) {
 			if (!marked[w]) {
-				//id[w] = count;
 				dfs(g, w);
 			}
 		}
