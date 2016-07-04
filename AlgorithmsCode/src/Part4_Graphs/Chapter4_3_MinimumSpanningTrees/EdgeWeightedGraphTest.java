@@ -85,8 +85,10 @@ class EdgeWeightedGraph{
 	}
 	
 	public void addEdge(Edge e) {
-		adj[v].add(w);
-		adj[w].add(v);
+		int v = e.either();
+		int w = e.other(v);
+		adj[v].add(e);
+		adj[w].add(e);
 		E++;
 	}
 	
@@ -98,43 +100,8 @@ class EdgeWeightedGraph{
 		return E;
 	}
 	
-	public Iterable<Integer> adj(int v){
+	public Iterable<Edge> adj(int v){
 		return adj[v];
-	}
-	
-	public int degree(Graph G, int v){
-		int degree = 0;
-		for (int w : G.adj[v]) {
-			degree++;
-		}
-		return degree;
-	}
-	
-	public int maxDegree(Graph G){
-		int max = 0;
-		for (int v = 0; v < G.V(); v++) {
-			int degree = degree(G, v);
-			if (degree > max) {
-				max = degree;
-			}
-		}
-		return max;
-	}
-	
-	public double avgDegree(Graph G) {
-		return 2 * G.E() / G.V();
-	}
-	
-	public int numberOfSelfLoops(Graph G){
-		int count = 0;
-		for(int v = 0;v<G.V();v++){
-			for(int w: G.adj[v]){
-				if(v == w){
-					count++;
-				}
-			}
-		}
-		return count / 2;
 	}
 	
 	public String toString() {
