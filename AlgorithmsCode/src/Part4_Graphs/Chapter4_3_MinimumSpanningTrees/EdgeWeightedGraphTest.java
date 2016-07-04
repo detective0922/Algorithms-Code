@@ -1,6 +1,5 @@
 package Part4_Graphs.Chapter4_3_MinimumSpanningTrees;
 
-import Part4_Graphs.Chapter4_1_UndirectedGraphs.Graph;
 import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.In;
 
@@ -13,7 +12,7 @@ public class EdgeWeightedGraphTest {
 
 }
 
-class Edge{
+class Edge implements Comparable<Edge>{
 	private int v;
 	private int w;
 	private double weight;
@@ -43,10 +42,22 @@ class Edge{
 	public int other(int vertex) {
         if      (vertex == v) return w;
         else if (vertex == w) return v;
+        else return -1;
     }
 
 	public String toString() {
 		return String.format("%d-%d %.5f", v, w, weight);
+	}
+
+	@Override
+	public int compareTo(Edge o) {
+		// TODO Auto-generated method stub
+		if (weight < o.getWeight())
+			return -1;
+		else if (weight > o.getWeight())
+			return 1;
+		else
+			return 0;
 	}
 	
 }
@@ -108,8 +119,8 @@ class EdgeWeightedGraph{
 		String s = V + " vertices, " + E + " edges\n";
 		for (int v = 0; v < V; v++) {
 			s += v + ": ";
-			for (int w : adj[v]) {
-				s += w + " ";
+			for (Edge e : adj[v]) {
+				s += e + " ";
 			}
 			s += "\n";
 		}
