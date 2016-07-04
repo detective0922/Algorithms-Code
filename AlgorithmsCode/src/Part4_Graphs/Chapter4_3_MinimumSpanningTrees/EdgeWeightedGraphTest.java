@@ -35,6 +35,15 @@ class Edge{
 	public double getWeight() {
 		return weight;
 	}
+	
+	public int either() {
+        return v;
+    }
+	
+	public int other(int vertex) {
+        if      (vertex == v) return w;
+        else if (vertex == w) return v;
+    }
 
 	public String toString() {
 		return String.format("%d-%d %.5f", v, w, weight);
@@ -45,14 +54,14 @@ class Edge{
 class EdgeWeightedGraph{
 	private int E;
 	private int V;
-	private Bag<Integer>[] adj;
+	private Bag<Edge>[] adj;
 	
 	public EdgeWeightedGraph(int V) {
 		this.V = V;
 		this.E = 0;
-		adj = (Bag<Integer>[]) new Bag[V];
+		adj = (Bag<Edge>[]) new Bag[V];
 		for (int i = 0; i < V; i++) {
-			adj[i] = new Bag<Integer>();
+			adj[i] = new Bag<Edge>();
 		}
 	}
 	
@@ -73,7 +82,7 @@ class EdgeWeightedGraph{
 		}
 	}
 	
-	public void addEdge(int v, int w) {
+	public void addEdge(Edge e) {
 		adj[v].add(w);
 		adj[w].add(v);
 		E++;
