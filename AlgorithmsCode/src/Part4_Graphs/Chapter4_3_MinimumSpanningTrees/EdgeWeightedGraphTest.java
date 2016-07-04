@@ -18,7 +18,7 @@ class Edge{
 	private int w;
 	private double weight;
 	
-	public Edge(int v, int w, int weight) {
+	public Edge(int v, int w, double weight) {
 		this.v = v;
 		this.w = w;
 		this.weight = weight;
@@ -73,7 +73,9 @@ class EdgeWeightedGraph{
 				if (in.hasNextLine()) {
 					int v = in.readInt();
 					int w = in.readInt();
-					addEdge(v, w);
+					double weight = in.readDouble();
+					Edge e = new Edge(v, w, weight);
+					addEdge(e);
 				}
 			}
 		} catch (Exception e) {
