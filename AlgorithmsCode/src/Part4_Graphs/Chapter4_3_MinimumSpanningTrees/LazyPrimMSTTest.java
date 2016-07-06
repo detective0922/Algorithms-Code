@@ -1,6 +1,7 @@
 package Part4_Graphs.Chapter4_3_MinimumSpanningTrees;
 
 import java.io.File;
+import java.util.Iterator;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.MinPQ;
@@ -29,7 +30,32 @@ class LazyPrimMST{
 	private MinPQ<Edge> pq;
 	
 	public LazyPrimMST(EdgeWeightedGraph g){
+		marked = new boolean[g.V()];
+		mst = new Queue<Edge>();
+		pq = new MinPQ<Edge>();
 		
+		visit(g, 0);
+		while (mst.size() < (g.V() - 1)) {
+			Edge edge = pq.delMin();
+			int either = edge.either();
+			int other = edge.other(either);
+			if(!marked[either]){
+				visit(g, either);
+			} else if(!marked[other]){
+				visit(g, other);
+			}
+			mst.enqueue(edge);
+		}
+	}
+	
+	private void visit(EdgeWeightedGraph g, int v){
+		marked[v] = true;
+		for (Edge e : g.adj(v)) {
+			int other = e.other(v);
+			if (!marked[other]) {
+				pq.insert(e);
+			}
+		}
 	}
 	
 	public Iterable<Edge> edges(){
@@ -37,7 +63,13 @@ class LazyPrimMST{
 	}
 	
 	public double weight(){
-		return 0;
+		double weight = 0;
+		Iterator<Edge> edgeIterator = mst.iterator();
+		while (edgeIterator.hasNext()) {
+			Edge edge = (Edge) edgeIterator.next();
+			weight += edge.getWeight();
+		}
+		return weight;
 	}
 	
 }
