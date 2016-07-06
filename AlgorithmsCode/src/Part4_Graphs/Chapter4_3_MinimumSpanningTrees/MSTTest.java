@@ -12,7 +12,7 @@ public class MSTTest {
 		File tFile = new File("algs4-data//tinyEWG.txt");		
 		In in = new In(tFile);
         EdgeWeightedGraph G = new EdgeWeightedGraph(in);
-        PrimMST mst = new PrimMST(G);
+        MST mst = new MST(G);
         for (Edge e : mst.edges()) {
             StdOut.println(e);
         }
@@ -21,7 +21,17 @@ public class MSTTest {
 
 }
 
-class PrimMST{
+class MST{
+	public MST(EdgeWeightedGraph g){
+		
+	}
 	
+	public Iterable<Edge> edges(){
+		return null;
+	}
+	
+	public double weight(){
+		return 0;
+	}
 	
 }
