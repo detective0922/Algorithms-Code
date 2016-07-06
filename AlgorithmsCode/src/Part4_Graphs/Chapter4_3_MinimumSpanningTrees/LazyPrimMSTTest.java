@@ -7,6 +7,7 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.MinPQ;
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.Stopwatch;
 
 public class LazyPrimMSTTest {
 
@@ -15,7 +16,9 @@ public class LazyPrimMSTTest {
 		File tFile = new File("algs4-data//tinyEWG.txt");		
 		In in = new In(tFile);
         EdgeWeightedGraph G = new EdgeWeightedGraph(in);
+        Stopwatch timer = new Stopwatch();
         LazyPrimMST mst = new LazyPrimMST(G);
+        StdOut.println(timer.elapsedTime());
         for (Edge e : mst.edges()) {
             StdOut.println(e);
         }
@@ -27,6 +30,7 @@ public class LazyPrimMSTTest {
 			StdOut.println(e);
 		}*/
         StdOut.println(mst.weight());
+        //output: book time 0.0020
 	}
 
 }
@@ -58,6 +62,24 @@ class LazyPrimMST{
 			}
 			mst.enqueue(edge);
 		}
+		
+		//implementation in book
+		/*while(!pq.isEmpty()){
+			Edge edge = pq.delMin();
+			int either = edge.either();
+			int other = edge.other(either);
+			if (marked[either] && marked[other]){
+				continue;
+			}
+			mst.enqueue(edge);
+			if (!marked[either]) {
+				visit(g, either);
+			}
+			if (!marked[other]) {
+				visit(g, other);
+			}				
+		}*/
+			
 	}
 	
 	private void visit(EdgeWeightedGraph g, int v){
