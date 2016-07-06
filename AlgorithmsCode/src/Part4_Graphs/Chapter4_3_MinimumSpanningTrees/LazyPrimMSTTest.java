@@ -46,6 +46,11 @@ class LazyPrimMST{
 			Edge edge = pq.delMin();
 			int either = edge.either();
 			int other = edge.other(either);
+			while (marked[either] && marked[other]) {
+				edge = pq.delMin();
+				either = edge.either();
+				other = edge.other(either);
+			}
 			if(!marked[either]){
 				visit(g, either);
 			} else if(!marked[other]){
