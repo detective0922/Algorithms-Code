@@ -30,7 +30,8 @@ public class LazyPrimMSTTest {
 			StdOut.println(e);
 		}*/
         StdOut.println(mst.weight());
-        //output: book time 0.0020
+        //output: book time 0.0010 - 0.0020
+        // my time 0.0010 -  0.0020
 	}
 
 }
