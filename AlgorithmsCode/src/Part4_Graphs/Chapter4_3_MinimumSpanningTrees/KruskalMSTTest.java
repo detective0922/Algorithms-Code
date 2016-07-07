@@ -15,7 +15,7 @@ public class KruskalMSTTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		File tFile = new File("algs4-data//tinyEWG.txt");		
+		File tFile = new File("algs4-data//mediumEWG.txt");		
 		In in = new In(tFile);
         EdgeWeightedGraph G = new EdgeWeightedGraph(in);
         Stopwatch timer = new Stopwatch();
