@@ -22,6 +22,7 @@ public class PrimMSTTest {
         for (Edge e : mst.edges()) {
             StdOut.println(e);
         }
+        
 		/*edu.princeton.cs.algs4.EdgeWeightedGraph G = new edu.princeton.cs.algs4.EdgeWeightedGraph(
 				in);
 		edu.princeton.cs.algs4.PrimMST mst = new edu.princeton.cs.algs4.PrimMST(
