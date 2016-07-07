@@ -9,6 +9,7 @@ import edu.princeton.cs.algs4.MinPQ;
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.Stopwatch;
+import edu.princeton.cs.algs4.UF;
 
 public class KruskalMSTTest {
 
@@ -44,6 +45,7 @@ class KruskalMST{
 	public KruskalMST(EdgeWeightedGraph g){
 		mst = new Queue<Edge>();
 		pq = new MinPQ<Edge>();
+		UF uf = new UF(g.V());
 		
 		boolean[] marked = new boolean[g.V()];
 		for (int v = 0; v < g.V(); v++) {
@@ -59,57 +61,24 @@ class KruskalMST{
 		}
 		
 		marked = new boolean[g.V()];
-		while (mst.size() < (g.V() - 1)) {
+		while (!pq.isEmpty() && mst.size() < (g.V() - 1)) {
 			Edge edge = pq.delMin();
 			int either = edge.either();
 			int other = edge.other(either);
-			while (marked[either] && marked[other]) {
-				edge = pq.delMin();
-				either = edge.either();
-				other = edge.other(either);
-			}
-			if(!marked[either]){
-				visit(g, either);
-			} else if(!marked[other]){
-				visit(g, other);
-			}
-			mst.enqueue(edge);
-		}
-	}
-	
-	private void visit(EdgeWeightedGraph g, int v){
-		marked[v] = true;
-		for (Edge e : g.adj(v)) {
-			int other = e.other(v);
-			if (!marked[other]) {
-				if (e.getWeight() < distTo[other]) {
-					edgeTo[other] = e;
-					distTo[other] = e.getWeight();
-					if (pq.contains(other)) {
-						pq.changeKey(other, e.getWeight());
-					} else {
-						pq.insert(other, e.getWeight());
-					}
-				}
+			if(!uf.connected(either, other)){
+				uf.union(either, other);
+				mst.enqueue(edge);
 			}
 		}
 	}
 	
 	public Iterable<Edge> edges(){
-		List<Edge> list = new ArrayList<Edge>();
-		for (Edge edge : edgeTo) {
-			if (edge != null) {
-				list.add(edge);
-			}
-		}
-		return list;
-		
-		//return Arrays.asList(edgeTo);
+		return mst;
 	}
 	
 	public double weight() {
 		double weight = 0.0;
-		for (Edge e : edges()) {
+		for (Edge e : edges) {
 			weight += e.getWeight();
 		}
 		return weight;
