@@ -76,7 +76,9 @@ class PrimMST{
 	public Iterable<Edge> edges(){
 		List<Edge> list = new ArrayList<Edge>();
 		for (Edge edge : edgeTo) {
-			list.add(edge);
+			if (edge != null) {
+				list.add(edge);
+			}
 		}
 		return list;
 		
