@@ -124,16 +124,6 @@ class EdgeWeightedGraph{
 		return adj[v];
 	}
 	
-	public Iterable<Edge> edges() {
-        List<Edge> list = new ArrayList<Edge>();
-        for (int v = 0; v < V; v++) {
-            for (Edge e : adj(v)) {
-                list.add(e);
-            }
-        }
-        return list;
-    }
-	
 	public String toString() {
 		String s = V + " vertices, " + E + " edges\n";
 		for (int v = 0; v < V; v++) {
