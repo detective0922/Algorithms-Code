@@ -85,10 +85,10 @@ class PrimMST{
 		//return Arrays.asList(edgeTo);
 	}
 	
-	public double weight(){
+	public double weight() {
 		double weight = 0;
-		for (double d : distTo) {
-			weight += d;
+		for (Edge e : edges()) {
+			weight += e.getWeight();
 		}
 		return weight;
 	}
