@@ -1,8 +1,11 @@
 package Part4_Graphs.Chapter4_3_MinimumSpanningTrees;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import edu.princeton.cs.algs4.Bag;
+import edu.princeton.cs.algs4.DirectedEdge;
 import edu.princeton.cs.algs4.In;
 
 public class EdgeWeightedGraphTest {
@@ -120,6 +123,16 @@ class EdgeWeightedGraph{
 	public Iterable<Edge> adj(int v){
 		return adj[v];
 	}
+	
+	public Iterable<Edge> edges() {
+        List<Edge> list = new ArrayList<Edge>();
+        for (int v = 0; v < V; v++) {
+            for (Edge e : adj(v)) {
+                list.add(e);
+            }
+        }
+        return list;
+    }
 	
 	public String toString() {
 		String s = V + " vertices, " + E + " edges\n";
