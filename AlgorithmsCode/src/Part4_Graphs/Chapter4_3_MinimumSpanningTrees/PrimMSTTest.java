@@ -2,14 +2,10 @@ package Part4_Graphs.Chapter4_3_MinimumSpanningTrees;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.IndexMinPQ;
-import edu.princeton.cs.algs4.MinPQ;
-import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.Stopwatch;
 
@@ -26,6 +22,13 @@ public class PrimMSTTest {
         for (Edge e : mst.edges()) {
             StdOut.println(e);
         }
+		/*edu.princeton.cs.algs4.EdgeWeightedGraph G = new edu.princeton.cs.algs4.EdgeWeightedGraph(
+				in);
+		edu.princeton.cs.algs4.PrimMST mst = new edu.princeton.cs.algs4.PrimMST(
+				G);
+		for (edu.princeton.cs.algs4.Edge e : mst.edges()) {
+			StdOut.println(e);
+		}*/
         StdOut.println(mst.weight());
 
 	}
@@ -86,7 +89,7 @@ class PrimMST{
 	}
 	
 	public double weight() {
-		double weight = 0;
+		double weight = 0.0;
 		for (Edge e : edges()) {
 			weight += e.getWeight();
 		}
