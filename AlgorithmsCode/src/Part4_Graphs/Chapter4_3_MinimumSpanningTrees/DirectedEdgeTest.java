@@ -33,14 +33,12 @@ class DirectedEdge implements Comparable<Edge>{
 		return weight;
 	}
 	
-	public int either() {
+	public int from() {
         return v;
     }
 	
-	public int other(int vertex) {
-        if      (vertex == v) return w;
-        else if (vertex == w) return v;
-        else return -1;
+	public int to(int vertex) {
+        return w;
     }
 
 	public String toString() {
