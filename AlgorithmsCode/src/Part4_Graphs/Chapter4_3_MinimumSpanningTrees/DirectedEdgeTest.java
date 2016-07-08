@@ -1,10 +1,13 @@
 package Part4_Graphs.Chapter4_3_MinimumSpanningTrees;
 
+import edu.princeton.cs.algs4.StdOut;
+
 public class DirectedEdgeTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		DirectedEdge e = new DirectedEdge(12, 34, 5.67);
+        StdOut.println(e);
 	}
 
 }
