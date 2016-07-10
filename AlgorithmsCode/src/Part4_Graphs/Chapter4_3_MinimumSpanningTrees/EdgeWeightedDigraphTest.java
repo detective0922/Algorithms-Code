@@ -10,5 +10,7 @@ public class EdgeWeightedDigraphTest {
 }
 
 class EdgeWeightedDigraph{
-	
+	public EdgeWeightedDigraph(){
+		
+	}
 }
