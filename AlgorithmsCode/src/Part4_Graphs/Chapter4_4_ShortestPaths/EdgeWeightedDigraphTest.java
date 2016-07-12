@@ -1,4 +1,4 @@
-package Part4_Graphs.Chapter4_3_MinimumSpanningTrees;
+package Part4_Graphs.Chapter4_4_ShortestPaths;
 
 import java.io.File;
 
