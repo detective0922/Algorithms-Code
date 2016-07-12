@@ -35,8 +35,33 @@ class SP{
 	private double[] distTo;
     private DirectedEdge[] edgeTo;
 	
-	public SP(EdgeWeightedDigraph g, int v) {
-
+	public SP(EdgeWeightedDigraph g, int s) {
+		distTo = new double[g.V()];
+		edgeTo = new DirectedEdge[g.V()];
+		for (int v = 0; v < g.V(); v++) {
+			distTo[v] = Double.POSITIVE_INFINITY;
+		}
+		distTo[s] = 0.0;
+		
+		
+	}
+	
+	private void relax(DirectedEdge e) {
+		int v = e.from(), w = e.to();
+		if (distTo[w] > distTo[v] + e.getWeight()) {
+			distTo[w] = distTo[v] + e.getWeight();
+			edgeTo[w] = e;
+		}
+	}
+	
+	private void relax(EdgeWeightedDigraph g, int v) {
+		for (DirectedEdge e : g.adj(v)) {
+			int w = e.to();
+			if (distTo[w] > distTo[v] + e.getWeight()) {
+				distTo[w] = distTo[v] + e.getWeight();
+				edgeTo[w] = e;
+			}
+		}
 	}
 	
 	public boolean hasPathTo(int v) {
