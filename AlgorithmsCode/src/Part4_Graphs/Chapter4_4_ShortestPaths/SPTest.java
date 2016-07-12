@@ -50,7 +50,6 @@ class SP{
 	
 	private double[] distTo;
     private DirectedEdge[] edgeTo;
-    private MinPQ<DirectedEdge> pq;
     private boolean[] marked;
 	
 	public SP(EdgeWeightedDigraph g, int source) {
