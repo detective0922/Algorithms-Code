@@ -11,7 +11,9 @@ public class EdgeWeightedDigraphTest {
 		// TODO Auto-generated method stub
 		File tFile = new File("algs4-data//tinyEWD.txt");		
 		In in = new In(tFile);
-		EdgeWeightedGraph g = new EdgeWeightedGraph(in);
+		EdgeWeightedDigraph g = new EdgeWeightedDigraph(in);
+		
+		//edu.princeton.cs.algs4.EdgeWeightedDigraph g = new edu.princeton.cs.algs4.EdgeWeightedDigraph(in);
 		System.out.println(g);
 	}
 
