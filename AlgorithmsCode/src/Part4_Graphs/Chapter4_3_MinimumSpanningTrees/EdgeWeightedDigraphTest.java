@@ -9,7 +9,7 @@ public class EdgeWeightedDigraphTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		File tFile = new File("algs4-data//tinyEWG.txt");		
+		File tFile = new File("algs4-data//tinyEWD.txt");		
 		In in = new In(tFile);
 		EdgeWeightedGraph g = new EdgeWeightedGraph(in);
 		System.out.println(g);
