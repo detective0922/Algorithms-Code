@@ -2,6 +2,7 @@ package Part4_Graphs.Chapter4_4_ShortestPaths;
 
 import java.io.File;
 
+import edu.princeton.cs.algs4.DijkstraSP;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.MinPQ;
 import edu.princeton.cs.algs4.Stack;
@@ -17,7 +18,6 @@ public class SPTest {
 		
 		int s = 0;
 		SP sp = new SP(g, s);
-		
 		for (int v = 0; v < g.V(); v++) {
 			StdOut.print(s + " to " + v);
 			StdOut.printf(" (%4.2f): ", sp.distTo(v));
@@ -28,6 +28,20 @@ public class SPTest {
 			}
 			StdOut.println();
 		}
+		/*edu.princeton.cs.algs4.EdgeWeightedDigraph g = new edu.princeton.cs.algs4.EdgeWeightedDigraph(
+				in);
+		DijkstraSP sp = new DijkstraSP(g, s);
+		for (int v = 0; v < g.V(); v++) {
+			StdOut.print(s + " to " + v);
+			StdOut.printf(" (%4.2f): ", sp.distTo(v));
+			if (sp.hasPathTo(v)) {
+				for (edu.princeton.cs.algs4.DirectedEdge e : sp.pathTo(v)) {
+					StdOut.print(e + " ");
+				}
+			}
+			StdOut.println();
+		}*/
+		
 	}
 
 }
@@ -48,7 +62,8 @@ class SP{
 		}
 		distTo[source] = 0.0;
 		
-		ShortPath(g, source);
+		ShortPath(g, source);	
+		
 	}
 	
 	private void ShortPath(EdgeWeightedDigraph g, int source) {
