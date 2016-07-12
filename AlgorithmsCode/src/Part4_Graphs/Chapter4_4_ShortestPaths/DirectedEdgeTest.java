@@ -40,7 +40,7 @@ class DirectedEdge implements Comparable<DirectedEdge>{
         return v;
     }
 	
-	public int to(int vertex) {
+	public int to() {
         return w;
     }
 
