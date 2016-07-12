@@ -3,6 +3,7 @@ package Part4_Graphs.Chapter4_4_ShortestPaths;
 import java.io.File;
 
 import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.MinPQ;
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdOut;
 
@@ -25,6 +26,7 @@ public class SPTest {
 					StdOut.print(e + " ");
 				}
 			}
+			StdOut.println();
 		}
 	}
 
@@ -34,16 +36,30 @@ class SP{
 	
 	private double[] distTo;
     private DirectedEdge[] edgeTo;
+    private MinPQ<DirectedEdge> pq;
+    private boolean[] marked;
 	
-	public SP(EdgeWeightedDigraph g, int s) {
+	public SP(EdgeWeightedDigraph g, int source) {
 		distTo = new double[g.V()];
 		edgeTo = new DirectedEdge[g.V()];
+		marked = new boolean[g.V()];
 		for (int v = 0; v < g.V(); v++) {
 			distTo[v] = Double.POSITIVE_INFINITY;
 		}
-		distTo[s] = 0.0;
+		distTo[source] = 0.0;
 		
-		
+		ShortPath(g, source);
+	}
+	
+	private void ShortPath(EdgeWeightedDigraph g, int source) {
+		relax(g, source);
+		marked[source] = true;
+		for (DirectedEdge e : g.adj(source)) {
+			int w = e.to();
+			if (!marked[w]) {
+				ShortPath(g, w);
+			}
+		}
 	}
 	
 	private void relax(DirectedEdge e) {
