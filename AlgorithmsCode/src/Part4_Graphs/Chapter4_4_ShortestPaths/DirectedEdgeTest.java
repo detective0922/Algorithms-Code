@@ -13,7 +13,7 @@ public class DirectedEdgeTest {
 }
 
 
-class DirectedEdge implements Comparable<Edge>{
+class DirectedEdge implements Comparable<DirectedEdge>{
 	private int v;
 	private int w;
 	private double weight;
@@ -49,7 +49,7 @@ class DirectedEdge implements Comparable<Edge>{
 	}
 
 	@Override
-	public int compareTo(Edge o) {
+	public int compareTo(DirectedEdge o) {
 		// TODO Auto-generated method stub
 		if (weight < o.getWeight())
 			return -1;
@@ -58,5 +58,6 @@ class DirectedEdge implements Comparable<Edge>{
 		else
 			return 0;
 	}
+
 	
 }
