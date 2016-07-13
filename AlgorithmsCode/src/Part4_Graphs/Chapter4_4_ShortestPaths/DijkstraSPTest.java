@@ -34,17 +34,21 @@ class DijkstraSP{
 	
 	private double[] distTo;
     private DirectedEdge[] edgeTo;
-    private IndexMinPQ<DirectedEdge> pq;
+    private IndexMinPQ<Double> pq;
 
 	public DijkstraSP(EdgeWeightedDigraph g, int s) {
 		// TODO Auto-generated constructor stub
-	}
-	
-	private void relax(DirectedEdge e) {
-		int v = e.from(), w = e.to();
-		if (distTo[w] > distTo[v] + e.getWeight()) {
-			distTo[w] = distTo[v] + e.getWeight();
-			edgeTo[w] = e;
+		distTo = new double[g.V()];
+		edgeTo = new DirectedEdge[g.V()];
+		pq = new IndexMinPQ<Double>(g.V());
+		for (int v = 0; v < g.V(); v++) {
+			distTo[v] = Double.POSITIVE_INFINITY;
+		}
+		distTo[s] = 0.0;
+		
+		pq.insert(s, 0.0);
+		while (!pq.isEmpty()) {
+			relax(g, pq.delMin());
 		}
 	}
 	
