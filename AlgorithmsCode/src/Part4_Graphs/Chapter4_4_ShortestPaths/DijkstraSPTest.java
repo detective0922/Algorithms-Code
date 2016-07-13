@@ -11,7 +11,7 @@ public class DijkstraSPTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		File tFile = new File("algs4-data//tinyEWD.txt");		
+		File tFile = new File("algs4-data//mediumEWD.txt");		
 		In in = new In(tFile);
 		EdgeWeightedDigraph g = new EdgeWeightedDigraph(in);
 		
@@ -58,6 +58,11 @@ class DijkstraSP{
 			if (distTo[w] > distTo[v] + e.getWeight()) {
 				distTo[w] = distTo[v] + e.getWeight();
 				edgeTo[w] = e;
+				if(!pq.contains(w)){
+					pq.insert(w, e.getWeight());
+				} else {
+					pq.changeKey(w, e.getWeight());
+				}
 			}
 		}
 	}
