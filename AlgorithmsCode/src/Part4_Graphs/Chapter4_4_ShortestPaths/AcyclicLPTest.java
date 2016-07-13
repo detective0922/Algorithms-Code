@@ -64,7 +64,7 @@ class AcyclicLP{
 	}
 	
 	public boolean hasPathTo(int v) {
-		return distTo[v] < Double.POSITIVE_INFINITY;
+		return distTo[v] > Double.NEGATIVE_INFINITY;
 	}
 	
 	public double distTo(int v) {
