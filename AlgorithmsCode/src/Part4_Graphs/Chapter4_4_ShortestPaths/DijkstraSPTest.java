@@ -4,6 +4,7 @@ import java.io.File;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.IndexMinPQ;
+import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdOut;
 
 public class DijkstraSPTest {
@@ -37,6 +38,42 @@ class DijkstraSP{
 
 	public DijkstraSP(EdgeWeightedDigraph g, int s) {
 		// TODO Auto-generated constructor stub
+	}
+	
+	private void relax(DirectedEdge e) {
+		int v = e.from(), w = e.to();
+		if (distTo[w] > distTo[v] + e.getWeight()) {
+			distTo[w] = distTo[v] + e.getWeight();
+			edgeTo[w] = e;
+		}
+	}
+	
+	private void relax(EdgeWeightedDigraph g, int v) {
+		for (DirectedEdge e : g.adj(v)) {
+			int w = e.to();
+			if (distTo[w] > distTo[v] + e.getWeight()) {
+				distTo[w] = distTo[v] + e.getWeight();
+				edgeTo[w] = e;
+			}
+		}
+	}
+	
+	public boolean hasPathTo(int v) {
+		return distTo[v] < Double.POSITIVE_INFINITY;
+	}
+	
+	public double distTo(int v) {
+		return distTo[v];
+	}
+	
+	public Iterable<DirectedEdge> pathTo(int v) {
+		Stack<DirectedEdge> stack = new Stack<DirectedEdge>();
+		if (hasPathTo(v)) {
+			for (DirectedEdge e = edgeTo[v]; e != null; e = edgeTo[e.from()]) {
+				stack.push(e);
+			}
+		}
+		return stack;
 	}
 	
 }
