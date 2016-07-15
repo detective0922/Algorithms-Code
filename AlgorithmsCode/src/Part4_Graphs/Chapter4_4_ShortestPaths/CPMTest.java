@@ -24,13 +24,15 @@ public class CPMTest {
 		}
 		
 		int N = StdIn.readInt();
+		String aa = StdIn.readLine();
 
         // source and sink
         int s = 2*N, t = 2*N + 1;
 
         EdgeWeightedDigraph g = new EdgeWeightedDigraph(2*N + 2);
         for (int i = 0; i < N; i++) {
-        	String[] a = StdIn.readLine().split("\\s+");
+        	String temp = StdIn.readLine();
+        	String[] a = temp.split("\\s+");
             double duration = Double.parseDouble(a[0]);
             g.addEdge(new DirectedEdge(i, i+N,    duration));
             g.addEdge(new DirectedEdge(s, i, 0.0));
