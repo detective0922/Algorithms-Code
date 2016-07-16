@@ -37,9 +37,7 @@ public class CPMTest {
             g.addEdge(new DirectedEdge(i, i+N,    duration));
             g.addEdge(new DirectedEdge(s, i, 0.0));
             g.addEdge(new DirectedEdge(i+N, t, 0.0));
-            
-            
-			int M = StdIn.readInt();
+                       
 			for (int j = 1; j < a.length; j++) {
 				int successor = Integer.parseInt(a[j]);
 				g.addEdge(new DirectedEdge(N + i, successor, 0.0));
