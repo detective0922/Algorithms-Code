@@ -44,6 +44,7 @@ public class CPMTest {
 			}
         }
 
+        StdOut.println(g);
         AcyclicLP lp = new AcyclicLP(g, s);
 
         // print results
