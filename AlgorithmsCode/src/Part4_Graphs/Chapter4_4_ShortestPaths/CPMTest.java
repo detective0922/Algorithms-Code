@@ -24,7 +24,7 @@ public class CPMTest {
 		}
 		
 		int N = StdIn.readInt();
-		String aa = StdIn.readLine();
+		//String aa = StdIn.readLine();
 
         // source and sink
         int s = 2*N, t = 2*N + 1;
