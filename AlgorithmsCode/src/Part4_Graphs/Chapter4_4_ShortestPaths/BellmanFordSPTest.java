@@ -66,7 +66,14 @@ class BellmanFordSP{
 		}
 		distTo[source] = 0.0;
 		
-		ShortPath(g, source);	
+		queue.enqueue(source);
+		onQ[source] = true;
+		
+		while (!queue.isEmpty() && !this.hasNegativeCycle()) {
+			int w = queue.dequeue();
+			onQ[w] = false;
+			relax(g, w);
+		}
 		
 	}
 	
@@ -107,12 +114,16 @@ class BellmanFordSP{
 			}
 			cost++;
 			if (cost % g.V() == 0) {
-				findNegetiveCycle();
+				findNegativeCycle();
 			}
 		}
 	}
 	
-	private void findNegetiveCycle() {
+	private void findNegativeCycle() {
+		
+	}
+	
+	private boolean hasNegativeCycle() {
 		
 	}
 	
