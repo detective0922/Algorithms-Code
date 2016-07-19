@@ -18,15 +18,20 @@ public class BellmanFordSPTest {
 		
 		int s = 0;
 		BellmanFordSP sp = new BellmanFordSP(g, s);
-		for (int v = 0; v < g.V(); v++) {
-			StdOut.print(s + " to " + v);
-			StdOut.printf(" (%4.2f): ", sp.distTo(v));
-			if (sp.hasPathTo(v)) {
-				for (DirectedEdge e : sp.pathTo(v)) {
-					StdOut.print(e + " ");
+		if (sp.hasNegativeCycle()) {
+			for (DirectedEdge e : sp.negativeCycle())
+				StdOut.println(e);
+		} else {
+			for (int v = 0; v < g.V(); v++) {
+				StdOut.print(s + " to " + v);
+				StdOut.printf(" (%4.2f): ", sp.distTo(v));
+				if (sp.hasPathTo(v)) {
+					for (DirectedEdge e : sp.pathTo(v)) {
+						StdOut.print(e + " ");
+					}
 				}
+				StdOut.println();
 			}
-			StdOut.println();
 		}
 		/*edu.princeton.cs.algs4.EdgeWeightedDigraph g = new edu.princeton.cs.algs4.EdgeWeightedDigraph(
 				in);
@@ -116,7 +121,7 @@ class BellmanFordSP{
 		return cycle != null;
 	}
 	
-	public Iterable<DirectedEdge> cycle(){
+	public Iterable<DirectedEdge> negativeCycle(){
 		return cycle;
 	}
 	
