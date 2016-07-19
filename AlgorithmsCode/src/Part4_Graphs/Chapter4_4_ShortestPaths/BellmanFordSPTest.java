@@ -114,7 +114,9 @@ class BellmanFordSP{
 		int v = edgeTo.length;
 		edu.princeton.cs.algs4.EdgeWeightedDigraph ewd = new edu.princeton.cs.algs4.EdgeWeightedDigraph(v);
 		for (int i = 0; i < distTo.length; i++) {
-			ewd.addEdge(edgeTo[i]);
+			if (edgeTo[i] != null) {
+				ewd.addEdge(edgeTo[i]);
+			}
 		}
 		EdgeWeightedDirectedCycle cf = new EdgeWeightedDirectedCycle(ewd);
 		cycle = cf.cycle();
