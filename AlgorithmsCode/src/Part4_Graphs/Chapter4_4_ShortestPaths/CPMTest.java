@@ -38,7 +38,7 @@ public class CPMTest {
             g.addEdge(new DirectedEdge(s, i, 0.0));
             g.addEdge(new DirectedEdge(i+N, t, 0.0));
             
-          //in book, it is j=1, that is incorrect
+          //jobsPC.txt is changed and different from book, here it should be j=2, in book it is j = 1
 			for (int j = 2; j < a.length; j++) {
 				int successor = Integer.parseInt(a[j]);
 				g.addEdge(new DirectedEdge(N + i, successor, 0.0));
