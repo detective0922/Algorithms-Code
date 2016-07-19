@@ -4,6 +4,7 @@ import java.io.File;
 
 import edu.princeton.cs.algs4.DijkstraSP;
 import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdOut;
 
@@ -16,7 +17,7 @@ public class BellmanFordSPTest {
 		EdgeWeightedDigraph g = new EdgeWeightedDigraph(in);
 		
 		int s = 0;
-		SP sp = new SP(g, s);
+		BellmanFordSP sp = new BellmanFordSP(g, s);
 		for (int v = 0; v < g.V(); v++) {
 			StdOut.print(s + " to " + v);
 			StdOut.printf(" (%4.2f): ", sp.distTo(v));
@@ -45,16 +46,20 @@ public class BellmanFordSPTest {
 
 }
 
-class SP{
+class BellmanFordSP{
 	
 	private double[] distTo;
     private DirectedEdge[] edgeTo;
-    private boolean[] marked;
+    private boolean[] onQ;
+    private Queue<Integer> queue;
+    private int cost;
+    private Iterable<DirectedEdge> cycle;
 	
-	public SP(EdgeWeightedDigraph g, int source) {
+	public BellmanFordSP(EdgeWeightedDigraph g, int source) {
 		distTo = new double[g.V()];
 		edgeTo = new DirectedEdge[g.V()];
-		marked = new boolean[g.V()];
+		onQ = new boolean[g.V()];
+		queue = new Queue<Integer>();
 		for (int v = 0; v < g.V(); v++) {
 			distTo[v] = Double.POSITIVE_INFINITY;
 		}
