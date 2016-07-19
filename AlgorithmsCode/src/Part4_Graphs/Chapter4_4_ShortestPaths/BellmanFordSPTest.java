@@ -77,17 +77,6 @@ class BellmanFordSP{
 		
 	}
 	
-	private void ShortPath(EdgeWeightedDigraph g, int source) {
-		relax(g, source);
-		marked[source] = true;
-		for (DirectedEdge e : g.adj(source)) {
-			int w = e.to();
-			if (!marked[w]) {
-				ShortPath(g, w);
-			}
-		}
-	}
-	
 	private void relax(DirectedEdge e) {
 		int v = e.from(), w = e.to();
 		if (distTo[w] > distTo[v] + e.getWeight()) {
