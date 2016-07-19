@@ -112,8 +112,12 @@ class BellmanFordSP{
 		
 	}
 	
-	private boolean hasNegativeCycle() {
-		
+	public boolean hasNegativeCycle() {
+		return cycle != null;
+	}
+	
+	public Iterable<DirectedEdge> cycle(){
+		return cycle;
 	}
 	
 	public boolean hasPathTo(int v) {
