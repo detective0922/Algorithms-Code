@@ -14,7 +14,7 @@ public class BellmanFordSPTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		File tFile = new File("algs4-data//tinyEWDn.txt");		
+		File tFile = new File("algs4-data//tinyEWDnc.txt");		
 		In in = new In(tFile);
 		
 		int s = 0;
