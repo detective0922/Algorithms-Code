@@ -60,6 +60,7 @@ class BellmanFordSP{
 		edgeTo = new DirectedEdge[g.V()];
 		onQ = new boolean[g.V()];
 		queue = new Queue<Integer>();
+		cost = 0;
 		for (int v = 0; v < g.V(); v++) {
 			distTo[v] = Double.POSITIVE_INFINITY;
 		}
@@ -85,7 +86,12 @@ class BellmanFordSP{
 		if (distTo[w] > distTo[v] + e.getWeight()) {
 			distTo[w] = distTo[v] + e.getWeight();
 			edgeTo[w] = e;
+			if(!onQ[w]){
+				queue.enqueue(w);
+				onQ[w] = true;
+			}
 		}
+		
 	}
 	
 	private void relax(EdgeWeightedDigraph g, int v) {
@@ -94,8 +100,20 @@ class BellmanFordSP{
 			if (distTo[w] > distTo[v] + e.getWeight()) {
 				distTo[w] = distTo[v] + e.getWeight();
 				edgeTo[w] = e;
+				if (!onQ[w]) {
+					queue.enqueue(w);
+					onQ[w] = true;
+				}
+			}
+			cost++;
+			if (cost % g.V() == 0) {
+				findNegetiveCycle();
 			}
 		}
+	}
+	
+	private void findNegetiveCycle() {
+		
 	}
 	
 	public boolean hasPathTo(int v) {
