@@ -14,12 +14,12 @@ public class BellmanFordSPTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		File tFile = new File("algs4-data//tinyEWDnc.txt");		
+		File tFile = new File("algs4-data//tinyEWDn.txt");		
 		In in = new In(tFile);
 		
 		int s = 0;
 		
-		/*EdgeWeightedDigraph g = new EdgeWeightedDigraph(in);
+		EdgeWeightedDigraph g = new EdgeWeightedDigraph(in);
 		BellmanFordSP sp = new BellmanFordSP(g, s);
 		if (sp.hasNegativeCycle()) {
 			for (DirectedEdge e : sp.negativeCycle())
@@ -35,8 +35,9 @@ public class BellmanFordSPTest {
 				}
 				StdOut.println();
 			}
-		}*/
-		edu.princeton.cs.algs4.EdgeWeightedDigraph g = new edu.princeton.cs.algs4.EdgeWeightedDigraph(
+		}
+		
+		/*edu.princeton.cs.algs4.EdgeWeightedDigraph g = new edu.princeton.cs.algs4.EdgeWeightedDigraph(
 				in);
 		edu.princeton.cs.algs4.BellmanFordSP sp = new edu.princeton.cs.algs4.BellmanFordSP(g, s);
 		if (sp.hasNegativeCycle()) {
@@ -54,7 +55,7 @@ public class BellmanFordSPTest {
 					StdOut.printf("%d to %d           no path\n", s, v);
 				}
 			}
-		}
+		}*/
 		
 	}
 
@@ -87,19 +88,6 @@ class BellmanFordSP{
 			int w = queue.dequeue();
 			onQ[w] = false;
 			relax(g, w);
-		}
-		
-	}
-	
-	private void relax(DirectedEdge e) {
-		int v = e.from(), w = e.to();
-		if (distTo[w] > distTo[v] + e.weight()) {
-			distTo[w] = distTo[v] + e.weight();
-			edgeTo[w] = e;
-			if(!onQ[w]){
-				queue.enqueue(w);
-				onQ[w] = true;
-			}
 		}
 		
 	}
