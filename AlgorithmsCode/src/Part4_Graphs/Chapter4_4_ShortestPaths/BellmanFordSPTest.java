@@ -14,11 +14,12 @@ public class BellmanFordSPTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		File tFile = new File("algs4-data//tinyEWD.txt");		
+		File tFile = new File("algs4-data//tinyEWDnc.txt");		
 		In in = new In(tFile);
-		EdgeWeightedDigraph g = new EdgeWeightedDigraph(in);
 		
 		int s = 0;
+		
+		/*EdgeWeightedDigraph g = new EdgeWeightedDigraph(in);
 		BellmanFordSP sp = new BellmanFordSP(g, s);
 		if (sp.hasNegativeCycle()) {
 			for (DirectedEdge e : sp.negativeCycle())
@@ -34,20 +35,26 @@ public class BellmanFordSPTest {
 				}
 				StdOut.println();
 			}
-		}
-		/*edu.princeton.cs.algs4.EdgeWeightedDigraph g = new edu.princeton.cs.algs4.EdgeWeightedDigraph(
+		}*/
+		edu.princeton.cs.algs4.EdgeWeightedDigraph g = new edu.princeton.cs.algs4.EdgeWeightedDigraph(
 				in);
-		DijkstraSP sp = new DijkstraSP(g, s);
-		for (int v = 0; v < g.V(); v++) {
-			StdOut.print(s + " to " + v);
-			StdOut.printf(" (%4.2f): ", sp.distTo(v));
-			if (sp.hasPathTo(v)) {
-				for (edu.princeton.cs.algs4.DirectedEdge e : sp.pathTo(v)) {
-					StdOut.print(e + " ");
+		edu.princeton.cs.algs4.BellmanFordSP sp = new edu.princeton.cs.algs4.BellmanFordSP(g, s);
+		if (sp.hasNegativeCycle()) {
+			for (DirectedEdge e : sp.negativeCycle())
+				StdOut.println(e);
+		} else {
+			for (int v = 0; v < g.V(); v++) {
+				if (sp.hasPathTo(v)) {
+					StdOut.printf("%d to %d (%5.2f)  ", s, v, sp.distTo(v));
+					for (DirectedEdge e : sp.pathTo(v)) {
+						StdOut.print(e + "   ");
+					}
+					StdOut.println();
+				} else {
+					StdOut.printf("%d to %d           no path\n", s, v);
 				}
 			}
-			StdOut.println();
-		}*/
+		}
 		
 	}
 
