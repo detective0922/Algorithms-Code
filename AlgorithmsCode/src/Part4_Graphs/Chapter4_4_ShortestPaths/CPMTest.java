@@ -24,7 +24,7 @@ public class CPMTest {
 		}
 		
 		int N = StdIn.readInt();
-		String aa = StdIn.readLine();
+		StdIn.readLine();
 
         // source and sink
         int s = 2*N, t = 2*N + 1;
@@ -37,7 +37,8 @@ public class CPMTest {
             g.addEdge(new DirectedEdge(i, i+N,    duration));
             g.addEdge(new DirectedEdge(s, i, 0.0));
             g.addEdge(new DirectedEdge(i+N, t, 0.0));
-                       
+            
+            
 			for (int j = 2; j < a.length; j++) {
 				int successor = Integer.parseInt(a[j]);
 				g.addEdge(new DirectedEdge(N + i, successor, 0.0));
