@@ -2,7 +2,9 @@ package Part4_Graphs.Chapter4_4_ShortestPaths;
 
 import java.io.File;
 
-import edu.princeton.cs.algs4.DijkstraSP;
+import edu.princeton.cs.algs4.EdgeWeightedDirectedCycle;
+import edu.princeton.cs.algs4.EdgeWeightedDigraph;
+import edu.princeton.cs.algs4.DirectedEdge;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.Stack;
@@ -84,8 +86,8 @@ class BellmanFordSP{
 	
 	private void relax(DirectedEdge e) {
 		int v = e.from(), w = e.to();
-		if (distTo[w] > distTo[v] + e.getWeight()) {
-			distTo[w] = distTo[v] + e.getWeight();
+		if (distTo[w] > distTo[v] + e.weight()) {
+			distTo[w] = distTo[v] + e.weight();
 			edgeTo[w] = e;
 			if(!onQ[w]){
 				queue.enqueue(w);
@@ -98,8 +100,8 @@ class BellmanFordSP{
 	private void relax(EdgeWeightedDigraph g, int v) {
 		for (DirectedEdge e : g.adj(v)) {
 			int w = e.to();
-			if (distTo[w] > distTo[v] + e.getWeight()) {
-				distTo[w] = distTo[v] + e.getWeight();
+			if (distTo[w] > distTo[v] + e.weight()) {
+				distTo[w] = distTo[v] + e.weight();
 				edgeTo[w] = e;
 				if (!onQ[w]) {
 					queue.enqueue(w);
@@ -114,7 +116,13 @@ class BellmanFordSP{
 	}
 	
 	private void findNegativeCycle() {
-		
+		int v = edgeTo.length;
+		edu.princeton.cs.algs4.EdgeWeightedDigraph ewd = new edu.princeton.cs.algs4.EdgeWeightedDigraph(v);
+		for (int i = 0; i < distTo.length; i++) {
+			ewd.addEdge(edgeTo[i]);
+		}
+		EdgeWeightedDirectedCycle cf = new EdgeWeightedDirectedCycle(ewd);
+		cycle = cf.cycle();
 	}
 	
 	public boolean hasNegativeCycle() {
