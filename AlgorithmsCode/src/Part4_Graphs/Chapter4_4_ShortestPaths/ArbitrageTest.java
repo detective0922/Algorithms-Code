@@ -15,7 +15,7 @@ public class ArbitrageTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		File tFile = new File("algs4-data//rates.txt");
+		File tFile = new File("algs4-data//rate.txt");
 
 		try {
 			System.setIn(new FileInputStream(tFile.getAbsolutePath()));
