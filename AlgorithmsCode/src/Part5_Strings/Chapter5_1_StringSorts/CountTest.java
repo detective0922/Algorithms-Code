@@ -8,3 +8,7 @@ public class CountTest {
 	}
 
 }
+
+class Alphabet{
+	
+}
