@@ -8,3 +8,7 @@ public class LSDTest {
 	}
 
 }
+
+class LSD{
+	
+}
