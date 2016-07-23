@@ -10,5 +10,7 @@ public class CountTest {
 }
 
 class Alphabet{
-	
+	public Alphabet(){
+		
+	}
 }
