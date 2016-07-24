@@ -10,5 +10,7 @@ public class LSDTest {
 }
 
 class LSD{
-	
+	public LSD(){
+		
+	}
 }
