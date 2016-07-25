@@ -13,4 +13,8 @@ class Alphabet{
 	public Alphabet(){
 		
 	}
+	
+	public int R() {
+		
+	}
 }
