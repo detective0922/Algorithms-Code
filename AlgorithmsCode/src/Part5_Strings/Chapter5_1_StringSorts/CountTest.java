@@ -17,4 +17,8 @@ class Alphabet{
 	public int R() {
 		
 	}
+	
+	public int lgR(){
+		
+	}
 }
