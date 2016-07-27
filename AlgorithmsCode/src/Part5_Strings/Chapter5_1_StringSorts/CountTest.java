@@ -14,6 +14,10 @@ class Alphabet{
 		
 	}
 	
+	public char toChar(int index){
+		
+	}
+	
 	public int R() {
 		
 	}
