@@ -14,6 +14,10 @@ class Alphabet{
 		
 	}
 	
+    public int toIndex(char c){
+		
+	}
+
 	public char toChar(int index){
 		
 	}
@@ -25,4 +29,6 @@ class Alphabet{
 	public int lgR(){
 		
 	}
+	
+	
 }
