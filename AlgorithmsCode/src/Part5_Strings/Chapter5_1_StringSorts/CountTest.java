@@ -22,6 +22,10 @@ class Alphabet{
 		
 	}
 	
+	public boolean contains(char c){
+		
+	}
+	
 	public int R() {
 		
 	}
