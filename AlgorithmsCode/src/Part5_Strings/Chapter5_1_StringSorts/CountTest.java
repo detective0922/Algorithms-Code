@@ -34,5 +34,9 @@ class Alphabet{
 		
 	}
 	
+	public int[] toIndices(String s){
+		
+	}
+	
 	
 }
