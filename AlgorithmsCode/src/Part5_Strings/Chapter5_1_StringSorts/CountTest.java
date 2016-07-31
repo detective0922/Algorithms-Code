@@ -38,5 +38,9 @@ class Alphabet{
 		
 	}
 	
+	public String toChars(int indices){
+		
+	}
+	
 	
 }
