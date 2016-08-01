@@ -13,4 +13,8 @@ class LSD{
 	public LSD(){
 		
 	}
+	
+	public void sort(int[] a){
+		
+	}
 }
