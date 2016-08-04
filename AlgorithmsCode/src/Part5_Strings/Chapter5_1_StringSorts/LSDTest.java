@@ -17,4 +17,8 @@ class LSD{
 	public void sort(int[] a){
 		
 	}
+	
+	public void sort(String[] a, int W) {
+		
+	}
 }
