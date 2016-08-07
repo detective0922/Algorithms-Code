@@ -9,4 +9,8 @@ public class MSDTest {
 
 class MSD{
 	
+	public static void sort(String[] a){
+		
+	}
+	
 }
