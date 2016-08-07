@@ -9,8 +9,12 @@ public class MSDTest {
 
 class MSD{
 	
-	public static void sort(String[] a){
-		
+	public static void sort(String[] a) {
+
+	}
+
+	public static void sort(String[] a, int lo, int hi, int d) {
+
 	}
 	
 }
