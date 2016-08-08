@@ -17,4 +17,8 @@ class MSD{
 
 	}
 	
+	private static int charAt(String s, int d) {
+        
+    }
+	
 }
