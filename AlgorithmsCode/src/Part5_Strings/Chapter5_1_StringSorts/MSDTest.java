@@ -21,4 +21,8 @@ class MSD{
         
     }
 	
+	private static void insertion(String[] a, int lo, int hi, int d) {
+        
+    }
+	
 }
