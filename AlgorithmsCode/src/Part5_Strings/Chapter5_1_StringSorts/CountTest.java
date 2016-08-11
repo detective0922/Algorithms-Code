@@ -96,12 +96,20 @@ class Alphabet{
 	}
 
 	public int[] toIndices(String s) {
-		
-
+		char[] chars = s.toCharArray();
+		int[] indices = new int[chars.length];
+		for (int i = 0; i < chars.length; i++) {
+			indices[i] = index[chars[i]];
+		}
+		return indices;
 	}
 
-	public String toChars(int indices) {
-
+	public String toChars(int[] indices) {
+		char[] chars = new char[indices.length];
+		for(int i = 0;i<indices.length;i++){
+			chars[i] = alphabet[indices[i]];
+		}
+		return new String(chars);
 	}
 	
 	
