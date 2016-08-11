@@ -23,7 +23,7 @@ public class CountTest {
 		}
 		
 		//String s = "ABCDR";
-		String s = "1234567890";
+		String s = "0123456789";
 		Alphabet alpha = new Alphabet(s);
 		int R = alpha.R();
 		int[] count = new int[R];
