@@ -27,14 +27,18 @@ public class CountTest {
 		int[] count = new int[R];
 		
 		String test = StdIn.readAll();
-		int N = test.length();
+		/*int N = test.length();
 		for (int i = 0; i < N; i++) {
 			char c = test.charAt(i);
 			if (alpha.contains(c)) {
 				count[alpha.toIndex(c)]++;
 			}
+		}*/
+		int[] a = alpha.toIndices(test);
+		for (int i = 0; i < a.length; i++) {
+			count[a[i]]++;
 		}
-
+		
 		for (int j = 0; j < R; j++) {
 			StdOut.println(alpha.toChar(j) + " " + count[j]);
 		}
