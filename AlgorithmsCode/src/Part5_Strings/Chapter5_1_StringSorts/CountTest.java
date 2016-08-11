@@ -54,13 +54,15 @@ class Alphabet{
 	public Alphabet(String s) {
 		alphabet = s.toCharArray();
 		R = s.length();
-		index = new int[R];
-		for (int i = 0; i < R; i++) {
+		index = new int[Character.MAX_VALUE];
+		
+		for (int i = 0; i < index.length; i++) {
 			index[i] = -1;
 		}
 
 		for (int i = 0; i < R; i++) {
-			index[alphabet[i]] = i;
+			int aaa = alphabet[i];
+			index[aaa] = i;
 		}
 	}
 
@@ -82,8 +84,9 @@ class Alphabet{
 
 	public int lgR(int R) {
 		int lgR = 0;
-		while (R>>1 >0) {
+		while (R > 0) {
 			lgR++;
+			R >>= 1;
 		}
 		return lgR;
 	}
