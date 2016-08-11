@@ -12,7 +12,8 @@ public class CountTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		File tFile = new File("algs4-data//abra.txt");
+		//File tFile = new File("algs4-data//abra.txt");
+		File tFile = new File("algs4-data//pi.txt");
 
 		try {
 			System.setIn(new FileInputStream(tFile.getAbsolutePath()));
@@ -21,7 +22,8 @@ public class CountTest {
 			e.printStackTrace();
 		}
 		
-		String s = "ABCDR";
+		//String s = "ABCDR";
+		String s = "1234567890";
 		Alphabet alpha = new Alphabet(s);
 		int R = alpha.R();
 		int[] count = new int[R];
