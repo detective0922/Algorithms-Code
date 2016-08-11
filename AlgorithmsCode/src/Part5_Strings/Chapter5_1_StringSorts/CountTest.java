@@ -21,12 +21,12 @@ public class CountTest {
 			e.printStackTrace();
 		}
 		
-		String s = StdIn.readAll();
+		String s = "ABCDR";
 		Alphabet alpha = new Alphabet(s);
 		int R = alpha.R();
 		int[] count = new int[R];
 		
-		String test = "ABCDR";
+		String test = StdIn.readAll();
 		int N = test.length();
 		for (int i = 0; i < N; i++) {
 			char c = test.charAt(i);
@@ -44,36 +44,49 @@ public class CountTest {
 }
 
 class Alphabet{
-	public Alphabet(String s){
-		
-	}
+	private char[] alphabet;
+	private int[] index;
+	private int R;
 	
-    public int toIndex(char c){
+	public Alphabet(String s) {
+		alphabet = s.toCharArray();
+		R = s.length();
+		index = new int[R];
+		for(int i = 0;i<R;i++){
+			index[i] = -1;
+		}
 		
+		for(int i = 0;i<R;i++){
+			index[alphabet[i]] = i;
+		}
 	}
 
-	public char toChar(int index){
-		
+	public int toIndex(char c) {
+
 	}
-	
-	public boolean contains(char c){
-		
+
+	public char toChar(int index) {
+
 	}
-	
+
+	public boolean contains(char c) {
+
+	}
+
 	public int R() {
-		
+
 	}
-	
-	public int lgR(){
-		
+
+	public int lgR() {
+
 	}
-	
-	public int[] toIndices(String s){
-		
+
+	public int[] toIndices(String s) {
+
 	}
-	
-	public String toChars(int indices){
-		
+
+	public String toChars(int indices) {
+
 	}
 	
 	
