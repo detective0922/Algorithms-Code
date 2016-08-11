@@ -39,6 +39,9 @@ public class CountTest {
 			StdOut.println(alpha.toChar(j) + " " + count[j]);
 		}
 		
+		StdOut.println(alpha.lgR(10));
+		StdOut.println(alpha.lgR2(10));
+		
 	}
 
 }
@@ -62,23 +65,34 @@ class Alphabet{
 	}
 
 	public int toIndex(char c) {
-
+		return index[c];
 	}
 
 	public char toChar(int index) {
-
+		return alphabet[index];
 	}
 
 	public boolean contains(char c) {
-
+		return index[c] != -1;
 	}
 
 	public int R() {
-
+		return R;
 	}
 
-	public int lgR() {
-
+	public int lgR(int R) {
+		int lgR = 0;
+		while (R>>1 >0) {
+			lgR++;
+		}
+		return lgR;
+	}
+	
+	public int lgR2(int R) {
+		 int lgR = 0;
+	        for (int t = R-1; t >= 1; t /= 2)
+	            lgR++;
+	        return lgR;
 	}
 
 	public int[] toIndices(String s) {
