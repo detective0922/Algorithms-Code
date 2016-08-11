@@ -55,11 +55,11 @@ class Alphabet{
 		alphabet = s.toCharArray();
 		R = s.length();
 		index = new int[R];
-		for(int i = 0;i<R;i++){
+		for (int i = 0; i < R; i++) {
 			index[i] = -1;
 		}
-		
-		for(int i = 0;i<R;i++){
+
+		for (int i = 0; i < R; i++) {
 			index[alphabet[i]] = i;
 		}
 	}
@@ -105,11 +105,16 @@ class Alphabet{
 	}
 
 	public String toChars(int[] indices) {
-		char[] chars = new char[indices.length];
+		/*char[] chars = new char[indices.length];
 		for(int i = 0;i<indices.length;i++){
 			chars[i] = alphabet[indices[i]];
 		}
-		return new String(chars);
+		return new String(chars);*/
+		StringBuffer strbuf = new StringBuffer();
+		for (int i = 0; i < indices.length; i++) {
+			strbuf.append(alphabet[indices[i]]);
+		}
+		return strbuf.toString();
 	}
 	
 	
