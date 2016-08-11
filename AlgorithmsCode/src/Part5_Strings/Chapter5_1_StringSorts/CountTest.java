@@ -36,7 +36,9 @@ public class CountTest {
 		}*/
 		int[] a = alpha.toIndices(test);
 		for (int i = 0; i < a.length; i++) {
-			count[a[i]]++;
+			if (a[i] != -1) {
+				count[a[i]]++;
+			}
 		}
 		
 		for (int j = 0; j < R; j++) {
