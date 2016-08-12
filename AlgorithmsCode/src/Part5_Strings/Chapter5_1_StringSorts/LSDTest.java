@@ -46,6 +46,9 @@ class LSD {
 			count[c]++;
 		}
 		//TODO
+		for (int i = 0; i < R; i++) {
+			count[i + 1] += count[i];
+		}
 		//TODO
 		//TODO
 		
