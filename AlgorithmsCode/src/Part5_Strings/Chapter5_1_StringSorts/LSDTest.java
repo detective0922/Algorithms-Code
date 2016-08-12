@@ -37,28 +37,30 @@ public class LSDTest {
 class LSD {
 
 	public static void sort(String[] a, int W) {
-		int R = 256;
-		int[] count = new int[R + 1];
+		int R = 256;	
 		int len = a.length;
 		String[] aux = new String[len];
-		// implement first character sort first
+		// implement last character sort first
 		// then implement the whole string sort
-		for (int i = 0; i < len; i++) {
-			char c = a[i].charAt(0);
-			count[c + 1]++;
-		}
-		// TODO
-		for (int i = 0; i < R; i++) {
-			count[i + 1] += count[i];
-		}
-		// TODO
-		for (int i = 0; i < len; i++) {
-			char c = a[i].charAt(0);
-			aux[count[c]++] = a[i];
-		}
-		// TODO
-		for (int i = 0; i < len; i++) {
-			a[i] = aux[i];
+		for (int j = 0; j < a[0].length(); j++) {
+			int[] count = new int[R + 1];
+			for (int i = 0; i < len; i++) {
+				char c = a[i].charAt(j);
+				count[c + 1]++;
+			}
+			// TODO
+			for (int i = 0; i < R; i++) {
+				count[i + 1] += count[i];
+			}
+			// TODO
+			for (int i = 0; i < len; i++) {
+				char c = a[i].charAt(j);
+				aux[count[c]++] = a[i];
+			}
+			// TODO
+			for (int i = 0; i < len; i++) {
+				a[i] = aux[i];
+			}
 		}
 	}
 }
