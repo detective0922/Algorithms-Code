@@ -44,7 +44,7 @@ class MSD{
 
 	public static void sort(String[] a, int lo, int hi, int d) {
 		if (hi <= lo + M) {
-			//Insertion.sort(a);
+			Insertion.sort(a);
 			return;
 		}
 				
