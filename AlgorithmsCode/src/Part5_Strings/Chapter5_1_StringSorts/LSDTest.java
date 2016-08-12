@@ -40,6 +40,7 @@ class LSD {
 		int R = 256;
 		int[] count = new int[R + 1];
 		int len = a.length;
+		String[] aux = new String[len];
 		//implement first character sort first
 		for (int i = 0; i < len; i++) {
 			char c = a[i].charAt(0);
@@ -50,6 +51,11 @@ class LSD {
 			count[i + 1] += count[i];
 		}
 		//TODO
+		for (int i = 0; i < len; i++) {
+			char c = a[i].charAt(0);
+			aux[count[c]++] = a[i];
+		}
+		
 		//TODO
 		
 	}
