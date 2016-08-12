@@ -43,13 +43,13 @@ class MSD{
 	}
 
 	public static void sort(String[] a, int lo, int hi, int d) {
-		if (hi < lo + M) {
+		if (hi <= lo + M) {
 			//Insertion.sort(a);
 			return;
 		}
 				
 		int[] count = new int[R + 2];
-		for (int i = lo; i < hi; i++) {
+		for (int i = lo; i <= hi; i++) {
 			int c = charAt(a[i], d);
 			count[c + 2]++;
 		}
@@ -58,12 +58,12 @@ class MSD{
 			count[i + 1] += count[i];
 		}
 
-		for (int i = lo; i < hi; i++) {
+		for (int i = lo; i <= hi; i++) {
 			int c = charAt(a[i], d);
 			aux[count[c + 1]++] = a[i];
 		}
 
-		for (int i = lo; i < hi; i++) {
+		for (int i = lo; i <= hi; i++) {
 			a[i] = aux[i - lo];
 		}
 		
