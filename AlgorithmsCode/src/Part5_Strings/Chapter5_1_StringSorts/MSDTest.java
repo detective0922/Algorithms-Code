@@ -33,7 +33,7 @@ public class MSDTest {
 class MSD{
 	
 	private static int R = 256;
-	private static int M = 15;
+	private static int M = 0;
 	private static String[] aux;
 	
 	public static void sort(String[] a) {
@@ -43,12 +43,11 @@ class MSD{
 	}
 
 	public static void sort(String[] a, int lo, int hi, int d) {
-		/*if (hi < lo + M) {
-			Insertion.sort(a);
+		if (hi < lo + M) {
+			//Insertion.sort(a);
 			return;
-		}*/
-		
-		
+		}
+				
 		int[] count = new int[R + 2];
 		for (int i = lo; i < hi; i++) {
 			int c = charAt(a[i], d);
@@ -69,7 +68,7 @@ class MSD{
 		}
 		
 		for (int i = 0; i < R; i++) {
-			sort(a, lo + count[i], hi + count[i+1] - 1, d + 1);
+			sort(a, lo + count[i], lo + count[i+1] - 1, d + 1);
 		}
 
 	}
