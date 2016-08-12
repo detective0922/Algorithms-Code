@@ -33,7 +33,7 @@ public class MSDTest {
 class MSD{
 	
 	private static int R = 256;
-	private static int M = 0;
+	private static int M = 15;
 	private static String[] aux;
 	
 	public static void sort(String[] a) {
