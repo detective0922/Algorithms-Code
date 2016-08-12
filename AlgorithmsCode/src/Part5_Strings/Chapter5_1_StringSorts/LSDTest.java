@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import edu.princeton.cs.algs4.Count;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
@@ -35,11 +36,18 @@ public class LSDTest {
 
 class LSD {
 
-	public static void sort(int[] a) {
-
-	}
-
 	public static void sort(String[] a, int W) {
-
+		int R = 256;
+		int[] count = new int[R + 1];
+		int len = a.length;
+		//implement first character sort first
+		for (int i = 0; i < len; i++) {
+			char c = a[i].charAt(0);
+			count[c]++;
+		}
+		//TODO
+		//TODO
+		//TODO
+		
 	}
 }
