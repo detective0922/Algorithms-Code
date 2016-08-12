@@ -48,7 +48,26 @@ class MSD{
 			return;
 		}
 		
-		
+		for (int j = lo; j < hi; j++) {	
+			int[] count = new int[R + 2];
+			for (int i = lo; i < hi; i++) {
+				int c = charAt(a[j], i);
+				count[c + 2]++;
+			}
+			
+			for (int i = 0; i < R; i++) {
+				count[i + 1] += count[i];
+			}
+			
+			for (int i = lo; i < hi; i++) {
+				int c = charAt(a[j], i);
+				aux[count[c]++] = a[i];
+			}
+			
+			for (int i = lo; i < hi; i++) {
+				a[i] = aux[i];
+			}
+		}
 		
 
 	}
