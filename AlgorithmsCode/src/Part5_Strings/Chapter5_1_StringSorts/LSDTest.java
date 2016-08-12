@@ -38,12 +38,12 @@ class LSD {
 
 	public static void sort(String[] a, int W) {
 		int R = 256;	
-		int len = a.length;
-		int[] count = new int[R + 1];
+		int len = a.length;		
 		String[] aux = new String[len];
 		// implement last character sort first
 		// then implement the whole string sort
-		for (int j = W - 1; j >= 0; j--) {		
+		for (int j = W - 1; j >= 0; j--) {	
+			int[] count = new int[R + 1];
 			for (int i = 0; i < len; i++) {
 				char c = a[i].charAt(j);
 				count[c + 1]++;
