@@ -47,7 +47,7 @@ class MSD{
 			Insertion.sort(a);
 			return;
 		}
-				
+
 		int[] count = new int[R + 2];
 		for (int i = lo; i <= hi; i++) {
 			int c = charAt(a[i], d);
@@ -66,9 +66,9 @@ class MSD{
 		for (int i = lo; i <= hi; i++) {
 			a[i] = aux[i - lo];
 		}
-		
+
 		for (int i = 0; i < R; i++) {
-			sort(a, lo + count[i], lo + count[i+1] - 1, d + 1);
+			sort(a, lo + count[i], lo + count[i + 1] - 1, d + 1);
 		}
 
 	}
