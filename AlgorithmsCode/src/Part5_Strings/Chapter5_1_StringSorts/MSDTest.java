@@ -33,7 +33,7 @@ public class MSDTest {
 class MSD{
 	
 	private static int R = 256;
-	private static int M = 15;
+	private static int M = 0;
 	private static String[] aux;
 	
 	public static void sort(String[] a) {
@@ -44,7 +44,7 @@ class MSD{
 
 	public static void sort(String[] a, int lo, int hi, int d) {
 		if (hi <= lo + M) {
-			Insertion.sort(a);
+			//Insertion.sort(a);
 			return;
 		}
 
