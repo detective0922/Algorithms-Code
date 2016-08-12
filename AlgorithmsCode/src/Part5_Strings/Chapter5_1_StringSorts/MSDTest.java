@@ -31,8 +31,14 @@ public class MSDTest {
 
 class MSD{
 	
+	private static int R = 256;
+	private static int M = 15;
+	private static String[] aux;
+	
 	public static void sort(String[] a) {
-
+		int len = a.length;
+		aux = new String[len];
+		sort(a, 0, len - 1, 0);
 	}
 
 	public static void sort(String[] a, int lo, int hi, int d) {
@@ -40,7 +46,11 @@ class MSD{
 	}
 	
 	private static int charAt(String s, int d) {
-        
+		if (d < s.length()) {
+			return s.charAt(d);
+		} else {
+			return -1;
+		}
     }
 	
 	private static void insertion(String[] a, int lo, int hi, int d) {
