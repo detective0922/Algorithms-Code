@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import Part2_Sorting.Chapter2_1_ElementarySorts.Insertion;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
@@ -42,6 +43,13 @@ class MSD{
 	}
 
 	public static void sort(String[] a, int lo, int hi, int d) {
+		if (hi < lo + M) {
+			Insertion.sort(a);
+			return;
+		}
+		
+		
+		
 
 	}
 	
@@ -51,10 +59,6 @@ class MSD{
 		} else {
 			return -1;
 		}
-    }
-	
-	private static void insertion(String[] a, int lo, int hi, int d) {
-        
     }
 	
 }
