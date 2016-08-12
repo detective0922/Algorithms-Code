@@ -41,22 +41,24 @@ class LSD {
 		int[] count = new int[R + 1];
 		int len = a.length;
 		String[] aux = new String[len];
-		//implement first character sort first
+		// implement first character sort first
+		// then implement the whole string sort
 		for (int i = 0; i < len; i++) {
 			char c = a[i].charAt(0);
-			count[c]++;
+			count[c + 1]++;
 		}
-		//TODO
+		// TODO
 		for (int i = 0; i < R; i++) {
 			count[i + 1] += count[i];
 		}
-		//TODO
+		// TODO
 		for (int i = 0; i < len; i++) {
 			char c = a[i].charAt(0);
 			aux[count[c]++] = a[i];
 		}
-		
-		//TODO
-		
+		// TODO
+		for (int i = 0; i < len; i++) {
+			a[i] = aux[i];
+		}
 	}
 }
