@@ -7,3 +7,7 @@ public class Quick3StringTest {
 	}
 
 }
+
+class Quick3String{
+	
+}
