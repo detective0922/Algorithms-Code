@@ -40,6 +40,12 @@ class Quick3String{
 
 	}
 	
+	private static void exch(String[] a, int i, int j) {
+		String s = a[i];
+		a[i] = a[j];
+		a[j] = s;
+	}
+	
 	private static int charAt(String s, int d) {
 		if (d < s.length()) {
 			return s.charAt(d);
