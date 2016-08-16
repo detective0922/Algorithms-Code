@@ -60,8 +60,11 @@ class Quick3String{
 			}
 		}
 
-		sort(a, lo, lt - 1, d + 1);
-		sort(a, gt + 1, hi, d + 1);
+		sort(a, lo, lt - 1, d);
+		if (v >= 0) {
+			sort(a, lt, gt, d + 1);
+		}
+		sort(a, gt + 1, hi, d);
 		
 	}
 	
