@@ -53,7 +53,6 @@ class Quick3String{
 			} else if (charAt(a[i], d) > charAt(a[gt], d)) {
 				exch(a, i, gt);
 				gt--;
-				i++;
 			} else {
 				i++;
 			}
