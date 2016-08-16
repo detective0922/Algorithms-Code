@@ -33,11 +33,35 @@ public class Quick3StringTest {
 
 class Quick3String{
 	public static void sort(String[] a) {
-
+		int len = a.length;
+		sort(a, 0, len-1, 0);
     }
 	
 	private static void sort(String[] a, int lo, int hi, int d) {
+		if (hi <= lo) {
+			return;
+		}
 
+		int lt = lo;
+		int i = lo + 1;
+		int gt = hi;
+		while (gt > i) {
+			if (charAt(a[i], d) < charAt(a[lo], d)) {
+				exch(a, i, lt);
+				lt++;
+				i++;
+			} else if (charAt(a[i], d) > charAt(a[gt], d)) {
+				exch(a, i, gt);
+				gt--;
+				i++;
+			} else {
+				i++;
+			}
+		}
+
+		sort(a, lo, lt - 1, d + 1);
+		sort(a, gt + 1, hi, d + 1);
+		
 	}
 	
 	private static void exch(String[] a, int i, int j) {
