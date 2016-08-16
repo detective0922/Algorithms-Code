@@ -46,7 +46,7 @@ class Quick3String{
 		int i = lo + 1;
 		int gt = hi;
 		int v = charAt(a[lo], d);
-		while (gt > i) {
+		while (gt >= i) {
 			int t = charAt(a[i], d);
 			if (t < v) {
 				exch(a, i, lt);
