@@ -50,7 +50,7 @@ class Quick3String{
 				exch(a, i, lt);
 				lt++;
 				i++;
-			} else if (charAt(a[i], d) > charAt(a[gt], d)) {
+			} else if (charAt(a[i], d) > charAt(a[lo], d)) {
 				exch(a, i, gt);
 				gt--;
 			} else {
