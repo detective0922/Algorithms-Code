@@ -36,6 +36,10 @@ class Quick3String{
 
     }
 	
+	private static void sort(String[] a, int lo, int hi, int d) {
+
+	}
+	
 	private static int charAt(String s, int d) {
 		if (d < s.length()) {
 			return s.charAt(d);
