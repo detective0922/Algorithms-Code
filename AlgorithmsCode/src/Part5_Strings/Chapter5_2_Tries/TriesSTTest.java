@@ -58,6 +58,10 @@ class TriesST<Value>{
 		
 	}
 	
+	public Iterable<Value> keysThatMatch(String pat) {
+
+	}
+
 	public int size(){
 		
 	}
