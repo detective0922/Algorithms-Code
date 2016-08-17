@@ -4,13 +4,15 @@ public class TriesSTTest {
 
 }
 
-class TriesST{
+class TriesST<Value>{
 	
-	private int R = 256;
-	
-	private class Node{
+	private static int R = 256;
+
+	private static class Node {
 		private Object val;
 		private Node[] next = new Node[R];
 	}
+	
+	
 	
 }
