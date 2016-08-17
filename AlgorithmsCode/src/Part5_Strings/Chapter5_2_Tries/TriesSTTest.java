@@ -54,5 +54,9 @@ class TriesST<Value>{
 		
 	}
 	
+	public Iterable<Value> keysWithPrefix(String prefix){
+		
+	}
+	
 	
 }
