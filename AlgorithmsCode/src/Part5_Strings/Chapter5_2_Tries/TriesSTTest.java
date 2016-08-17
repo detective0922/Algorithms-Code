@@ -61,6 +61,10 @@ class TriesST<Value>{
 	public Iterable<Value> keysThatMatch(String pat) {
 
 	}
+	
+	public int longestPrefixOf(String s){
+		
+	}
 
 	public int size(){
 		
