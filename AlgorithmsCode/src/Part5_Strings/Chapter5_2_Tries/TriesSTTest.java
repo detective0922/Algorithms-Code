@@ -33,7 +33,21 @@ class TriesST<Value>{
 	}
 	
 	public void put(String key, Value val){
-		
+		int d = 0;
+		int len = key.length();
+		Node x = root;
+		while (d <= len) {
+			if (x == null) {
+				x = new Node();
+			}
+			if (d == len) {
+				x.val = val;
+				break;
+			}
+			char c = key.charAt(d);
+			x = x.next[c];
+			d++;
+		}
 	}
 	
 	
