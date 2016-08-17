@@ -1,9 +1,20 @@
 package Part5_Strings.Chapter5_2_Tries;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class TriesSTTest {
 	
 	public static void main(String[] args){
-		
+		File tFile = new File("algs4-data//shellsST.txt");
+
+		try {
+			System.setIn(new FileInputStream(tFile.getAbsolutePath()));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
