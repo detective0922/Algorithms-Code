@@ -58,5 +58,8 @@ class TriesST<Value>{
 		
 	}
 	
+	public int size(){
+		
+	}
 	
 }
