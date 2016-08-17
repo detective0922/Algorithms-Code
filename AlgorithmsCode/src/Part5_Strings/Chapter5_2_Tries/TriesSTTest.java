@@ -50,6 +50,9 @@ class TriesST<Value>{
 		}
 	}
 	
+	public Iterable<Value> keys(){
+		
+	}
 	
 	
 }
