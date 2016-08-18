@@ -107,4 +107,8 @@ class TriesST<Value>{
 		
 	}
 	
+	public boolean isEmpty(){
+		
+	}
+	
 }
