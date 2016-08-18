@@ -111,4 +111,8 @@ class TriesST<Value>{
 		
 	}
 	
+	public boolean contains(String key){
+		
+	}
+	
 }
