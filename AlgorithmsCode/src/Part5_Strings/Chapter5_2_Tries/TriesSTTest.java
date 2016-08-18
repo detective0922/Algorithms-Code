@@ -68,7 +68,7 @@ class TriesST<Value>{
 	}
 	
 	public Iterable<Value> keys(){
-		
+		return keysWithPrefix("");
 	}
 	
 	public Iterable<Value> keysWithPrefix(String prefix){
@@ -99,7 +99,7 @@ class TriesST<Value>{
 				}
 			}
 		}
-		
+
 		return size;
 	}
 	
