@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import edu.princeton.cs.algs4.Queue;
+
 public class TriesSTTest {
 	
 	public static void main(String[] args){
@@ -82,7 +84,18 @@ class TriesST<Value>{
 	}
 
 	public int size(){
+		Queue<Node> q = new Queue<TriesST.Node>();
+		q.enqueue(root);
+		Node x = null;
+		int size = 0;
+		while(!q.isEmpty()){
+			x = q.dequeue();
+			for (int i = 0; i < R; i++) {
+				x = x.next[i];
+			}
+		}
 		
+		return size;
 	}
 	
 }
