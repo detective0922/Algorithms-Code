@@ -103,4 +103,8 @@ class TriesST<Value>{
 		return size;
 	}
 	
+	public void delete(String key) {
+		
+	}
+	
 }
