@@ -88,10 +88,15 @@ class TriesST<Value>{
 		q.enqueue(root);
 		Node x = null;
 		int size = 0;
-		while(!q.isEmpty()){
+		while (!q.isEmpty()) {
 			x = q.dequeue();
+			if (x.val != null) {
+				size++;
+			}
 			for (int i = 0; i < R; i++) {
-				x = x.next[i];
+				if (x.next[i] != null) {
+					q.enqueue(x.next[i]);
+				}
 			}
 		}
 		
