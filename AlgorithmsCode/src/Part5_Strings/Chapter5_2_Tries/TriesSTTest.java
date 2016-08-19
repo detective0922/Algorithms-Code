@@ -108,10 +108,54 @@ class TriesST<Value>{
 	
 	public Iterable<String> keysThatMatch(String pat) {
 		
+		Queue<String> tmpKeys = new Queue<String>();
+		Queue<Node> q = new Queue<Node>();
+		q.enqueue(root);
+		String prefix = "";		
+		tmpKeys.enqueue(prefix);		
+		Node x = root;
+	
+		char[] chars = pat.toCharArray();
+		for (int i = 0; i < chars.length; i++) {
+			if (".".equals(chars[i])) {
+				for (char c = 0; c < R; c++) {
+					if (x.next[c] != null) {
+						tmpKeys.enqueue(prefix + c);
+						q.enqueue(x.next[c]);
+					}
+				}
+			} else {
+				tmpKeys.enqueue(prefix + chars[i]);
+				q.enqueue(x.next[chars[i]]);
+			}
+		}
+		
+		Queue<String> keys = new Queue<String>();
+		while (!q.isEmpty()) {
+			x = q.dequeue();
+			prefix = tmpKeys.dequeue();
+			if (x.val != null) {
+				keys.enqueue(prefix);
+			}		
+		}
+		
+		return keys;
 	}
 	
 	public int longestPrefixOf(String s){
-		
+		char[] chars = s.toCharArray();
+		Queue<String> q = new Queue<String>();
+		Node x = root;
+		String prefix = "";
+		for (int i = 0; i < chars.length; i++) {
+			if (x.val != null) {
+				q.enqueue(prefix);
+			}
+			x = x.next[chars[i]];
+			prefix += chars[i];
+		}
+		q.dequeue();
+		return q.dequeue().length();
 	}
 
 	public int size(){
