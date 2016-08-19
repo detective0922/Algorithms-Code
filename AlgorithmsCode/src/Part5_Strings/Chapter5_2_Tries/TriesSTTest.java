@@ -101,8 +101,7 @@ class TrieST<Value>{
 			}
 			char c = key.charAt(d);
 			x.next[c] = new Node();
-			x = x.next[c];
-			q.enqueue(x);
+			q.enqueue(x.next[c]);
 			d++;
 		}
 	}
