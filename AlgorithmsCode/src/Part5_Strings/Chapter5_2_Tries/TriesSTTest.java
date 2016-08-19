@@ -93,7 +93,7 @@ class TrieST<Value>{
 		Queue<Node> q = new Queue<Node>();
 		Node x = root;
 		q.enqueue(x);	
-		while ((!q.isEmpty()) && d < len) {
+		while (!q.isEmpty()) {
 			x = q.dequeue();
 			if (d == len) {
 				x.val = val;
