@@ -5,6 +5,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import edu.princeton.cs.algs4.Queue;
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.TrieST;
 
 public class TriesSTTest {
 	
@@ -17,6 +20,38 @@ public class TriesSTTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		TrieST<Integer> st = new TrieST<Integer>();
+        for (int i = 0; !StdIn.isEmpty(); i++) {
+            String key = StdIn.readString();
+            st.put(key, i);
+        }
+
+        // print results
+        if (st.size() < 100) {
+            StdOut.println("keys(\"\"):");
+            for (String key : st.keys()) {
+                StdOut.println(key + " " + st.get(key));
+            }
+            StdOut.println();
+        }
+
+        StdOut.println("longestPrefixOf(\"shellsort\"):");
+        StdOut.println(st.longestPrefixOf("shellsort"));
+        StdOut.println();
+
+        StdOut.println("longestPrefixOf(\"quicksort\"):");
+        StdOut.println(st.longestPrefixOf("quicksort"));
+        StdOut.println();
+
+        StdOut.println("keysWithPrefix(\"shor\"):");
+        for (String s : st.keysWithPrefix("shor"))
+            StdOut.println(s);
+        StdOut.println();
+
+        StdOut.println("keysThatMatch(\".he.l.\"):");
+        for (String s : st.keysThatMatch(".he.l."))
+            StdOut.println(s);
 	}
 
 }
