@@ -72,7 +72,34 @@ class TriesST<Value>{
 	}
 	
 	public Iterable<String> keysWithPrefix(String prefix){
+		int d = 0;
+		int perfixLen = prefix.length();
+		Node x = root;
+		while(d<=perfixLen){
+			char c = prefix.charAt(d);
+			x = x.next[c];
+			d++;
+		}
 		
+		Queue<String> keys = new Queue<String>();
+		Queue<String> tmpKeys = new Queue<String>();
+		Queue<Node> q = new Queue<Node>();
+		q.enqueue(x);
+		StringBuffer strBuf =  new StringBuffer();
+		strBuf.append(prefix);
+		while (!q.isEmpty()) {
+			x = q.dequeue();
+			if (x.val != null) {
+				keys.enqueue(tmpKeys.dequeue());
+			}
+			for (char c = 0; c < R; c++) {
+				if (x.next[c] != null) {
+					strBuf.append(c);
+					tmpKeys.enqueue(strBuf.toString());
+					q.enqueue(x.next[c]);
+				}
+			}
+		}
 	}
 	
 	public Iterable<String> keysThatMatch(String pat) {
@@ -84,7 +111,7 @@ class TriesST<Value>{
 	}
 
 	public int size(){
-		Queue<Node> q = new Queue<TriesST.Node>();
+		Queue<Node> q = new Queue<Node>();
 		q.enqueue(root);
 		Node x = null;
 		int size = 0;
@@ -93,9 +120,9 @@ class TriesST<Value>{
 			if (x.val != null) {
 				size++;
 			}
-			for (int i = 0; i < R; i++) {
-				if (x.next[i] != null) {
-					q.enqueue(x.next[i]);
+			for (char c = 0; c < R; c++) {
+				if (x.next[c] != null) {
+					q.enqueue(x.next[c]);
 				}
 			}
 		}
