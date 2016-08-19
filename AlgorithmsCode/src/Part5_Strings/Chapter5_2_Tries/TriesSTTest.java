@@ -183,7 +183,7 @@ class TriesST<Value>{
 	}
 	
 	public boolean isEmpty(){
-		
+		return size() == 0;
 	}
 	
 	public boolean contains(String key){
