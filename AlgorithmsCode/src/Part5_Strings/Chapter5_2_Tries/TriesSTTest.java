@@ -71,12 +71,12 @@ class TriesST<Value>{
 		return keysWithPrefix("");
 	}
 	
-	public Iterable<Value> keysWithPrefix(String prefix){
+	public Iterable<String> keysWithPrefix(String prefix){
 		
 	}
 	
 	public Iterable<Value> keysThatMatch(String pat) {
-
+		
 	}
 	
 	public int longestPrefixOf(String s){
