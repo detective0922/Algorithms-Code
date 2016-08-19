@@ -72,13 +72,17 @@ class TriesST<Value>{
 	}
 	
 	public Iterable<String> keysWithPrefix(String prefix){
-		int d = 0;
-		int perfixLen = prefix.length();
+		//int d = 0;
+		int prefixLen = prefix.length();
 		Node x = root;
-		while(d<=perfixLen){
+		/*while(d<=prefixLen){
 			char c = prefix.charAt(d);
 			x = x.next[c];
 			d++;
+		}*/
+		for (int d = 0; d < prefixLen; d++) {
+			char c = prefix.charAt(d);
+			x = x.next[c];
 		}
 		
 		Queue<String> keys = new Queue<String>();
