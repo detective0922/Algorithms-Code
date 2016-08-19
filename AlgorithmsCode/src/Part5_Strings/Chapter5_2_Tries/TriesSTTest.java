@@ -100,7 +100,9 @@ class TrieST<Value>{
 				break;
 			}
 			char c = key.charAt(d);
-			x.next[c] = new Node();
+			if (x.next[c] == null) {
+				x.next[c] = new Node();
+			}
 			q.enqueue(x.next[c]);
 			d++;
 		}
