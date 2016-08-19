@@ -75,7 +75,7 @@ class TriesST<Value>{
 		
 	}
 	
-	public Iterable<Value> keysThatMatch(String pat) {
+	public Iterable<String> keysThatMatch(String pat) {
 		
 	}
 	
