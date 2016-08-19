@@ -85,21 +85,21 @@ class TriesST<Value>{
 		Queue<String> tmpKeys = new Queue<String>();
 		Queue<Node> q = new Queue<Node>();
 		q.enqueue(x);
-		StringBuffer strBuf =  new StringBuffer();
-		strBuf.append(prefix);
+		tmpKeys.enqueue(prefix);
 		while (!q.isEmpty()) {
 			x = q.dequeue();
+			prefix = tmpKeys.dequeue();
 			if (x.val != null) {
-				keys.enqueue(tmpKeys.dequeue());
+				keys.enqueue(prefix);
 			}
 			for (char c = 0; c < R; c++) {
 				if (x.next[c] != null) {
-					strBuf.append(c);
-					tmpKeys.enqueue(strBuf.toString());
+					tmpKeys.enqueue(prefix + c);
 					q.enqueue(x.next[c]);
 				}
 			}
 		}
+		return keys;
 	}
 	
 	public Iterable<String> keysThatMatch(String pat) {
