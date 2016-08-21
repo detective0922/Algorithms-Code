@@ -218,7 +218,7 @@ class TrieST<Value>{
 	}
 	
 	public void delete(String key) {
-		keysThatMatch(key);
+		//keysThatMatch(key);
 	}
 	
 	public boolean isEmpty(){
