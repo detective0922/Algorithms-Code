@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import edu.princeton.cs.algs4.Queue;
+import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.Stopwatch;
@@ -189,7 +190,7 @@ class TrieST<Value>{
 	
 	public String longestPrefixOf(String s){
 		char[] chars = s.toCharArray();
-		Queue<String> q = new Queue<String>();
+		Stack<String> stack = new Stack<String>();
 		Node x = root;
 		String prefix = "";
 		for (int i = 0; i < chars.length; i++) {
@@ -197,13 +198,12 @@ class TrieST<Value>{
 				break;
 			}
 			if (x.val != null) {
-				q.enqueue(prefix);
+				stack.push(prefix);
 			}
 			x = x.next[chars[i]];
 			prefix += chars[i];
 		}
-		q.dequeue();
-		return q.dequeue();
+		return stack.pop();
 	}
 
 	public int size(){
