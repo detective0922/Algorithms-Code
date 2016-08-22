@@ -154,10 +154,10 @@ class TrieST<Value>{
 	
 	public Iterable<String> keysThatMatch(String pat) {
 		
-		Queue<String> tmpKeys = new Queue<String>();
+		Queue<StringBuffer> tmpKeys = new Queue<StringBuffer>();
 		Queue<Node> q = new Queue<Node>();
 		q.enqueue(root);
-		String prefix = "";		
+		StringBuffer prefix = new StringBuffer();		
 		tmpKeys.enqueue(prefix);		
 		Node x = root;
 	
@@ -166,14 +166,14 @@ class TrieST<Value>{
 			if ('.' == chars[i]) {
 				for (char c = 0; c < R; c++) {
 					if (x.next[c] != null) {
-						prefix = prefix + c;
-						tmpKeys.enqueue(prefix);
+						tmpKeys.enqueue(prefix.append(c));
 						q.enqueue(x.next[c]);
 					}
 				}
 			} else {
-				prefix = prefix + chars[i];
-				tmpKeys.enqueue(prefix);
+				for(StringBuffer strBuf: tmpKeys){
+					strBuf.append(chars[i]);
+				}				
 				q.enqueue(x.next[chars[i]]);
 			}
 		}
