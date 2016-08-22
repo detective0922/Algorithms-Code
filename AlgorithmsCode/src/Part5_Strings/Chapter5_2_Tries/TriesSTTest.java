@@ -163,7 +163,7 @@ class TrieST<Value>{
 	
 		char[] chars = pat.toCharArray();
 		for (int i = 0; i < chars.length; i++) {
-			if (".".equals(chars[i])) {
+			if ('.' == chars[i]) {
 				for (char c = 0; c < R; c++) {
 					if (x.next[c] != null) {
 						tmpKeys.enqueue(prefix + c);
