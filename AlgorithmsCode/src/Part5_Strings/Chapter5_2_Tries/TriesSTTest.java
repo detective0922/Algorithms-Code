@@ -158,16 +158,27 @@ class TrieST<Value>{
 		Queue<Node> q = new Queue<Node>();
 		q.enqueue(root);
 		StringBuffer prefix = new StringBuffer();		
-		tmpKeys.enqueue(prefix);		
+		//tmpKeys.enqueue(prefix);		
 		Node x = root;
 	
 		char[] chars = pat.toCharArray();
 		for (int i = 0; i < chars.length; i++) {
 			if ('.' == chars[i]) {
-				for (char c = 0; c < R; c++) {
-					if (x.next[c] != null) {
-						tmpKeys.enqueue(prefix.append(c));
-						q.enqueue(x.next[c]);
+				if (tmpKeys.isEmpty()) {
+					for (char c = 0; c < R; c++) {
+						if (x.next[c] != null) {
+							tmpKeys.enqueue(prefix.append(c));
+							q.enqueue(x.next[c]);
+						}
+					}
+				} else {
+					for (char c = 0; c < R; c++) {
+						if (x.next[c] != null) {
+							for(StringBuffer strBuf: tmpKeys){
+								strBuf.append(c);
+							}
+							q.enqueue(x.next[c]);
+						}
 					}
 				}
 			} else {
@@ -183,7 +194,7 @@ class TrieST<Value>{
 			x = q.dequeue();
 			prefix = tmpKeys.dequeue();
 			if (x.val != null) {
-				keys.enqueue(prefix);
+				keys.enqueue(prefix.toString());
 			}		
 		}
 		
