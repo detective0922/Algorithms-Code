@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.Stopwatch;
 
 public class TriesSTTest {
 	
@@ -21,6 +22,7 @@ public class TriesSTTest {
 		}
 		
 		TrieST<Integer> st = new TrieST<Integer>();
+		Stopwatch timer = new Stopwatch();
         for (int i = 0; !StdIn.isEmpty(); i++) {
             String key = StdIn.readString();
             st.put(key, i);
@@ -51,6 +53,8 @@ public class TriesSTTest {
         StdOut.println("keysThatMatch(\".he.l.\"):");
         for (String s : st.keysThatMatch(".he.l."))
             StdOut.println(s);
+        
+        StdOut.println(timer.elapsedTime());
 	}
 
 }
@@ -189,6 +193,9 @@ class TrieST<Value>{
 		Node x = root;
 		String prefix = "";
 		for (int i = 0; i < chars.length; i++) {
+			if(x==null){
+				break;
+			}
 			if (x.val != null) {
 				q.enqueue(prefix);
 			}
