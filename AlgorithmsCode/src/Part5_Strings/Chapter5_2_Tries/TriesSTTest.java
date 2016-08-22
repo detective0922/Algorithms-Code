@@ -166,12 +166,14 @@ class TrieST<Value>{
 			if ('.' == chars[i]) {
 				for (char c = 0; c < R; c++) {
 					if (x.next[c] != null) {
-						tmpKeys.enqueue(prefix + c);
+						prefix = prefix + c;
+						tmpKeys.enqueue(prefix);
 						q.enqueue(x.next[c]);
 					}
 				}
 			} else {
-				tmpKeys.enqueue(prefix + chars[i]);
+				prefix = prefix + chars[i];
+				tmpKeys.enqueue(prefix);
 				q.enqueue(x.next[chars[i]]);
 			}
 		}
