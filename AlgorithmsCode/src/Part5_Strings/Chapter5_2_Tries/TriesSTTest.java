@@ -167,6 +167,7 @@ class TrieST<Value>{
 				if (tmpKeys.isEmpty()) {
 					for (char c = 0; c < R; c++) {
 						if (x.next[c] != null) {
+							prefix = new StringBuffer();
 							tmpKeys.enqueue(prefix.append(c));
 							q.enqueue(x.next[c]);
 						}
