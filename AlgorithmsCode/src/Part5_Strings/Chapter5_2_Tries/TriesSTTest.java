@@ -187,7 +187,7 @@ class TrieST<Value>{
 		return keys;
 	}
 	
-	public int longestPrefixOf(String s){
+	public String longestPrefixOf(String s){
 		char[] chars = s.toCharArray();
 		Queue<String> q = new Queue<String>();
 		Node x = root;
@@ -203,7 +203,7 @@ class TrieST<Value>{
 			prefix += chars[i];
 		}
 		q.dequeue();
-		return q.dequeue().length();
+		return q.dequeue();
 	}
 
 	public int size(){
