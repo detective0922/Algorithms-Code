@@ -203,6 +203,9 @@ class TrieST<Value>{
 			x = x.next[chars[i]];
 			prefix += chars[i];
 		}
+		if (stack.isEmpty()) {
+			return null;
+		}
 		return stack.pop();
 	}
 
