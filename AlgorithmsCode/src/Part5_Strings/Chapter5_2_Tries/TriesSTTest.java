@@ -171,21 +171,15 @@ class TrieST<Value>{
 		if(prefix.length() == pat.length()){
 			return;
 		}
-		char patC = pat.charAt(prefix.length());
-		if (patC == '.') {
-			for (char c = 0; c < R; c++) {
-				if (x.next[c] != null) {
-					//prefix.append(c);
-					keysThatMatch(x.next[c], prefix + c, pat, keys);
-				}
-			}
-		} else {
-			if (x.next[patC] != null) {
-				//prefix.append(patC);
-				keysThatMatch(x.next[patC], prefix + patC, pat, keys);
-			}
-		}
+		char patC = pat.charAt(prefix.length());		
+		for (char c = 0; c < R; c++) {
+			if (patC == '.' || patC == c) {
 
+				keysThatMatch(x.next[c], prefix + c, pat, keys);
+			}
+
+		}
+		
 	}
 	
 	public String longestPrefixOf(String s){
