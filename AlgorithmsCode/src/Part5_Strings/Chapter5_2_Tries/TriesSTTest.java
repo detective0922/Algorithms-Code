@@ -250,6 +250,21 @@ class TrieST<Value>{
 	
 	public void delete(String key) {
 		//keysThatMatch(key);
+		int d = 0;
+		int len = key.length();
+		Node x = root;
+		while (d <= len) {
+			if (x == null) {
+				return null;
+			}
+			if (d == len) {
+				return (Value) x.val;
+			}
+			char c = key.charAt(d);
+			x = x.next[c];
+			d++;
+		}
+		return null;
 	}
 	
 	public boolean isEmpty(){
