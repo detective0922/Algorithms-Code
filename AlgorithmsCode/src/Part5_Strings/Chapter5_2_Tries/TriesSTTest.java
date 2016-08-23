@@ -171,6 +171,7 @@ class TrieST<Value>{
 			prefix = tmpKeys.dequeue();
 			if (prefix.length() == pat.length() && x.val != null) {
 				keys.enqueue(prefix);
+				continue;
 			}
 			char patC = pat.charAt(prefix.length());
 			for (char c = 0; c < R; c++) {
