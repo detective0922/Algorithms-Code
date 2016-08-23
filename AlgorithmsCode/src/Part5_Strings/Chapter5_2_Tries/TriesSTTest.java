@@ -3,6 +3,8 @@ package Part5_Strings.Chapter5_2_Tries;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.Stack;
@@ -155,14 +157,18 @@ class TrieST<Value>{
 	public Iterable<String> keysThatMatch(String pat) {
 		
 		Queue<StringBuffer> tmpKeys = new Queue<StringBuffer>();
-		Queue<Node> q = new Queue<Node>();
-		q.enqueue(root);
+		Queue<List<Node>> q = new Queue<List<Node>>();
+		List<Node> rootNode = new ArrayList<Node>();
+		rootNode.add(root);
+		q.enqueue(rootNode);
+		
 		StringBuffer prefix = new StringBuffer();		
 		//tmpKeys.enqueue(prefix);		
 		Node x = root;
 	
 		char[] chars = pat.toCharArray();
-		for (int i = 0; i < chars.length; i++) {
+		/*for (int i = 0; i < chars.length; i++) {
+			//x = q.dequeue();
 			if ('.' == chars[i]) {
 				if (tmpKeys.isEmpty()) {
 					for (char c = 0; c < R; c++) {
@@ -187,7 +193,28 @@ class TrieST<Value>{
 					strBuf.append(chars[i]);
 				}				
 				q.enqueue(x.next[chars[i]]);
-				x = x.next[chars[i]];
+			}
+		}*/
+		List<Node> nodes = null;
+		for (int i = 0; i < chars.length; i++) {
+			if ('.' == chars[i]) {
+				nodes = new ArrayList<Node>();
+				for (char c = 0; c < R; c++) {
+					if (x.next[c] != null) {
+						/*if (chars[i + 1] == '.' || x.next[c].next[chars[i + 1]] != null) {
+							q.enqueue(x.next[c]);
+						}*/
+						nodes.add(x.next[c]);
+					}
+				}
+				q.enqueue(nodes);
+			} else {
+				if (x.next[chars[i]] != null) {
+					nodes = new ArrayList<Node>();
+					nodes.add(x.next[chars[i]]);
+					//q.enqueue(x.next[chars[i]]);
+				}
+				q.enqueue(nodes);
 			}
 		}
 		
