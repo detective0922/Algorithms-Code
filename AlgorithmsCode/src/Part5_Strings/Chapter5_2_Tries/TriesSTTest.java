@@ -156,9 +156,34 @@ class TrieST<Value>{
 	
 	public Iterable<String> keysThatMatch(String pat) {
 		
-		Queue<String> keys = new Queue<String>();
+		/*Queue<String> keys = new Queue<String>();
 		keysThatMatch(root, "", pat, keys);
+		return keys;*/
+		Queue<String> keys = new Queue<String>();
+		Queue<String> tmpKeys = new Queue<String>();
+		Queue<Node> q = new Queue<Node>();
+		Node x = root;
+		q.enqueue(x);
+		String prefix = "";
+		tmpKeys.enqueue(prefix);
+		while (!q.isEmpty()) {
+			x = q.dequeue();
+			prefix = tmpKeys.dequeue();
+			if (prefix.length() == pat.length() && x.val != null) {
+				keys.enqueue(prefix);
+			}
+			char patC = pat.charAt(prefix.length());
+			for (char c = 0; c < R; c++) {
+				if (patC == '.' || patC == c) {
+					if (x.next[c] != null) {
+						tmpKeys.enqueue(prefix + c);
+						q.enqueue(x.next[c]);
+					}
+				}
+			}
+		}
 		return keys;
+		
 	}
 	
 	private void keysThatMatch(Node x, String prefix, String pat, Queue<String> keys) {
@@ -174,7 +199,6 @@ class TrieST<Value>{
 		char patC = pat.charAt(prefix.length());		
 		for (char c = 0; c < R; c++) {
 			if (patC == '.' || patC == c) {
-
 				keysThatMatch(x.next[c], prefix + c, pat, keys);
 			}
 
