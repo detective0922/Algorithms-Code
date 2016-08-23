@@ -156,78 +156,13 @@ class TrieST<Value>{
 	
 	public Iterable<String> keysThatMatch(String pat) {
 		
-		Queue<StringBuffer> tmpKeys = new Queue<StringBuffer>();
-		Queue<List<Node>> q = new Queue<List<Node>>();
-		List<Node> rootNode = new ArrayList<Node>();
-		rootNode.add(root);
-		q.enqueue(rootNode);
-		
-		StringBuffer prefix = new StringBuffer();		
-		//tmpKeys.enqueue(prefix);		
-		Node x = root;
-	
-		char[] chars = pat.toCharArray();
-		/*for (int i = 0; i < chars.length; i++) {
-			//x = q.dequeue();
-			if ('.' == chars[i]) {
-				if (tmpKeys.isEmpty()) {
-					for (char c = 0; c < R; c++) {
-						if (x.next[c] != null) {
-							prefix = new StringBuffer();
-							tmpKeys.enqueue(prefix.append(c));
-							q.enqueue(x.next[c]);
-						}					
-					}
-				} else {
-					for (char c = 0; c < R; c++) {
-						if (x.next[c] != null) {
-							for(StringBuffer strBuf: tmpKeys){
-								strBuf.append(c);
-							}
-							q.enqueue(x.next[c]);
-						}
-					}
-				}
-			} else {
-				for(StringBuffer strBuf: tmpKeys){
-					strBuf.append(chars[i]);
-				}				
-				q.enqueue(x.next[chars[i]]);
-			}
-		}*/
-		List<Node> nodes = null;
-		for (int i = 0; i < chars.length; i++) {
-			if ('.' == chars[i]) {
-				nodes = new ArrayList<Node>();
-				for (char c = 0; c < R; c++) {
-					if (x.next[c] != null) {
-						/*if (chars[i + 1] == '.' || x.next[c].next[chars[i + 1]] != null) {
-							q.enqueue(x.next[c]);
-						}*/
-						nodes.add(x.next[c]);
-					}
-				}
-				q.enqueue(nodes);
-			} else {
-				if (x.next[chars[i]] != null) {
-					nodes = new ArrayList<Node>();
-					nodes.add(x.next[chars[i]]);
-					//q.enqueue(x.next[chars[i]]);
-				}
-				q.enqueue(nodes);
-			}
-		}
-		
 		Queue<String> keys = new Queue<String>();
-		while (!q.isEmpty()) {
-			x = q.dequeue();
-			prefix = tmpKeys.dequeue();
-			if (x.val != null) {
-				keys.enqueue(prefix.toString());
-			}		
-		}
-		
+		keysThatMatch(root, pat, 0, keys);
 		return keys;
+	}
+	
+	private void keysThatMatch(Node x, String pat, int i, Queue<String> keys) {
+
 	}
 	
 	public String longestPrefixOf(String s){
