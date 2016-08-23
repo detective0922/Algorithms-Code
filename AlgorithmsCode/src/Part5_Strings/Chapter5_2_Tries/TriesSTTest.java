@@ -187,6 +187,7 @@ class TrieST<Value>{
 					strBuf.append(chars[i]);
 				}				
 				q.enqueue(x.next[chars[i]]);
+				x = x.next[chars[i]];
 			}
 		}
 		
