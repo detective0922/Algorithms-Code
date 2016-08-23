@@ -255,16 +255,16 @@ class TrieST<Value>{
 		Node x = root;
 		while (d <= len) {
 			if (x == null) {
-				return null;
+				//return null;
 			}
 			if (d == len) {
-				return (Value) x.val;
+				//return (Value) x.val;
 			}
 			char c = key.charAt(d);
 			x = x.next[c];
 			d++;
 		}
-		return null;
+		//return null;
 	}
 	
 	public boolean isEmpty(){
