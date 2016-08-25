@@ -296,12 +296,12 @@ class TrieST<Value>{
 		Stack<Node> q = new Stack<Node>();
 		Node x = root;
 		q.push(x);
-		while ((!q.isEmpty()) && d <= len) {
+		while ((!q.isEmpty())) {
 			x = q.peek();
 			if (x == null) {
 				return;
 			}
-			if (d == len) {
+			/*if (d == len) {
 				x.val = null;
 				for (char c = 0; c < R; c++) {
 					if (x.next[c] != null) {
@@ -309,6 +309,7 @@ class TrieST<Value>{
 					}
 				}
 				len--;
+				q.pop();
 			} else if(d<len){
 				char c = key.charAt(d);
 				if(x.next[c]!=null){
@@ -319,8 +320,37 @@ class TrieST<Value>{
 				d++;
 			} else {
 				x = q.pop();
+				if(x.val != null){
+					return;
+				}
 				char c = key.charAt(len);
 				x.next[c] = null;
+				len--;
+				for (char cc = 0; cc < R; cc++) {
+					if (x.next[cc] != null) {
+						return;
+					}
+				}
+				
+			}*/
+			if(d<len){
+				char c = key.charAt(d);
+				if(x.next[c]!=null){
+					q.push(x.next[c]);
+				} else {
+					return;
+				}
+				d++;
+			} else {
+				if(d == len) {
+					x.val = null;
+				}
+				for (char c = 0; c < R; c++) {
+					if (x.next[c] != null) {
+						return;
+					}
+				}
+				q.pop();
 			}
 					
 		}
