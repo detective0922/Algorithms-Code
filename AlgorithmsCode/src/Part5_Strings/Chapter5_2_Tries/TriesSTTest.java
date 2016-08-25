@@ -32,7 +32,7 @@ public class TriesSTTest {
             st.put(key, i);
         }
         
-        st.put("shoree", 8);
+        //st.put("shoree", 8);
 
         // print results
         if (st.size() < 100) {
@@ -297,7 +297,7 @@ class TrieST<Value>{
 		Node x = root;
 		q.push(x);
 		while ((!q.isEmpty()) && d <= len) {
-			x = q.pop();
+			x = q.peek();
 			if (x == null) {
 				return;
 			}
@@ -308,7 +308,8 @@ class TrieST<Value>{
 						return;
 					}
 				}
-			} else {
+				len--;
+			} else if(d<len){
 				char c = key.charAt(d);
 				if(x.next[c]!=null){
 					q.push(x.next[c]);
@@ -316,6 +317,10 @@ class TrieST<Value>{
 					return;
 				}
 				d++;
+			} else {
+				x = q.pop();
+				char c = key.charAt(len);
+				x.next[c] = null;
 			}
 					
 		}
