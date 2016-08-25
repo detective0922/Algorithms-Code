@@ -31,6 +31,8 @@ public class TriesSTTest {
             String key = StdIn.readString();
             st.put(key, i);
         }
+        
+        st.put("shoree", 8);
 
         // print results
         if (st.size() < 100) {
