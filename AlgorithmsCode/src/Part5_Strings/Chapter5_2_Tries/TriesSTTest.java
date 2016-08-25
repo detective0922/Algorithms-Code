@@ -255,17 +255,20 @@ class TrieST<Value>{
 		}
 		int d = 0;
 		int len = key.length();
+		Stack<Node> q = new Stack<Node>();
 		Node x = root;
-		while (d <= len) {
+		q.push(x);
+		while ((!q.isEmpty()) && d <= len) {
+			x = q.pop();
 			if (x == null) {
 				return;
 			}
 			if (d == len) {
 				x.val = null;
-				return;
+			} else {
+				char c = key.charAt(d);
+				x = x.next[c];
 			}
-			char c = key.charAt(d);
-			x = x.next[c];
 			d++;
 		}
 		//return null;
