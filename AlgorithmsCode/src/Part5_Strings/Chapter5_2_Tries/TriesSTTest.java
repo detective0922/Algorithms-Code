@@ -265,11 +265,22 @@ class TrieST<Value>{
 			}
 			if (d == len) {
 				x.val = null;
+				x = q.peek();
+				for (char c = 0; c < R; c++) {
+					if (x.next[c] != null) {
+						return;
+					}
+				}
 			} else {
 				char c = key.charAt(d);
-				x = x.next[c];
+				if(x.next[c]!=null){
+					q.push(x);
+				} else {
+					return;
+				}
+				d++;
 			}
-			d++;
+					
 		}
 		//return null;
 	}
