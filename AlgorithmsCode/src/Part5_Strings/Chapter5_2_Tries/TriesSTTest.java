@@ -262,6 +262,7 @@ class TrieST<Value>{
 			}
 			if (d == len) {
 				x.val = null;
+				return;
 			}
 			char c = key.charAt(d);
 			x = x.next[c];
