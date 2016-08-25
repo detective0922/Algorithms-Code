@@ -333,19 +333,19 @@ class TrieST<Value>{
 				}
 				
 			}*/
-			if(d<len){
+			if (d < len) {
 				char c = key.charAt(d);
-				if(x.next[c]!=null){
+				if (x.next[c] != null) {
 					q.push(x.next[c]);
 				} else {
 					return;
 				}
 				d++;
 			} else {
-				if(d == len) {
-					x.val = null;				
+				if (d == len) {
+					x.val = null;
 				}
-				if(x.val != null){
+				if (x.val != null) {
 					return;
 				}
 				for (char c = 0; c < R; c++) {
@@ -355,7 +355,7 @@ class TrieST<Value>{
 				}
 				q.pop();
 				x = q.peek();
-				char cc = key.charAt(len-1);
+				char cc = key.charAt(len - 1);
 				x.next[cc] = null;
 				len--;
 			}
