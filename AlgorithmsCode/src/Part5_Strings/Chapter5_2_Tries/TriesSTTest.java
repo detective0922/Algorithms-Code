@@ -26,6 +26,7 @@ public class TriesSTTest {
 		
 		TrieST<Integer> st = new TrieST<Integer>();
 		Stopwatch timer = new Stopwatch();
+		long time1 = System.currentTimeMillis();
         for (int i = 0; !StdIn.isEmpty(); i++) {
             String key = StdIn.readString();
             st.put(key, i);
@@ -57,7 +58,9 @@ public class TriesSTTest {
         for (String s : st.keysThatMatch(".he.l."))
             StdOut.println(s);
         
+        long time2 = System.currentTimeMillis();
         StdOut.println(timer.elapsedTime());
+        StdOut.println(time2 - time1);
 	}
 
 }
@@ -137,31 +140,31 @@ class TrieST<Value>{
 			x = x.next[c];
 		}
 		
-		/*Queue<String> keys = new Queue<String>();
+		Queue<String> keys = new Queue<String>();
 		Queue<String> tmpKeys = new Queue<String>();
 		Queue<Node> q = new Queue<Node>();
 		q.enqueue(x);
-		tmpKeys.enqueue(prefix);*/
-		Stack<String> keys = new Stack<String>();
+		tmpKeys.enqueue(prefix);
+		/*Queue<String> keys = new Queue<String>();
 		Stack<String> tmpKeys = new Stack<String>();
 		Stack<Node> q = new Stack<Node>();
 		q.push(x);
-		tmpKeys.push(prefix);
+		tmpKeys.push(prefix);*/
 		while (!q.isEmpty()) {
-			//x = q.dequeue();
-			//prefix = tmpKeys.dequeue();
-			x = q.pop();
-			prefix = tmpKeys.pop();
+			x = q.dequeue();
+			prefix = tmpKeys.dequeue();
+			//x = q.pop();
+			//prefix = tmpKeys.pop();
 			if (x.val != null) {
-				//keys.enqueue(prefix);
-				keys.push(prefix);
+				keys.enqueue(prefix);
+				//keys.push(prefix);
 			}
 			for (char c = 0; c < R; c++) {
 				if (x.next[c] != null) {
-					//tmpKeys.enqueue(prefix + c);
-					//q.enqueue(x.next[c]);
-					tmpKeys.push(prefix + c);
-					q.push(x.next[c]);
+					tmpKeys.enqueue(prefix + c);
+					q.enqueue(x.next[c]);
+					//tmpKeys.push(prefix + c);
+					//q.push(x.next[c]);
 				}
 			}
 		}
