@@ -58,6 +58,12 @@ public class TriesSTTest {
         for (String s : st.keysThatMatch("s...."))
             StdOut.println(s);
         
+        StdOut.println();
+        st.delete("shore");        
+        for (String key : st.keys()) {
+            StdOut.println(key + " " + st.get(key));
+        }
+        
         long time2 = System.currentTimeMillis();
         StdOut.println(timer.elapsedTime());
         StdOut.println(time2 - time1);
@@ -295,7 +301,6 @@ class TrieST<Value>{
 			}
 			if (d == len) {
 				x.val = null;
-				x = q.peek();
 				for (char c = 0; c < R; c++) {
 					if (x.next[c] != null) {
 						return;
@@ -304,7 +309,7 @@ class TrieST<Value>{
 			} else {
 				char c = key.charAt(d);
 				if(x.next[c]!=null){
-					q.push(x);
+					q.push(x.next[c]);
 				} else {
 					return;
 				}
