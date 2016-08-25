@@ -361,7 +361,6 @@ class TrieST<Value>{
 			}
 					
 		}
-		//return null;
 	}
 	
 	public boolean isEmpty(){
