@@ -178,24 +178,24 @@ class TrieST<Value>{
 		return keys;*/
 		Node x = root;
 		String prefix = "";
-		/*Queue<String> keys = new Queue<String>();
+		Queue<String> keys = new Queue<String>();
 		Queue<String> tmpKeys = new Queue<String>();
 		Queue<Node> q = new Queue<Node>();		
 		q.enqueue(x);		
-		tmpKeys.enqueue(prefix);*/
-		Stack<String> keys = new Stack<String>();
+		tmpKeys.enqueue(prefix);
+		/*Stack<String> keys = new Stack<String>();
 		Stack<String> tmpKeys = new Stack<String>();
 		Stack<Node> q = new Stack<Node>();		
 		q.push(x);		
-		tmpKeys.push(prefix);
+		tmpKeys.push(prefix);*/
 		while (!q.isEmpty()) {
-			//x = q.dequeue();
-			//prefix = tmpKeys.dequeue();
-			x = q.pop();
-			prefix = tmpKeys.pop();
+			x = q.dequeue();
+			prefix = tmpKeys.dequeue();
+			//x = q.pop();
+			//prefix = tmpKeys.pop();
 			if (prefix.length() == pat.length() && x.val != null) {
-				//keys.enqueue(prefix);
-				keys.push(prefix);
+				keys.enqueue(prefix);
+				//keys.push(prefix);
 				continue;
 			}
 			if(prefix.length() == pat.length()){
@@ -205,10 +205,10 @@ class TrieST<Value>{
 			for (char c = 0; c < R; c++) {
 				if (patC == '.' || patC == c) {
 					if (x.next[c] != null) {
-						//tmpKeys.enqueue(prefix + c);
-						//q.enqueue(x.next[c]);
-						tmpKeys.push(prefix + c);
-						q.push(x.next[c]);
+						tmpKeys.enqueue(prefix + c);
+						q.enqueue(x.next[c]);
+						//tmpKeys.push(prefix + c);
+						//q.push(x.next[c]);
 					}
 				}
 			}
