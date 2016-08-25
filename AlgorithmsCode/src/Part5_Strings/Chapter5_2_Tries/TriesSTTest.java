@@ -97,11 +97,14 @@ class TrieST<Value>{
 		
 		int d = 0;
 		int len = key.length();
-		Queue<Node> q = new Queue<Node>();
+		//Queue<Node> q = new Queue<Node>();
+		Stack<Node> q = new Stack<Node>();
 		Node x = root;
-		q.enqueue(x);	
+		//q.enqueue(x);	
+		q.push(x);
 		while (!q.isEmpty()) {
-			x = q.dequeue();
+			//x = q.dequeue();
+			x = q.pop();
 			if (d == len) {
 				x.val = val;
 				break;
@@ -110,7 +113,8 @@ class TrieST<Value>{
 			if (x.next[c] == null) {
 				x.next[c] = new Node();
 			}
-			q.enqueue(x.next[c]);
+			//q.enqueue(x.next[c]);
+			q.push(x.next[c]);
 			d++;
 		}
 	}
@@ -133,21 +137,31 @@ class TrieST<Value>{
 			x = x.next[c];
 		}
 		
-		Queue<String> keys = new Queue<String>();
+		/*Queue<String> keys = new Queue<String>();
 		Queue<String> tmpKeys = new Queue<String>();
 		Queue<Node> q = new Queue<Node>();
 		q.enqueue(x);
-		tmpKeys.enqueue(prefix);
+		tmpKeys.enqueue(prefix);*/
+		Stack<String> keys = new Stack<String>();
+		Stack<String> tmpKeys = new Stack<String>();
+		Stack<Node> q = new Stack<Node>();
+		q.push(x);
+		tmpKeys.push(prefix);
 		while (!q.isEmpty()) {
-			x = q.dequeue();
-			prefix = tmpKeys.dequeue();
+			//x = q.dequeue();
+			//prefix = tmpKeys.dequeue();
+			x = q.pop();
+			prefix = tmpKeys.pop();
 			if (x.val != null) {
-				keys.enqueue(prefix);
+				//keys.enqueue(prefix);
+				keys.push(prefix);
 			}
 			for (char c = 0; c < R; c++) {
 				if (x.next[c] != null) {
-					tmpKeys.enqueue(prefix + c);
-					q.enqueue(x.next[c]);
+					//tmpKeys.enqueue(prefix + c);
+					//q.enqueue(x.next[c]);
+					tmpKeys.push(prefix + c);
+					q.push(x.next[c]);
 				}
 			}
 		}
@@ -159,12 +173,12 @@ class TrieST<Value>{
 		/*Queue<String> keys = new Queue<String>();
 		keysThatMatch(root, "", pat, keys);
 		return keys;*/
+		Node x = root;
+		String prefix = "";
 		Queue<String> keys = new Queue<String>();
 		Queue<String> tmpKeys = new Queue<String>();
-		Queue<Node> q = new Queue<Node>();
-		Node x = root;
-		q.enqueue(x);
-		String prefix = "";
+		Queue<Node> q = new Queue<Node>();		
+		q.enqueue(x);		
 		tmpKeys.enqueue(prefix);
 		while (!q.isEmpty()) {
 			x = q.dequeue();
