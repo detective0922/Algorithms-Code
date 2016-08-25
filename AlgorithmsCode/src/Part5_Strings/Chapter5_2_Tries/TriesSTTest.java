@@ -68,6 +68,8 @@ public class TriesSTTest {
         
         long time2 = System.currentTimeMillis();
         StdOut.println(timer.elapsedTime());
+        StdOut.println(time1);
+        StdOut.println(time2);
         StdOut.println(time2 - time1);
 	}
 
