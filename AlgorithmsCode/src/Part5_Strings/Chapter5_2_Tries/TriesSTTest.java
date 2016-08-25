@@ -31,7 +31,7 @@ public class TriesSTTest {
             String key = StdIn.readString();
             st.put(key, i);
         }
-        
+        st.put("shor", 8);
         //st.put("shoree", 8);
 
         // print results
