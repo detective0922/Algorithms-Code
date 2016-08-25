@@ -258,10 +258,10 @@ class TrieST<Value>{
 		Node x = root;
 		while (d <= len) {
 			if (x == null) {
-				//return null;
+				return;
 			}
 			if (d == len) {
-				//return (Value) x.val;
+				x.val = null;
 			}
 			char c = key.charAt(d);
 			x = x.next[c];
