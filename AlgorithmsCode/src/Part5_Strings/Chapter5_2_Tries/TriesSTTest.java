@@ -343,7 +343,10 @@ class TrieST<Value>{
 				d++;
 			} else {
 				if(d == len) {
-					x.val = null;
+					x.val = null;				
+				}
+				if(x.val != null){
+					return;
 				}
 				for (char c = 0; c < R; c++) {
 					if (x.next[c] != null) {
@@ -351,6 +354,10 @@ class TrieST<Value>{
 					}
 				}
 				q.pop();
+				x = q.peek();
+				char cc = key.charAt(len-1);
+				x.next[cc] = null;
+				len--;
 			}
 					
 		}
