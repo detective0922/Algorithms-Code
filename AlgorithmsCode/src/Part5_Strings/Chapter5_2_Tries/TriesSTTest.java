@@ -198,6 +198,9 @@ class TrieST<Value>{
 				keys.push(prefix);
 				continue;
 			}
+			if(prefix.length() == pat.length()){
+				continue;
+			}
 			char patC = pat.charAt(prefix.length());
 			for (char c = 0; c < R; c++) {
 				if (patC == '.' || patC == c) {
