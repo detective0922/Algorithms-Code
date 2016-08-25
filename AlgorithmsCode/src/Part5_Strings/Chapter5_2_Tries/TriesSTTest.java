@@ -55,7 +55,7 @@ public class TriesSTTest {
         StdOut.println();
 
         StdOut.println("keysThatMatch(\".he.l.\"):");
-        for (String s : st.keysThatMatch(".he.l."))
+        for (String s : st.keysThatMatch("s...."))
             StdOut.println(s);
         
         long time2 = System.currentTimeMillis();
