@@ -63,4 +63,8 @@ class TST<Value> {
 		}
 		return null;
 	}
+	
+	public void put(){
+		
+	}
 }
