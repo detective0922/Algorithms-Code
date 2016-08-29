@@ -1,6 +1,32 @@
 package Part5_Strings.Chapter5_2_Tries;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.Stopwatch;
+
 public class TSTTest {
+	
+	public static void main(String[] args) {
+		File tFile = new File("algs4-data//shellsST.txt");
+
+		try {
+			System.setIn(new FileInputStream(tFile.getAbsolutePath()));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		TrieST<Integer> st = new TrieST<Integer>();
+		Stopwatch timer = new Stopwatch();
+		long time1 = System.currentTimeMillis();
+        for (int i = 0; !StdIn.isEmpty(); i++) {
+            String key = StdIn.readString();
+            st.put(key, i);
+        }		
+	}
 
 }
 
