@@ -20,8 +20,6 @@ public class TSTTest {
 		}
 		
 		TrieST<Integer> st = new TrieST<Integer>();
-		Stopwatch timer = new Stopwatch();
-		long time1 = System.currentTimeMillis();
         for (int i = 0; !StdIn.isEmpty(); i++) {
             String key = StdIn.readString();
             st.put(key, i);
