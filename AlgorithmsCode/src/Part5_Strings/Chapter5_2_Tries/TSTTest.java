@@ -58,9 +58,8 @@ class TST<Value> {
 				x = x.right;
 			} else {
 				x = x.mid;
+				d++;
 			}
-			
-			d++;
 		}
 		return null;
 	}
