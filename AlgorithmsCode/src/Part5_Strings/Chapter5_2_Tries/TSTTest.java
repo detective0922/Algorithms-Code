@@ -5,7 +5,7 @@ public class TSTTest {
 }
 
 
-class TST {
+class TST<Value> {
 	private Node root;
 	private int R =1;
 
@@ -13,5 +13,9 @@ class TST {
 		private char c;
 		private Object val;
 		private Node left, mid, right;
+	}
+	
+	public Value get(String key){
+		
 	}
 }
