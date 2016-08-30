@@ -83,11 +83,23 @@ class TST<Value> {
 				break;
 			}
 			char c = key.charAt(d);
-			if (x.next[c] == null) {
-				x.next[c] = new Node();
+			if (c < x.c) {
+				if(x.left==null){
+					x.left = new Node();				
+				}
+				q.push(x.left);
+			} else if (c > x.c) {
+				if(x.right==null){
+					x.right = new Node();				
+				}
+				q.push(x.right);
+			} else {
+				if(x.mid==null){
+					x.mid = new Node();				
+				}
+				q.push(x.mid);
+				d++;
 			}
-			q.push(x.next[c]);
-			d++;
 		}
 		
 
