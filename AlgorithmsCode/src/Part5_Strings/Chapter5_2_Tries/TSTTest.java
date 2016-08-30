@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import Part5_Strings.Chapter5_2_Tries.TrieST.Node;
+import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.Stopwatch;
 
@@ -65,6 +67,29 @@ class TST<Value> {
 	}
 	
 	public void put(String key, Value val) {
+		if (root == null) {
+			root = new Node();
+		}
+		
+		int d = 0;
+		int len = key.length();
+		Stack<Node> q = new Stack<Node>();
+		Node x = root;
+		q.push(x);
+		while (!q.isEmpty()) {
+			x = q.pop();
+			if (d == len) {
+				x.val = val;
+				break;
+			}
+			char c = key.charAt(d);
+			if (x.next[c] == null) {
+				x.next[c] = new Node();
+			}
+			q.push(x.next[c]);
+			d++;
+		}
+		
 
 	}
 }
