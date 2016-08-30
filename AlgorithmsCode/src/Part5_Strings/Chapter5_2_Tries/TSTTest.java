@@ -64,7 +64,7 @@ class TST<Value> {
 		return null;
 	}
 	
-	public void put(){
-		
+	public void put(String key, Value val) {
+
 	}
 }
