@@ -4,10 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import Part5_Strings.Chapter5_2_Tries.TrieST.Node;
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.Stopwatch;
+import edu.princeton.cs.algs4.StdOut;
 
 public class TSTTest {
 	
@@ -21,11 +20,19 @@ public class TSTTest {
 			e.printStackTrace();
 		}
 		
-		TrieST<Integer> st = new TrieST<Integer>();
+		TST<Integer> st = new TST<Integer>();
         for (int i = 0; !StdIn.isEmpty(); i++) {
             String key = StdIn.readString();
             st.put(key, i);
         }		
+        
+        if (st.size() < 100) {
+            StdOut.println("keys(\"\"):");
+            for (String key : st.keys()) {
+                StdOut.println(key + " " + st.get(key));
+            }
+            StdOut.println();
+        }
 	}
 
 }
@@ -83,6 +90,10 @@ class TST<Value> {
 				break;
 			}
 			char c = key.charAt(d);
+			if (x == null) {
+				x = new Node();
+				x.c = c;
+			}
 			if (c < x.c) {
 				if(x.left==null){
 					x.left = new Node();				
