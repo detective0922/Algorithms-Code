@@ -87,10 +87,6 @@ class TST<Value> {
 		while (!q.isEmpty()) {
 			x = q.pop();
 			char c = key.charAt(d);
-			if (d == len - 1) {
-				x.val = val;
-				break;
-			}
 			if (c < x.c) {
 				if(x.left==null){
 					x.left = new Node();
@@ -103,13 +99,15 @@ class TST<Value> {
 					x.right.c = c;
 				}
 				q.push(x.right);
-			} else {
+			} else if(d < len -1 ){
 				if(x.mid==null){
 					x.mid = new Node();
 					x.mid.c = key.charAt(d + 1);
 				}
 				q.push(x.mid);
 				d++;
+			} else {
+				x.val = val;
 			}
 		}
 	}
