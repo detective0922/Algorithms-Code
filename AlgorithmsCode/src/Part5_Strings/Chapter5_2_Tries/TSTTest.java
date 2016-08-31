@@ -168,7 +168,7 @@ class TST<Value> {
 			prefix = tmpKeys.dequeue();
 			
 			if (x.val != null) {
-				keys.enqueue(prefix);
+				keys.enqueue(prefix + x.c);
 			}
 
 			if(x.left !=null){
