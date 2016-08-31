@@ -25,7 +25,12 @@ public class TSTTest {
         for (int i = 0; !StdIn.isEmpty(); i++) {
             String key = StdIn.readString();
             st.put(key, i);
-        }		
+        }	
+        
+        StdOut.println("keysWithPrefix(\"shor\"):");
+        for (String s : st.keysWithPrefix("shor"))
+            StdOut.println(s);
+        StdOut.println();
         
         if (st.size() < 100) {
             StdOut.println("keys(\"\"):");
@@ -144,7 +149,8 @@ class TST<Value> {
 		int prefixLen = prefix.length();
 		Node x = root;
 		
-		for (int d = 0; d < prefixLen; d++) {
+		int d = 0;
+		while (d < prefixLen) {
 			char c = prefix.charAt(d);
 			if (c < x.c) {
 				x = x.left;
@@ -152,6 +158,7 @@ class TST<Value> {
 				x = x.right;
 			} else {
 				x = x.mid;
+				d++;
 			}
 		}
 		
