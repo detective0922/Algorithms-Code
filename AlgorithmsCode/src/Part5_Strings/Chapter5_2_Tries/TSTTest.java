@@ -145,12 +145,42 @@ class TST<Value> {
 		return keysWithPrefix("");
 	}
 	
+	/*public Iterable<String> keysWithPrefix(String prefix) {
+        Queue<String> queue = new Queue<String>();
+        Node x = get(root, prefix, 0);
+        if (x == null) return queue;
+        if (x.val != null) queue.enqueue(prefix);
+        collect(x.mid, new StringBuilder(prefix), queue);
+        return queue;
+    }
+
+    // all keys in subtrie rooted at x with given prefix
+    private void collect(Node x, StringBuilder prefix, Queue<String> queue) {
+        if (x == null) return;
+        collect(x.left,  prefix, queue);
+        if (x.val != null) queue.enqueue(prefix.toString() + x.c);
+        collect(x.mid,   prefix.append(x.c), queue);
+        prefix.deleteCharAt(prefix.length() - 1);
+        collect(x.right, prefix, queue);
+    }
+    
+    private Node get(Node x, String key, int d) {
+        if (key == null) throw new NullPointerException();
+        if (key.length() == 0) throw new IllegalArgumentException("key must have length >= 1");
+        if (x == null) return null;
+        char c = key.charAt(d);
+        if      (c < x.c)              return get(x.left,  key, d);
+        else if (c > x.c)              return get(x.right, key, d);
+        else if (d < key.length() - 1) return get(x.mid,   key, d+1);
+        else                           return x;
+    }*/
+	
 	public Iterable<String> keysWithPrefix(String prefix){
 		int prefixLen = prefix.length();
 		Node x = root;
 		
 		int d = 0;
-		while (d < prefixLen - 1) {
+		while (d < prefixLen) {
 			char c = prefix.charAt(d);
 			if (c < x.c) {
 				x = x.left;
@@ -162,10 +192,13 @@ class TST<Value> {
 			}
 		}
 		
-		Queue<String> keys = new Queue<String>();
+		if (x.val != null) {
+			keys.enqueue(prefix);
+		}
+		
 		Queue<String> tmpKeys = new Queue<String>();
 		Queue<Node> q = new Queue<Node>();
-		q.enqueue(x);
+		q.enqueue(x.mid);
 		tmpKeys.enqueue(prefix);
 		
 		while (!q.isEmpty()) {
@@ -173,7 +206,7 @@ class TST<Value> {
 			prefix = tmpKeys.dequeue();
 			
 			if (x.val != null) {
-				keys.enqueue(prefix + x.c);
+				keys.enqueue(prefix);
 			}
 
 			if(x.left !=null){
