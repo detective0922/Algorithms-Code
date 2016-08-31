@@ -28,7 +28,7 @@ public class TSTTest {
         }	
         
         StdOut.println("keysWithPrefix(\"shor\"):");
-        for (String s : st.keysWithPrefix("she"))
+        for (String s : st.keysWithPrefix("sh"))
             StdOut.println(s);
         StdOut.println();
         
@@ -200,6 +200,7 @@ class TST<Value> {
 		Queue<String> tmpKeys = new Queue<String>();
 		Queue<Node> q = new Queue<Node>();
 		q.enqueue(x.mid);
+		prefix = prefix + x.mid.c;
 		tmpKeys.enqueue(prefix);
 		
 		while (!q.isEmpty()) {
