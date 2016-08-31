@@ -76,6 +76,7 @@ class TST<Value> {
 	public void put(String key, Value val) {
 		if (root == null) {
 			root = new Node();
+			root.c = key.charAt(0);
 		}
 		
 		int d = 0;
@@ -85,28 +86,27 @@ class TST<Value> {
 		q.push(x);
 		while (!q.isEmpty()) {
 			x = q.pop();
-			if (d == len) {
+			char c = key.charAt(d);
+			if (d == len - 1) {
 				x.val = val;
 				break;
 			}
-			char c = key.charAt(d);
-			if (x == null) {
-				x = new Node();
-				x.c = c;
-			}
 			if (c < x.c) {
 				if(x.left==null){
-					x.left = new Node();				
+					x.left = new Node();
+					x.left.c = key.charAt(d + 1);
 				}
 				q.push(x.left);
 			} else if (c > x.c) {
 				if(x.right==null){
-					x.right = new Node();				
+					x.right = new Node();
+					x.right.c = key.charAt(d + 1);
 				}
 				q.push(x.right);
 			} else {
 				if(x.mid==null){
-					x.mid = new Node();				
+					x.mid = new Node();
+					x.mid.c = key.charAt(d + 1);
 				}
 				q.push(x.mid);
 				d++;
