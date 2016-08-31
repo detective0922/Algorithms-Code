@@ -115,5 +115,74 @@ class TST<Value> {
 		}
 	}
 	
+	public int size(){
+		Queue<Node> q = new Queue<Node>();
+		q.enqueue(root);
+		Node x = null;
+		int size = 0;
+		while (!q.isEmpty()) {
+			x = q.dequeue();
+			if (x.val != null) {
+				size++;
+			}
+			for (char c = 0; c < R; c++) {
+				if (x.next[c] != null) {
+					q.enqueue(x.next[c]);
+				}
+			}
+		}
+
+		return size;
+	}
+	
+	public Iterable<String> keys(){
+		return keysWithPrefix("");
+	}
+	
+	public Iterable<String> keysWithPrefix(String prefix){
+		//int d = 0;
+		int prefixLen = prefix.length();
+		Node x = root;
+		/*while(d<=prefixLen){
+			char c = prefix.charAt(d);
+			x = x.next[c];
+			d++;
+		}*/
+		for (int d = 0; d < prefixLen; d++) {
+			char c = prefix.charAt(d);
+			x = x.next[c];
+		}
+		
+		Queue<String> keys = new Queue<String>();
+		Queue<String> tmpKeys = new Queue<String>();
+		Queue<Node> q = new Queue<Node>();
+		q.enqueue(x);
+		tmpKeys.enqueue(prefix);
+		/*Queue<String> keys = new Queue<String>();
+		Stack<String> tmpKeys = new Stack<String>();
+		Stack<Node> q = new Stack<Node>();
+		q.push(x);
+		tmpKeys.push(prefix);*/
+		while (!q.isEmpty()) {
+			x = q.dequeue();
+			prefix = tmpKeys.dequeue();
+			//x = q.pop();
+			//prefix = tmpKeys.pop();
+			if (x.val != null) {
+				keys.enqueue(prefix);
+				//keys.push(prefix);
+			}
+			for (char c = 0; c < R; c++) {
+				if (x.next[c] != null) {
+					tmpKeys.enqueue(prefix + c);
+					q.enqueue(x.next[c]);
+					//tmpKeys.push(prefix + c);
+					//q.push(x.next[c]);
+				}
+			}
+		}
+		return keys;
+	}
+	
 	
 }
