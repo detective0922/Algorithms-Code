@@ -200,7 +200,7 @@ class TST<Value> {
 		Queue<String> tmpKeys = new Queue<String>();
 		Queue<Node> q = new Queue<Node>();
 		q.enqueue(x.mid);
-		prefix = prefix + x.mid.c;
+		//prefix = prefix + x.mid.c;
 		tmpKeys.enqueue(prefix);
 		
 		while (!q.isEmpty()) {
@@ -208,7 +208,7 @@ class TST<Value> {
 			prefix = tmpKeys.dequeue();
 			
 			if (x.val != null) {
-				keys.enqueue(prefix);
+				keys.enqueue(prefix + x.c);
 			}
 
 			if(x.left !=null){
@@ -216,7 +216,7 @@ class TST<Value> {
 				q.enqueue(x.left);
 			}
 			if(x.mid !=null){
-				tmpKeys.enqueue(prefix + x.mid.c);
+				tmpKeys.enqueue(prefix + x.c);
 				q.enqueue(x.mid);
 			}
 			if(x.right !=null){
