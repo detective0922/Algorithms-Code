@@ -148,7 +148,13 @@ class TST<Value> {
 		
 		for (int d = 0; d < prefixLen; d++) {
 			char c = prefix.charAt(d);
-			x = x.next[c];
+			if (c < x.c) {
+				x = x.left;
+			} else if (c > x.c) {
+				x = x.right;
+			} else {
+				x = x.mid;
+			}
 		}
 		
 		Queue<String> keys = new Queue<String>();
