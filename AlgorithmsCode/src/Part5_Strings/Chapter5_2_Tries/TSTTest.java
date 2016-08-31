@@ -227,5 +227,9 @@ class TST<Value> {
 		return keys;
 	}
 	
+	public boolean contains(){
+		
+	}
+	
 	
 }
