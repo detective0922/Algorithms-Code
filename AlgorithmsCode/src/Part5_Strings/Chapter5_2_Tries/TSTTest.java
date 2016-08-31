@@ -170,11 +170,18 @@ class TST<Value> {
 			if (x.val != null) {
 				keys.enqueue(prefix);
 			}
-			for (char c = 0; c < R; c++) {
-				if (x.next[c] != null) {
-					tmpKeys.enqueue(prefix + c);
-					q.enqueue(x.next[c]);
-				}
+
+			if(x.left !=null){
+				tmpKeys.enqueue(prefix + x.left.c);
+				q.enqueue(x.left);
+			}
+			if(x.mid !=null){
+				tmpKeys.enqueue(prefix + x.mid.c);
+				q.enqueue(x.mid);
+			}
+			if(x.right !=null){
+				tmpKeys.enqueue(prefix + x.right.c);
+				q.enqueue(x.right);
 			}
 		}
 		return keys;
