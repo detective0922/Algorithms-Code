@@ -172,7 +172,7 @@ class TST<Value> {
 			}
 
 			if(x.left !=null){
-				tmpKeys.enqueue(prefix + x.left.c);
+				tmpKeys.enqueue(prefix);
 				q.enqueue(x.left);
 			}
 			if(x.mid !=null){
@@ -180,7 +180,7 @@ class TST<Value> {
 				q.enqueue(x.mid);
 			}
 			if(x.right !=null){
-				tmpKeys.enqueue(prefix + x.right.c);
+				tmpKeys.enqueue(prefix);
 				q.enqueue(x.right);
 			}
 		}
