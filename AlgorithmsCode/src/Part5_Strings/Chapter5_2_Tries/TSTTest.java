@@ -175,7 +175,8 @@ class TST<Value> {
         else                           return x;
     }*/
 	
-	public Iterable<String> keysWithPrefix(String prefix){
+	public Iterable<String> keysWithPrefix(String prefix){	
+		Queue<String> keys = new Queue<String>();
 		int prefixLen = prefix.length();
 		Node x = root;
 		
