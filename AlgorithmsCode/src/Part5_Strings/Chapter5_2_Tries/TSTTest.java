@@ -94,13 +94,13 @@ class TST<Value> {
 			if (c < x.c) {
 				if(x.left==null){
 					x.left = new Node();
-					x.left.c = key.charAt(d + 1);
+					x.left.c = c;
 				}
 				q.push(x.left);
 			} else if (c > x.c) {
 				if(x.right==null){
 					x.right = new Node();
-					x.right.c = key.charAt(d + 1);
+					x.right.c = c;
 				}
 				q.push(x.right);
 			} else {
