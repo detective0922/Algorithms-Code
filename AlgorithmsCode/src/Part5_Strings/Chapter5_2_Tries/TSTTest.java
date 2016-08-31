@@ -41,7 +41,6 @@ public class TSTTest {
 
 class TST<Value> {
 	private Node root;
-	private int R =1;
 
 	private class Node {
 		private char c;
@@ -125,11 +124,15 @@ class TST<Value> {
 			if (x.val != null) {
 				size++;
 			}
-			for (char c = 0; c < R; c++) {
-				if (x.next[c] != null) {
-					q.enqueue(x.next[c]);
-				}
+			if(x.left !=null){
+				q.enqueue(x.left);
 			}
+			if(x.mid !=null){
+				q.enqueue(x.mid);
+			}
+			if(x.right !=null){
+				q.enqueue(x.right);
+			}			
 		}
 
 		return size;
