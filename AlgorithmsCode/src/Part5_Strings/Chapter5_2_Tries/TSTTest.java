@@ -227,9 +227,11 @@ class TST<Value> {
 		return keys;
 	}
 	
-	public boolean contains(){
+	public boolean contains(String key){
 		
 	}
+	
+	
 	
 	
 }
