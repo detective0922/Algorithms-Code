@@ -8,6 +8,7 @@ import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.TST.Node;
 
 public class TSTTest {
 	
@@ -232,6 +233,10 @@ class TST<Value> {
 	}
 	
 	public Iterable<String> keysThatMatch(String pat) {
+        
+    }
+	
+	public String longestPrefixOf() {
         
     }
 	
