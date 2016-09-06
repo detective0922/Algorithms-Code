@@ -236,7 +236,7 @@ class TST<Value> {
         
     }
 	
-	public String longestPrefixOf() {
+	public String longestPrefixOf(String s) {
         
     }
 	
