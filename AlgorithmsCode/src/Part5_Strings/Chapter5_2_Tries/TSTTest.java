@@ -233,7 +233,7 @@ class TST<Value> {
 	}
 	
 	public Iterable<String> keysThatMatch(String pat) {
-        
+        return null;
     }
 	
 	public String longestPrefixOf(String s) {
