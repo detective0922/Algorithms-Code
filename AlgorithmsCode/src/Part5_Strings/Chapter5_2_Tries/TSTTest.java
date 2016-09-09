@@ -21,7 +21,7 @@ public class TSTTest {
 			e.printStackTrace();
 		}
 		
-		edu.princeton.cs.algs4.TST<Integer> st = new edu.princeton.cs.algs4.TST<Integer>();
+		TST<Integer> st = new TST<Integer>();
         for (int i = 0; !StdIn.isEmpty(); i++) {
             String key = StdIn.readString();
             st.put(key, i);
