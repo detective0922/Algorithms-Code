@@ -142,7 +142,8 @@ class TST<Value> {
 	}
 	
 	public Iterable<String> keys(){
-		return keysWithPrefix("");
+		//return keysWithPrefix("");
+		//TODO
 	}
 	
 	/*public Iterable<String> keysWithPrefix(String prefix) {
