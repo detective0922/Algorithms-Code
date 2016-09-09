@@ -145,7 +145,7 @@ class TST<Value> {
 		return keysWithPrefix("");
 	}
 	
-	public Iterable<String> keysWithPrefix(String prefix) {
+	/*public Iterable<String> keysWithPrefix(String prefix) {
         Queue<String> queue = new Queue<String>();
         Node x = get(root, prefix, 0);
         if (x == null) return queue;
@@ -173,9 +173,9 @@ class TST<Value> {
         else if (c > x.c)              return get(x.right, key, d);
         else if (d < key.length() - 1) return get(x.mid,   key, d+1);
         else                           return x;
-    }
+    }*/
 	
-	/*public Iterable<String> keysWithPrefix(String prefix){	
+	public Iterable<String> keysWithPrefix(String prefix){	
 		Queue<String> keys = new Queue<String>();
 		int prefixLen = prefix.length();
 		Node x = root;
@@ -225,7 +225,7 @@ class TST<Value> {
 			}
 		}
 		return keys;
-	}*/
+	}
 	
 	public boolean contains(String key){
 		return get(key) != null;
