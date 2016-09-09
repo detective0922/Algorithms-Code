@@ -8,7 +8,6 @@ import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
-import edu.princeton.cs.algs4.TST.Node;
 
 public class TSTTest {
 	
@@ -22,7 +21,7 @@ public class TSTTest {
 			e.printStackTrace();
 		}
 		
-		TST<Integer> st = new TST<Integer>();
+		edu.princeton.cs.algs4.TST<Integer> st = new edu.princeton.cs.algs4.TST<Integer>();
         for (int i = 0; !StdIn.isEmpty(); i++) {
             String key = StdIn.readString();
             st.put(key, i);
