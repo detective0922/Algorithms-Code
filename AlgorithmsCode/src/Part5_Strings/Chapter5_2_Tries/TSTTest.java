@@ -145,10 +145,10 @@ class TST<Value> {
 		//return keysWithPrefix("");
 		//TODO
 		Queue<String> keys = new Queue<String>();
-		int prefixLen = prefix.length();
+		String prefix = "";
 		Node x = root;
 		
-		int d = 0;
+		/*int d = 0;
 		while (d < prefixLen - 1) {
 			char c = prefix.charAt(d);
 			if (c < x.c) {
@@ -159,7 +159,7 @@ class TST<Value> {
 				x = x.mid;
 				d++;
 			}
-		}
+		}*/
 		
 		if (x.val != null) {
 			keys.enqueue(prefix);
