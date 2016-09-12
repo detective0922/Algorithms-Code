@@ -148,19 +148,6 @@ class TST<Value> {
 		String prefix = "";
 		Node x = root;
 		
-		/*int d = 0;
-		while (d < prefixLen - 1) {
-			char c = prefix.charAt(d);
-			if (c < x.c) {
-				x = x.left;
-			} else if (c > x.c) {
-				x = x.right;
-			} else {
-				x = x.mid;
-				d++;
-			}
-		}*/
-		
 		if (x.val != null) {
 			keys.enqueue(prefix);
 		}
