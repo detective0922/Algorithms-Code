@@ -61,7 +61,7 @@ class TST<Value> {
 			if (x == null) {
 				return null;
 			}
-			if (d == len) {
+			if (d == len - 1) {
 				return (Value) x.val;
 			}
 			char c = key.charAt(d);
