@@ -61,18 +61,20 @@ class TST<Value> {
 			if (x == null) {
 				return null;
 			}
-			if (d == len - 1) {
+			/*if (d == len - 1) {
 				return (Value) x.val;
-			}
+			}*/
 			char c = key.charAt(d);
 			//x = x.next[c];
 			if (c < x.c) {
 				x = x.left;
 			} else if (c > x.c) {
 				x = x.right;
-			} else {
+			} else if (d < len - 1) {
 				x = x.mid;
 				d++;
+			} else {
+				return (Value) x.val;
 			}
 		}
 		return null;
