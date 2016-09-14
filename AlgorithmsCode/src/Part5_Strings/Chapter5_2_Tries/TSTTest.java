@@ -271,7 +271,55 @@ class TST<Value> {
 	}
 	
 	public Iterable<String> keysThatMatch(String pat) {
-        return null;
+		Queue<String> keys = new Queue<String>();
+		int prefixLen = prefix.length();
+		Node x = root;
+		
+		int d = 0;
+		while (d < prefixLen - 1) {
+			char c = prefix.charAt(d);
+			if (c < x.c) {
+				x = x.left;
+			} else if (c > x.c) {
+				x = x.right;
+			} else {
+				x = x.mid;
+				d++;
+			}
+		}
+		
+		if (x.val != null) {
+			keys.enqueue(prefix);
+		}
+		
+		Queue<String> tmpKeys = new Queue<String>();
+		Queue<Node> q = new Queue<Node>();
+		q.enqueue(x.mid);
+		//prefix = prefix + x.mid.c;
+		tmpKeys.enqueue(prefix);
+		
+		while (!q.isEmpty()) {
+			x = q.dequeue();
+			prefix = tmpKeys.dequeue();
+			
+			if (x.val != null) {
+				keys.enqueue(prefix + x.c);
+			}
+
+			if(x.left !=null){
+				tmpKeys.enqueue(prefix);
+				q.enqueue(x.left);
+			}
+			if(x.mid !=null){
+				tmpKeys.enqueue(prefix + x.c);
+				q.enqueue(x.mid);
+			}
+			if(x.right !=null){
+				tmpKeys.enqueue(prefix);
+				q.enqueue(x.right);
+			}
+		}
+		return keys;
     }
 	
 	public String longestPrefixOf(String s) {
