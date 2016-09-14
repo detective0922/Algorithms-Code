@@ -272,7 +272,7 @@ class TST<Value> {
 	
 	public Iterable<String> keysThatMatch(String pat) {
 		Queue<String> keys = new Queue<String>();
-		int prefixLen = prefix.length();
+		int prefixLen = pat.length();
 		Node x = root;
 		
 		int d = 0;
