@@ -289,7 +289,7 @@ class TST<Value> {
 		}
 		
 		if (x.val != null) {
-			keys.enqueue(prefix);
+			keys.enqueue(pat);
 		}
 		
 		Queue<String> tmpKeys = new Queue<String>();
