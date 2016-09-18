@@ -300,10 +300,10 @@ class TST<Value> {
 		
 		while (!q.isEmpty()) {
 			x = q.dequeue();
-			prefix = tmpKeys.dequeue();
+			pat = tmpKeys.dequeue();
 			
 			if (x.val != null) {
-				keys.enqueue(prefix + x.c);
+				keys.enqueue(pat + x.c);
 			}
 
 			if(x.left !=null){
