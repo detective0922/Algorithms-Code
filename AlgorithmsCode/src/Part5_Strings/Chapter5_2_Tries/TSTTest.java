@@ -307,11 +307,11 @@ class TST<Value> {
 			}
 
 			if(x.left !=null){
-				tmpKeys.enqueue(prefix);
+				tmpKeys.enqueue(pat);
 				q.enqueue(x.left);
 			}
 			if(x.mid !=null){
-				tmpKeys.enqueue(prefix + x.c);
+				tmpKeys.enqueue(pat + x.c);
 				q.enqueue(x.mid);
 			}
 			if(x.right !=null){
