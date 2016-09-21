@@ -323,7 +323,55 @@ class TST<Value> {
     }
 	
 	public String longestPrefixOf(String s) {
-        return null;
+		Queue<String> keys = new Queue<String>();
+		int prefixLen = pat.length();
+		Node x = root;
+		
+		int d = 0;
+		while (d < prefixLen - 1) {
+			char c = pat.charAt(d);
+			if (c < x.c) {
+				x = x.left;
+			} else if (c > x.c) {
+				x = x.right;
+			} else {
+				x = x.mid;
+				d++;
+			}
+		}
+		
+		if (x.val != null) {
+			keys.enqueue(pat);
+		}
+		
+		Queue<String> tmpKeys = new Queue<String>();
+		Queue<Node> q = new Queue<Node>();
+		q.enqueue(x.mid);
+		//prefix = prefix + x.mid.c;
+		tmpKeys.enqueue(pat);
+		
+		while (!q.isEmpty()) {
+			x = q.dequeue();
+			pat = tmpKeys.dequeue();
+			
+			if (x.val != null) {
+				keys.enqueue(pat + x.c);
+			}
+
+			if(x.left !=null){
+				tmpKeys.enqueue(pat);
+				q.enqueue(x.left);
+			}
+			if(x.mid !=null){
+				tmpKeys.enqueue(pat + x.c);
+				q.enqueue(x.mid);
+			}
+			if(x.right !=null){
+				tmpKeys.enqueue(pat);
+				q.enqueue(x.right);
+			}
+		}
+		return keys;
     }
 	
 	
