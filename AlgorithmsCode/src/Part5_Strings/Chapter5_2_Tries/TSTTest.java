@@ -324,7 +324,7 @@ class TST<Value> {
 	
 	public String longestPrefixOf(String s) {
 		Queue<String> keys = new Queue<String>();
-		int prefixLen = pat.length();
+		int prefixLen = s.length();
 		Node x = root;
 		
 		int d = 0;
