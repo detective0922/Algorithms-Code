@@ -341,7 +341,7 @@ class TST<Value> {
 		}
 		
 		if (x.val != null) {
-			keys.enqueue(pat);
+			keys.enqueue(s);
 		}
 		
 		Queue<String> tmpKeys = new Queue<String>();
