@@ -329,7 +329,7 @@ class TST<Value> {
 		
 		int d = 0;
 		while (d < prefixLen - 1) {
-			char c = pat.charAt(d);
+			char c = s.charAt(d);
 			if (c < x.c) {
 				x = x.left;
 			} else if (c > x.c) {
