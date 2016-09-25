@@ -352,7 +352,7 @@ class TST<Value> {
 		
 		while (!q.isEmpty()) {
 			x = q.dequeue();
-			pat = tmpKeys.dequeue();
+			s = tmpKeys.dequeue();
 			
 			if (x.val != null) {
 				keys.enqueue(pat + x.c);
