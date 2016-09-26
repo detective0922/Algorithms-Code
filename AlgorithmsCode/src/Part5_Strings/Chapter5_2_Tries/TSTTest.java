@@ -355,7 +355,7 @@ class TST<Value> {
 			s = tmpKeys.dequeue();
 			
 			if (x.val != null) {
-				keys.enqueue(pat + x.c);
+				keys.enqueue(s + x.c);
 			}
 
 			if(x.left !=null){
