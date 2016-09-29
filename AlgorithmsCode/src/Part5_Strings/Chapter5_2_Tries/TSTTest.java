@@ -363,7 +363,7 @@ class TST<Value> {
 				q.enqueue(x.left);
 			}
 			if(x.mid !=null){
-				tmpKeys.enqueue(pat + x.c);
+				tmpKeys.enqueue(s + x.c);
 				q.enqueue(x.mid);
 			}
 			if(x.right !=null){
