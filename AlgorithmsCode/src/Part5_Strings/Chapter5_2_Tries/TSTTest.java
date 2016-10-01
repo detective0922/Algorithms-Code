@@ -371,7 +371,7 @@ class TST<Value> {
 				q.enqueue(x.right);
 			}
 		}
-		return keys;
+		return keys.dequeue();
     }
 	
 	
