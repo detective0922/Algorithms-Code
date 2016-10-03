@@ -380,6 +380,9 @@ class TST<Value> {
 			}
 		}
 		return keys.dequeue();*/
+		Iterable<String> keys = keysThatMatch(s);
+		int max = 0;
+		
     }
 	
 	
