@@ -383,7 +383,12 @@ class TST<Value> {
 		Iterable<String> keys = keysThatMatch(s);
 		int max = 0;
 		String longest = null;
-		
+		for(String key: keys){
+			if(key.length()>max){
+				max = key.length();
+				longest = key;
+			}
+		}
     }
 	
 	
