@@ -389,6 +389,7 @@ class TST<Value> {
 				longest = key;
 			}
 		}
+		return longest;
     }
 	
 	
