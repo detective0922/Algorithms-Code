@@ -43,6 +43,10 @@ public class TSTTest {
         StdOut.println("keysThatMatch(\".he.l.\"):");
         for (String s : st.keysThatMatch("s...."))
             StdOut.println(s);
+        
+        StdOut.println("longestPrefixOf(\"quicksort\"):");
+        StdOut.println(st.longestPrefixOf("quicksort"));
+        StdOut.println();
 	}
 
 }
