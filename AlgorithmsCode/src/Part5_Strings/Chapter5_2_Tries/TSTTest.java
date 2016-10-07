@@ -39,6 +39,10 @@ public class TSTTest {
             }
             StdOut.println();
         }
+        
+        StdOut.println("keysThatMatch(\".he.l.\"):");
+        for (String s : st.keysThatMatch("s...."))
+            StdOut.println(s);
 	}
 
 }
