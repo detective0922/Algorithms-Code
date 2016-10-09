@@ -333,9 +333,6 @@ class TST<Value> {
 	public String longestPrefixOf(String s) {
 		/*
 		
-		if (x.val != null) {
-			keys.enqueue(s);
-		}
 		
 		Queue<String> tmpKeys = new Queue<String>();
 		Queue<Node> q = new Queue<Node>();
