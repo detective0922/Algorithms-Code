@@ -197,8 +197,7 @@ class TST<Value> {
         Node x = get(root, prefix, 0);
         if (x == null) return queue;
         if (x.val != null) queue.enqueue(prefix);
-        collect(x.mid, new StringBuilder(prefix), queue);
-        return queue;
+        
     }
 
     // all keys in subtrie rooted at x with given prefix
