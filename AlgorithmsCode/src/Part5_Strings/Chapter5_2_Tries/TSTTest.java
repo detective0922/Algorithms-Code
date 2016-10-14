@@ -192,10 +192,7 @@ class TST<Value> {
 		return keys;
 	}
 	
-	/*public Iterable<String> keysWithPrefix(String prefix) {
-        
-               
-    }
+	/*
 
     // all keys in subtrie rooted at x with given prefix
     private void collect(Node x, StringBuilder prefix, Queue<String> queue) {
