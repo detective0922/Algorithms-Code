@@ -200,8 +200,7 @@ class TST<Value> {
         collect(x.left,  prefix, queue);
         if (x.val != null) queue.enqueue(prefix.toString() + x.c);
         collect(x.mid,   prefix.append(x.c), queue);
-        prefix.deleteCharAt(prefix.length() - 1);
-        collect(x.right, prefix, queue);
+        
     }
     
     private Node get(Node x, String key, int d) {
