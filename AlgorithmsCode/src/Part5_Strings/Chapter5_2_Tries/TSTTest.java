@@ -198,7 +198,6 @@ class TST<Value> {
     private void collect(Node x, StringBuilder prefix, Queue<String> queue) {
         if (x == null) return;
         collect(x.left,  prefix, queue);
-        if (x.val != null) queue.enqueue(prefix.toString() + x.c);
         
     }
     
