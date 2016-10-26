@@ -198,7 +198,7 @@ class TST<Value> {
         
     
     
-    private Node get(Node x, String key, int d) {
+    
         if (key == null) throw new NullPointerException();
         if (key.length() == 0) throw new IllegalArgumentException("key must have length >= 1");
         if (x == null) return null;
