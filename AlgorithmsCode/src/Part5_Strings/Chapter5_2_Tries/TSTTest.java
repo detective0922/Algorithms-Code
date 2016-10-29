@@ -199,7 +199,7 @@ class TST<Value> {
     
     
     
-       NullPointerException();
+       
         if (key.length() == 0) throw new IllegalArgumentException("key must have length >= 1");
         if (x == null) return null;
         char c = key.charAt(d);
