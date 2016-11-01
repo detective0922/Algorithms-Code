@@ -200,7 +200,7 @@ class TST<Value> {
     
     
        
-         new IllegalArgumentException("key must have length >= 1");
+        IllegalArgumentException("key must have length >= 1");
         if (x == null) return null;
         char c = key.charAt(d);
         if      (c < x.c)              return get(x.left,  key, d);
