@@ -200,8 +200,7 @@ class TST<Value> {
     
     
        
-        
-        char c = key.charAt(d);
+       c = key.charAt(d);
         if      (c < x.c)              return get(x.left,  key, d);
         else if (c > x.c)              return get(x.right, key, d);
         
