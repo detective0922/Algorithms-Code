@@ -44,8 +44,9 @@ public class TSTTest {
         for (String s : st.keysThatMatch("s...."))
             StdOut.println(s);
         
-        StdOut.println("longestPrefixOf(\"quicksort\"):");
-        StdOut.println(st.longestPrefixOf("quicksort"));
+        StdOut.println();
+        StdOut.println("longestPrefixOf(\"sh\"):");
+        StdOut.println(st.longestPrefixOf("sh"));
         StdOut.println();
 	}
 
@@ -395,7 +396,8 @@ class TST<Value> {
 			}
 		}
 		return keys.dequeue();*/
-		Iterable<String> keys = keysThatMatch(s);
+		//Iterable<String> keys = keysThatMatch(s);
+		Iterable<String> keys = keysWithPrefix(s);
 		int max = 0;
 		String longest = null;
 		for(String key: keys){
