@@ -8,7 +8,6 @@ import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
-import edu.princeton.cs.algs4.TST.Node;
 
 public class TSTTest {
 	
@@ -299,7 +298,7 @@ class TST<Value> {
         collect(x.right, prefix, queue);
     }
 	
-	private void collect(Node<Value> x, StringBuilder prefix, int i, String pattern, Queue<String> queue) {
+	private void collect(Node x, StringBuilder prefix, int i, String pattern, Queue<String> queue) {
         if (x == null) return;
         char c = pattern.charAt(i);
         if (c == '.' || c < x.c) collect(x.left, prefix, i, pattern, queue);
