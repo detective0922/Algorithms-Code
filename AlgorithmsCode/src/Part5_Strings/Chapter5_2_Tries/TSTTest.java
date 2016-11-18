@@ -8,6 +8,7 @@ import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.TST.Node;
 
 public class TSTTest {
 	
@@ -27,7 +28,7 @@ public class TSTTest {
             st.put(key, i);
         }	
         
-        StdOut.println("keysWithPrefix(\"shor\"):");
+        StdOut.println("keysWithPrefix(\"sh\"):");
         for (String s : st.keysWithPrefix("sh"))
             StdOut.println(s);
         StdOut.println();
@@ -40,7 +41,7 @@ public class TSTTest {
             StdOut.println();
         }
         
-        StdOut.println("keysThatMatch(\".he.l.\"):");
+        StdOut.println("keysThatMatch(\"s....\"):");
         for (String s : st.keysThatMatch("s...."))
             StdOut.println(s);
         
@@ -226,15 +227,6 @@ class TST<Value> {
         else if (d < key.length() - 1) return get(x.mid,   key, d+1);
         else                           return x;
     }
-
-    private void collect(Node x, StringBuilder prefix, Queue<String> queue) {
-        if (x == null) return;
-        collect(x.left,  prefix, queue);
-        if (x.val != null) queue.enqueue(prefix.toString() + x.c);
-        collect(x.mid,   prefix.append(x.c), queue);
-        prefix.deleteCharAt(prefix.length() - 1);
-        collect(x.right, prefix, queue);
-    }
 	
 	/*public Iterable<String> keysWithPrefix(String prefix){	
 		Queue<String> keys = new Queue<String>();
@@ -292,7 +284,36 @@ class TST<Value> {
 		return get(key) != null;
 	}
 	
-	public Iterable<String> keysThatMatch(String pat) {
+	public Iterable<String> keysThatMatch(String pattern) {
+        Queue<String> queue = new Queue<String>();
+        collect(root, new StringBuilder(), 0, pattern, queue);
+        return queue;
+    }
+	
+	private void collect(Node x, StringBuilder prefix, Queue<String> queue) {
+        if (x == null) return;
+        collect(x.left,  prefix, queue);
+        if (x.val != null) queue.enqueue(prefix.toString() + x.c);
+        collect(x.mid,   prefix.append(x.c), queue);
+        prefix.deleteCharAt(prefix.length() - 1);
+        collect(x.right, prefix, queue);
+    }
+	
+	private void collect(Node<Value> x, StringBuilder prefix, int i, String pattern, Queue<String> queue) {
+        if (x == null) return;
+        char c = pattern.charAt(i);
+        if (c == '.' || c < x.c) collect(x.left, prefix, i, pattern, queue);
+        if (c == '.' || c == x.c) {
+            if (i == pattern.length() - 1 && x.val != null) queue.enqueue(prefix.toString() + x.c);
+            if (i < pattern.length() - 1) {
+                collect(x.mid, prefix.append(x.c), i+1, pattern, queue);
+                prefix.deleteCharAt(prefix.length() - 1);
+            }
+        }
+        if (c == '.' || c > x.c) collect(x.right, prefix, i, pattern, queue);
+    }
+	
+	/*public Iterable<String> keysThatMatch(String pat) {
 		Queue<String> keys = new Queue<String>();
 		int prefixLen = pat.length();
 		Node x = root;
@@ -342,7 +363,7 @@ class TST<Value> {
 			}
 		}
 		return keys;
-    }
+    }*/
 	
 	public String longestPrefixOf(String s) {
 		/*
