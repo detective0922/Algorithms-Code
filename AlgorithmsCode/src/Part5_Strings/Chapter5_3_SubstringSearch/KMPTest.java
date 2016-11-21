@@ -2,7 +2,7 @@ package Part5_Strings.Chapter5_3_SubstringSearch;
 
 import edu.princeton.cs.algs4.StdOut;
 
-public class KMP {
+public class KMPTest {
 	
 	public static void main(String[] args) {
 		
@@ -17,6 +17,11 @@ public class KMP {
 		}
 		StdOut.println(pat);	
 	}
+	
+}
+
+
+class KMP{
 	
 	public KMP(String pat) {
 
