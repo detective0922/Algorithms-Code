@@ -233,7 +233,7 @@ class TST<Value> {
 		
 
 
-		;
+
 		x.mid.c;
 		tmpKeys.enqueue(prefix);
 		
