@@ -53,11 +53,11 @@ class KMP{
 		for (; i < N & j < M; i++) {
 			j = dfa[pat.charAt(i)][j];
 		}
-		
-		if (j == M) {
-			return i-M;
-		} else {
 
+		if (j == M) {
+			return i - M;
+		} else {
+			return N;
 		}
 	}
 
