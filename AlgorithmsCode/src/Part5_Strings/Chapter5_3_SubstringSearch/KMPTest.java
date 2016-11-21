@@ -52,7 +52,7 @@ class KMP{
 		int j = 0;
 		int i = 0;
 		for (; i < N & j < M; i++) {
-			j = dfa[pat.charAt(i)][j];
+			j = dfa[txt.charAt(i)][j];
 		}
 
 		if (j == M) {
