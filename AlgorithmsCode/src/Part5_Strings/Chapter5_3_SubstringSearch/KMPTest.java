@@ -7,12 +7,12 @@ public class KMPTest {
 	
 	public static void main(String[] args) {
 		
-		String txt = "";
-		String pat = "";
+		String txt = "AABRAACADABRAACAADABRA";
+		String pat = "AACAA";
 		KMP kmp = new KMP(pat);
 		int offset = kmp.search(txt);
 		StdOut.println("text:     " + txt);
-		StdOut.println("pattern:  " + txt);
+		StdOut.println("pattern:  ");
 		for(int i = 0;i<offset;i++){
 			StdOut.print(" ");
 		}
