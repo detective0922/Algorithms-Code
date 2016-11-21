@@ -38,7 +38,7 @@ class KMP{
 		int X = 0;
 		for (int j = 1; j < M; j++) {
 			for (char c = 0; c < R; c++) {
-				dfa[c][j] = dfa[X][j];
+				dfa[c][j] = dfa[c][X];
 			}
 			dfa[pat.charAt(j)][j] = j + 1;
 			X = dfa[pat.charAt(j)][X];
