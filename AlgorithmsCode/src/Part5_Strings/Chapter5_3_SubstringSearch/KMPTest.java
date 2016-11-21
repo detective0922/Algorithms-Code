@@ -12,11 +12,12 @@ public class KMPTest {
 		KMP kmp = new KMP(pat);
 		int offset = kmp.search(txt);
 		StdOut.println("text:     " + txt);
-		StdOut.println("pattern:  ");
+		StdOut.print("pattern:  ");
 		for(int i = 0;i<offset;i++){
 			StdOut.print(" ");
 		}
 		StdOut.println(pat);	
+		StdOut.println(offset);
 	}
 	
 }
