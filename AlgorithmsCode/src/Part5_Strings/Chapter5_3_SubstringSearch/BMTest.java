@@ -41,7 +41,7 @@ class BoyerMoore{
 	public int search(String txt) {
 		int M = pat.length();
 		int N = txt.length();
-		int i = 0;
+		/*int i = 0;
 		int j = M-1;
 		for (; i < N - M && j > 0; i++) {
 			if (txt.charAt(i + j) == pat.charAt(j)) {
@@ -55,6 +55,10 @@ class BoyerMoore{
 					i++;
 				}
 			}
+		}*/
+		
+		for(int i = 0,skip = 0;i<N-M; i+=skip){
+			
 		}
 		
 		if(j == 0) {
