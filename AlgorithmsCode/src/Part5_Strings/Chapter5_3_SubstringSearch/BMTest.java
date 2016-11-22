@@ -49,7 +49,7 @@ class BoyerMoore{
 			} else if (right[txt.charAt(i + j)] == -1) {
 				i += M;
 			} else {
-				if (j - right[txt.charAt(i + j)] >= 0) {
+				if (j - right[txt.charAt(i + j)] > 0) {
 					i += j - right[txt.charAt(i + j)];
 				} else {
 					i++;
