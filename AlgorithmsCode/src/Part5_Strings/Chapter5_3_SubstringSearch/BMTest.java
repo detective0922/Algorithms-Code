@@ -43,14 +43,14 @@ class BoyerMoore{
 		int N = txt.length();
 		int i = 0;
 		int j = M-1;
-		for (; i < N && j < M; i++) {
+		for (; i < N - M && j > 0; i++) {
 			if (txt.charAt(i + j) == pat.charAt(j)) {
 				j--;
-			} else if (right[txt.charAt(i+j)] == -1){
+			} else if (right[txt.charAt(i + j)] == -1) {
 				i += M;
 			} else {
-				if(j-right[txt.charAt(i+j)]>=0){
-					i += j-right[txt.charAt(i+j)];
+				if (j - right[txt.charAt(i + j)] >= 0) {
+					i += j - right[txt.charAt(i + j)];
 				} else {
 					i++;
 				}
