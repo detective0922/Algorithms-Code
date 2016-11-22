@@ -61,12 +61,12 @@ class BoyerMoore{
 					}
 					break;
 				}*/
-				if(j==0){
+				if (j == 0) {
 					return i;
 				}
 				if (txt.charAt(i + j) != pat.charAt(j)) {
 					skip = j - right[txt.charAt(i + j)];
-					if (skip <= 0) {
+					if (skip < 1) {
 						skip = 1;
 					}
 					break;
