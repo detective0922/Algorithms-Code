@@ -21,4 +21,11 @@ public class BMTest {
 
 class BoyerMoore{
 	
+	public BoyerMoore(String pat){
+		
+	}
+	
+	public int search(String txt) {
+		
+	}
 }
