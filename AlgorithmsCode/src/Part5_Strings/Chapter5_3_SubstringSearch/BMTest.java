@@ -58,8 +58,8 @@ class BoyerMoore{
 		}*/
 		
 		for (int i = 0, skip = 0; i < N - M; i += skip) {
-			int j;
-			for (j = M - 1; j >= 0; j--) {
+			skip = 0;
+			for (int j = M - 1; j >= 0; j--) {
 				/*if (txt.charAt(i + j) == pat.charAt(j)) {
 					continue;
 				} else if (right[txt.charAt(i + j)] == -1) {
@@ -81,7 +81,7 @@ class BoyerMoore{
 					break;
 				}
 			}
-			if (j == 0) {
+			if (skip == 0) {
 				return i;
 			}
 
