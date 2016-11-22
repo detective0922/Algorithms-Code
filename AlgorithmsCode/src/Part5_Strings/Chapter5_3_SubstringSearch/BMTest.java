@@ -6,8 +6,8 @@ public class BMTest {
 	public static void main(String[] args) {
 		String txt = "AABRAACADABRAACAADABRA";
 		String pat = "AACAA";
-		KMP kmp = new KMP(pat);
-		int offset = kmp.search(txt);
+		BoyerMoore bm = new BoyerMoore(pat);
+		int offset = bm.search(txt);
 		StdOut.println("text:     " + txt);
 		StdOut.print("pattern:  ");
 		for (int i = 0; i < offset; i++) {
