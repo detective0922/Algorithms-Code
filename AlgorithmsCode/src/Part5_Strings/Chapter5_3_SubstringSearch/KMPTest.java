@@ -1,7 +1,6 @@
 package Part5_Strings.Chapter5_3_SubstringSearch;
 
 import edu.princeton.cs.algs4.StdOut;
-import sun.tools.jar.resources.jar;
 
 public class KMPTest {
 	
