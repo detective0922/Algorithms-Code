@@ -57,15 +57,30 @@ class BoyerMoore{
 			}
 		}*/
 		
-		for(int i = 0,skip = 0;i<N-M; i+=skip){
-			
+		for (int i = 0, skip = 0; i < N - M; i += skip) {
+			int j;
+			for (j = M - 1; j >= 0; j--) {
+				if (txt.charAt(i + j) == pat.charAt(j)) {
+					continue;
+				} else if (right[txt.charAt(i + j)] == -1) {
+					skip = M;
+					break;
+				} else {
+					if (j - right[txt.charAt(i + j)] > 0) {
+						skip = j - right[txt.charAt(i + j)];
+					} else {
+						skip = 1;
+					}
+					break;
+				}
+			}
+			if (j==0) {
+				return i;
+			}
+
 		}
 		
-		if(j == 0) {
-			return i;
-		} else {
-			return N;
-		}
+		return N;
 		
 	}
 }
