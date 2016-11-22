@@ -20,12 +20,27 @@ public class BMTest {
 }
 
 class BoyerMoore{
+	private int[] right;
+	private String pat;
 	
 	public BoyerMoore(String pat){
+		this.pat = pat;
+		int R = 256;
+		int M = pat.length();
 		
+		right = new int[R];
+		for (char c = 0; c < R; c++) {
+			right[c] = -1;
+		}
+
+		for (int i = 0; i < M; i++) {
+			right[pat.charAt(i)] = i;
+		}
 	}
 	
 	public int search(String txt) {
+		
+		
 		
 	}
 }
