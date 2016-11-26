@@ -203,7 +203,7 @@ class TST<Value> {
        
       
        
-        else if (c > x.c)              return get(x.right, key, d);
+        if (c > x.c)              return get(x.right, key, d);
         
        
     }*/
