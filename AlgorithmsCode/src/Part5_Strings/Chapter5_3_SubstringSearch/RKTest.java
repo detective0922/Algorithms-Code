@@ -29,14 +29,16 @@ class RabinKarp{
 	private int R = 256;
 	private long Q;
 	private long RM;
+	private int M;
 	
 	public RabinKarp(String pat) {
 		this.pat = pat;
+		this.M = pat.length();
 
-		for (int i = 0; i < pat.length(); i++) {
+		for (int i = 0; i < M; i++) {
 			RM = (R * RM) % Q;
 		}
-		patHash = hash(pat, pat.length() - 1);
+		patHash = hash(pat, M - 1);
 
 	}
 	
@@ -47,13 +49,6 @@ class RabinKarp{
 		}
 		return h;
 	}
-	
-	private boolean check(String txt, int i) {
-        for (int j = 0; j < M; j++) 
-            if (pat.charAt(j) != txt.charAt(i + j)) 
-                return false; 
-        return true;
-    }
 	
 	public int search(String txt) {
 		
