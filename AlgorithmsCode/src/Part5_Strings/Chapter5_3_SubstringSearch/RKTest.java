@@ -48,8 +48,15 @@ class RabinKarp{
 		return h;
 	}
 	
+	private boolean check(String txt, int i) {
+        for (int j = 0; j < M; j++) 
+            if (pat.charAt(j) != txt.charAt(i + j)) 
+                return false; 
+        return true;
+    }
+	
 	public int search(String txt) {
-
+		
 	}
 	
 	
