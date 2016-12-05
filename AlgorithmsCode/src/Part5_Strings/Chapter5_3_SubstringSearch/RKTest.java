@@ -28,11 +28,16 @@ class RabinKarp{
 	private long patHash;
 	private int R = 256;
 	private long Q;
+	private long RM;
 	
-	public RabinKarp(String pat){
+	public RabinKarp(String pat) {
 		this.pat = pat;
-		
-		
+
+		for (int i = 0; i < pat.length(); i++) {
+			RM = (R * RM) % Q;
+		}
+		patHash = hash(pat, pat.length() - 1);
+
 	}
 	
 	private long hash(String key, int M) {
@@ -41,6 +46,10 @@ class RabinKarp{
 			h = (R * h + key.charAt(i)) % Q;
 		}
 		return h;
+	}
+	
+	public int search(String txt) {
+
 	}
 	
 	
