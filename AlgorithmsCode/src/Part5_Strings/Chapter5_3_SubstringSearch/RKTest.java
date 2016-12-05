@@ -58,7 +58,7 @@ class RabinKarp{
 	}
 	
 	public int search(String txt) {
-		
+		long txtHash = hash(txt, M);
 	}
 	
 	
