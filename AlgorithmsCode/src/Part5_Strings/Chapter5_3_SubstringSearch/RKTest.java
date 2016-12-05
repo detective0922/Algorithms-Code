@@ -58,6 +58,8 @@ class RabinKarp{
 	}
 	
 	public int search(String txt) {
+		int N = txt.length();
+		
 		long txtHash = hash(txt, M);
 		
 		if (txtHash == patHash && check(txt, 0)) {
