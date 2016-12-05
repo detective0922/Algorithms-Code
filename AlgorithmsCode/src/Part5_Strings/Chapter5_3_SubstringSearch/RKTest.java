@@ -60,6 +60,9 @@ class RabinKarp{
 	public int search(String txt) {
 		long txtHash = hash(txt, M);
 		
+		if (txtHash == patHash && check(txt, 0)) {
+			return 0;
+		}
 	}
 	
 	
