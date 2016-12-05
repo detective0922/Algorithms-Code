@@ -63,6 +63,8 @@ class RabinKarp{
 		if (txtHash == patHash && check(txt, 0)) {
 			return 0;
 		}
+		
+		return N;
 	}
 	
 	
