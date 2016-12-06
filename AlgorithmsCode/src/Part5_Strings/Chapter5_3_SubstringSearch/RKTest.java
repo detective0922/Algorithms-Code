@@ -54,19 +54,16 @@ class RabinKarp{
 		return h;
 	}
 	
-	private boolean check(String txt, int i) {
-		for (int j = 0; j < M; j++)
-			if (pat.charAt(j) != txt.charAt(i + j))
-				return false;
-		return true;
-	}
+	private boolean check(int i) {
+        return true;
+    }
 	
 	public int search(String txt) {
 		int N = txt.length();
 		
 		long txtHash = hash(txt, M);
 		
-		if (txtHash == patHash && check(txt, 0)) {
+		if (txtHash == patHash && check(0)) {
 			return 0;
 		}
 		
@@ -75,7 +72,7 @@ class RabinKarp{
 			txtHash = (txtHash * R + txt.charAt(i)) % Q;
 			
 			int offset = i - M + 1;
-			if (txtHash == patHash && check(txt, offset)) {
+			if (txtHash == patHash && check(offset)) {
 				return offset;
 			}
 		}
