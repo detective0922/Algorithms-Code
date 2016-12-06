@@ -66,6 +66,12 @@ class RabinKarp{
 			return 0;
 		}
 		
+		for (int i = M; i < N; i++) {
+			txtHash = (txtHash + Q - RM * txt.charAt(i - M) % Q) % Q;
+			txtHash = (txtHash * R + txt.charAt(i)) % Q;
+			
+		}
+		
 		return N;
 	}
 	
