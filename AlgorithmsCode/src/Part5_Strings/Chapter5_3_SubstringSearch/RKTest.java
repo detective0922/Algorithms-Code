@@ -34,11 +34,13 @@ class RabinKarp{
 	public RabinKarp(String pat) {
 		this.pat = pat;
 		this.M = pat.length();
-
+		this.Q = Long.MAX_VALUE;
+		
+		RM = 1;
 		for (int i = 0; i < M; i++) {
 			RM = (R * RM) % Q;
 		}
-		patHash = hash(pat, M - 1);
+		patHash = hash(pat, M);
 
 	}
 	
