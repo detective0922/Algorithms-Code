@@ -1,6 +1,8 @@
 package Part5_Strings.Chapter5_3_SubstringSearch;
 
+import java.math.BigInteger;
 import java.util.Iterator;
+import java.util.Random;
 
 import edu.princeton.cs.algs4.StdOut;
 
@@ -79,6 +81,11 @@ class RabinKarp{
 		}
 		
 		return N;
+	}
+	
+	private long longRandomPrime() {
+		BigInteger prime = BigInteger.probablePrime(31, new Random());
+		return prime.longValue();
 	}
 	
 	
