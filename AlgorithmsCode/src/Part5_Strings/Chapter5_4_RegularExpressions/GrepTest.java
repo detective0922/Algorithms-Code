@@ -5,7 +5,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import Part4_Graphs.Chapter4_2_DirectedGraphs.DigraphTest;
+import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.Digraph;
+import edu.princeton.cs.algs4.DirectedDFS;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdOut;
@@ -75,8 +77,15 @@ class NFA {
 		
 	}
 	
-	public boolean recognizes(String txt){
+	public boolean recognizes(String txt) {
 		
+		Bag<Integer> pc = new Bag<Integer>();
+		DirectedDFS dfs = new DirectedDFS(G, 0);
+		for (int i = 0; i < G.V(); i++) {
+			
+			
+		}
+
 	}
 	
 	
