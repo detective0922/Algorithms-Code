@@ -48,11 +48,21 @@ class NFA {
 		
 		for (int i = 0; i < M; i++) {
 			
+			int lp = i;
 			if (re[i] == '(' || re[i] == '|') {
 				ops.push(i);
 			} else if (re[i] == ')') {
-				
+				int or = ops.pop();
+				if(re[or] == '|'){
+					lp = ops.pop();
+					G.addEdge(lp, or + 1);
+					G.addEdge(or, i);
+				} else {
+					lp = or;
+				}
 			}
+			
+			
 			
 		}
 		
