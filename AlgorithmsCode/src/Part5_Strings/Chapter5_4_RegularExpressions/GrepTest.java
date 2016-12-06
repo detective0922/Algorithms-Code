@@ -1,10 +1,7 @@
 package Part5_Strings.Chapter5_4_RegularExpressions;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
-import Part4_Graphs.Chapter4_2_DirectedGraphs.DigraphTest;
 import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.DirectedDFS;
