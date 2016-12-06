@@ -43,6 +43,18 @@ class NFA {
 		re = regexp.toCharArray();
 		M = re.length;
 		G = new Digraph(M + 1);
+
+		Stack<Integer> ops = new Stack<Integer>();
+		
+		for (int i = 0; i < M; i++) {
+			
+			if (re[i] == '(' || re[i] == '|') {
+				ops.push(i);
+			} else if (re[i] == ')') {
+				
+			}
+			
+		}
 		
 	}
 	
