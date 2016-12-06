@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import Part4_Graphs.Chapter4_2_DirectedGraphs.DigraphTest;
+import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
@@ -32,6 +34,10 @@ public class GrepTest {
 }
 
 class NFA {
+	private char[] re;
+	private Digraph G;
+	private int M;
+	
 	public NFA(String regexp){
 		
 	}
