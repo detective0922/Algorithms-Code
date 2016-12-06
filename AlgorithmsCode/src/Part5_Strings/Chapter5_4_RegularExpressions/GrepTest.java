@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.NFA;
 import edu.princeton.cs.algs4.StdOut;
 
 public class GrepTest {
@@ -30,5 +29,17 @@ public class GrepTest {
 		}
 
 	}
+}
 
+class NFA {
+	public NFA(String regexp){
+		
+	}
+	
+	public boolean recognizes(String txt){
+		
+	}
+	
+	
+	
 }
