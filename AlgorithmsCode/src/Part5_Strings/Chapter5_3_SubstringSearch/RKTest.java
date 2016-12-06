@@ -1,7 +1,7 @@
 package Part5_Strings.Chapter5_3_SubstringSearch;
 
 import java.math.BigInteger;
-import java.util.Iterator;
+
 import java.util.Random;
 
 import edu.princeton.cs.algs4.StdOut;
@@ -36,10 +36,10 @@ class RabinKarp{
 	public RabinKarp(String pat) {
 		this.pat = pat;
 		this.M = pat.length();
-		this.Q = Long.MAX_VALUE;
+		this.Q = longRandomPrime();
 		
 		RM = 1;
-		for (int i = 0; i < M; i++) {
+		for (int i = 1; i < M; i++) {
 			RM = (R * RM) % Q;
 		}
 		patHash = hash(pat, M);
