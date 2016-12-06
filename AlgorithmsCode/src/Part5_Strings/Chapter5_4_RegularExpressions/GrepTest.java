@@ -81,9 +81,21 @@ class NFA {
 		
 		Bag<Integer> pc = new Bag<Integer>();
 		DirectedDFS dfs = new DirectedDFS(G, 0);
-		for (int i = 0; i < G.V(); i++) {
-			
-			
+		for (int v = 0; v < G.V(); v++) {
+			if (dfs.marked(v)) {
+				pc.add(v);
+			}
+		}
+		
+		for (int i = 0; i < txt.length(); i++) {
+			Bag<Integer> match = new Bag<Integer>();
+			for (int v : pc) {
+				if (v < M) {
+					if (re[v] == txt.charAt(i) || re[v] == '.') {
+						match.add(v + 1);
+					}
+				}
+			}
 		}
 
 	}
