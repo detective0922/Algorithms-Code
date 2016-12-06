@@ -53,7 +53,7 @@ class NFA {
 				ops.push(i);
 			} else if (re[i] == ')') {
 				int or = ops.pop();
-				if(re[or] == '|'){
+				if (re[or] == '|') {
 					lp = ops.pop();
 					G.addEdge(lp, or + 1);
 					G.addEdge(or, i);
@@ -62,7 +62,14 @@ class NFA {
 				}
 			}
 			
+			if (i < M - 1 && re[i + 1] == '*') {
+				G.addEdge(lp, i + 1);
+				G.addEdge(i + 1, lp);
+			}
 			
+			if (re[i] == '(' || re[i] == '*' || re[i] == ')') {
+				G.addEdge(i, i + 1);
+			}
 			
 		}
 		
