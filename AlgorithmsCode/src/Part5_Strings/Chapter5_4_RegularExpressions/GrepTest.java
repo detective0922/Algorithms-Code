@@ -15,12 +15,12 @@ public class GrepTest {
 		String regexp = "(A*B|AC)D";
 		File tFile = new File("algs4-data//tinyL.txt");		
 		In in = new In(tFile);
-		try {
+		/*try {
 			System.setIn(new FileInputStream(tFile.getAbsolutePath()));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		NFA nfa = new NFA(regexp);
 		while(in.hasNextLine()){
 			String txt = in.readLine();
