@@ -70,6 +70,9 @@ class RabinKarp{
 			txtHash = (txtHash + Q - RM * txt.charAt(i - M) % Q) % Q;
 			txtHash = (txtHash * R + txt.charAt(i)) % Q;
 			
+			if(txtHash ==patHash && check(txt, i - M + 1)){
+				return i-M+1;
+			}
 		}
 		
 		return N;
