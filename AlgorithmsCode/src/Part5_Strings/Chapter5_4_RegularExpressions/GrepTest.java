@@ -96,10 +96,22 @@ class NFA {
 					}
 				}
 			}
+			
+			pc = new Bag<Integer>();
+			dfs = new DirectedDFS(G, 0);
+			for (int v = 0; v < G.V(); v++) {
+				if (dfs.marked(v)) {
+					pc.add(v);
+				}
+			}
 		}
-
+		
+		for (int v : pc) {
+			if (v == M) {
+				return true;
+			}
+		}
+		return false;
 	}
-	
-	
-	
+		
 }
