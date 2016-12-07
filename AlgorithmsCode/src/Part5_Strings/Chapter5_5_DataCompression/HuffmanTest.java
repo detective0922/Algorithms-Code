@@ -17,11 +17,18 @@ class Huffman {
 		private char ch;
 		private int freq;
 		private final Node left, right;
+		
+		public Node(char ch, int freq, Node left, Node right) {
+			this.ch = ch;
+			this.freq = freq;
+			this.left = left;
+			this.right = right;
+		}
 
 		@Override
 		public int compareTo(Node o) {
 			// TODO Auto-generated method stub
-			return 0;
+			return this.freq - o.freq;
 		}
 		
 	}
