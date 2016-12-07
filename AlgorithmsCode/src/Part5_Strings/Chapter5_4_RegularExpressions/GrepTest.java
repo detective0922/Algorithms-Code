@@ -56,7 +56,7 @@ class NFA {
 					lp = ops.pop();
 					G.addEdge(lp, or + 1);
 					G.addEdge(or, i);
-				} else {
+				} else /*if (re[or] == '(')*/{
 					lp = or;
 				}
 			}
