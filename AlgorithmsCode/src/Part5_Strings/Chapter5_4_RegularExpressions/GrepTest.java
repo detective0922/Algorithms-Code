@@ -95,7 +95,7 @@ class NFA {
 			}
 			
 			pc = new Bag<Integer>();
-			dfs = new DirectedDFS(G, 0);
+			dfs = new DirectedDFS(G, match);
 			for (int v = 0; v < G.V(); v++) {
 				if (dfs.marked(v)) {
 					pc.add(v);
