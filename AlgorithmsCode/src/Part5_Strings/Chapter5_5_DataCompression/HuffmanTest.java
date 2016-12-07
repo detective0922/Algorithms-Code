@@ -24,6 +24,10 @@ class Huffman {
 			this.left = left;
 			this.right = right;
 		}
+		
+		public boolean isLeaf() {
+			return left == null && right == null;
+		}
 
 		@Override
 		public int compareTo(Node o) {
@@ -31,5 +35,13 @@ class Huffman {
 			return this.freq - o.freq;
 		}
 		
+	}
+	
+	private static void writeTrie(Node x){
+		
+	}
+	
+	private static Node readTrie() {
+
 	}
 }
