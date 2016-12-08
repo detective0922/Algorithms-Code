@@ -42,6 +42,6 @@ class Huffman {
 	}
 	
 	private static Node readTrie() {
-
+		
 	}
 }
