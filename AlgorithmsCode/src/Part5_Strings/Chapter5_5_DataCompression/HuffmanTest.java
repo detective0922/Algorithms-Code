@@ -1,5 +1,7 @@
 package Part5_Strings.Chapter5_5_DataCompression;
 
+import edu.princeton.cs.algs4.BinaryStdOut;
+
 public class HuffmanTest {
 
 	public static void main(String[] args) {
@@ -38,7 +40,14 @@ class Huffman {
 	}
 	
 	private static void writeTrie(Node x){
-		
+		if(x.isLeaf()){
+			BinaryStdOut.write(true);
+			BinaryStdOut.write(x.ch);
+			return;
+		}
+		BinaryStdOut.write(false);
+		writeTrie(x.left);
+		writeTrie(x.right);
 	}
 	
 	private static Node readTrie() {
