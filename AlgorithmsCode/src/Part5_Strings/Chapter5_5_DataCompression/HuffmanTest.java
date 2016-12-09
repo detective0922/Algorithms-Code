@@ -18,6 +18,10 @@ class Huffman {
 	
 	private static int R = 256;
 	
+	public static void compress();
+	
+	
+	
 	private static class Node implements Comparable<Node> {
 		
 		private char ch;
