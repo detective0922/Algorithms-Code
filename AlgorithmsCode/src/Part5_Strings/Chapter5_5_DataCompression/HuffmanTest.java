@@ -1,5 +1,6 @@
 package Part5_Strings.Chapter5_5_DataCompression;
 
+import edu.princeton.cs.algs4.BinaryStdIn;
 import edu.princeton.cs.algs4.BinaryStdOut;
 
 public class HuffmanTest {
@@ -51,6 +52,10 @@ class Huffman {
 	}
 	
 	private static Node readTrie() {
+		if(BinaryStdIn.readBoolean()){
+			return new Node(BinaryStdIn.readChar(), 0, null, null);
+		}
 		
+		return new Node('\0', 0, readTrie(), readTrie());
 	}
 }
