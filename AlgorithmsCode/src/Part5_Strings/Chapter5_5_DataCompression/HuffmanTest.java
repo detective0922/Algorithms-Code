@@ -20,7 +20,7 @@ class Huffman {
 	
 	public static void compress();
 	
-	
+	public static void expand();
 	
 	private static class Node implements Comparable<Node> {
 		
