@@ -58,4 +58,8 @@ class Huffman {
 		
 		return new Node('\0', 0, readTrie(), readTrie());
 	}
+	
+	private static void buildTrie(int[] freq) {
+		
+	}
 }
