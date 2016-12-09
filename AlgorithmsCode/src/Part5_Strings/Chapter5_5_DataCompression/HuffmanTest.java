@@ -15,6 +15,9 @@ public class HuffmanTest {
 }
 
 class Huffman {
+	
+	private static int R = 256;
+	
 	private static class Node implements Comparable<Node> {
 		
 		private char ch;
