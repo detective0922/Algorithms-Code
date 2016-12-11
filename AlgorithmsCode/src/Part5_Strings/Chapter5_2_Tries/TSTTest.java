@@ -234,7 +234,6 @@ class TST<Value> {
 
 
 
-		mid.c;
 		tmpKeys.enqueue(prefix);
 		
 		while (!q.isEmpty()) {
