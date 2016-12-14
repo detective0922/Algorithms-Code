@@ -2,6 +2,7 @@ package Part5_Strings.Chapter5_5_DataCompression;
 
 import edu.princeton.cs.algs4.BinaryStdIn;
 import edu.princeton.cs.algs4.BinaryStdOut;
+import edu.princeton.cs.algs4.MinPQ;
 
 public class HuffmanTest {
 
@@ -67,6 +68,18 @@ class Huffman {
 	}
 	
 	private static void buildTrie(int[] freq) {
+		MinPQ<Node> pq = new MinPQ<Huffman.Node>();
+		for (char c = 0; c < R; c++) {
+			if (freq[c] > 0) {
+				pq.insert(new Node(c, freq[c], null, null));
+			}
+		}
 		
+		while (pq.size() > 1) {
+			Node x = pq.delMin();
+			Node y = pq.delMin();
+			Node parent = new Node('\0', x.freq + y.freq, x, y);
+			pq.insert(parent);
+		}
 	}
 }
