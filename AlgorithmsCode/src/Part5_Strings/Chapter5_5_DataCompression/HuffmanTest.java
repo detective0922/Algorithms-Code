@@ -132,5 +132,14 @@ class Huffman {
 		return pq.delMin();
 	}
 	
-	
+	private static String[] buildCode(Node root) {
+		String[] st = new String[R];
+		buildCode(st, root, "");
+		return st;
+	}
+
+	private static void buildCode(String[] st, Node root, String string) {
+		// TODO Auto-generated method stub
+
+	}
 }
