@@ -138,8 +138,13 @@ class Huffman {
 		return st;
 	}
 
-	private static void buildCode(String[] st, Node root, String string) {
+	private static void buildCode(String[] st, Node x, String s) {
 		// TODO Auto-generated method stub
-
+		if(x.isLeaf()){
+			st[x.ch] = s;
+			return;
+		}
+		buildCode(st, x.left, "0");
+		buildCode(st, x.right, "0");
 	}
 }
