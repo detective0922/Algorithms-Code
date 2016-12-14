@@ -135,7 +135,8 @@ class Huffman {
 				}
 			}			
 		}
-
+		
+		BinaryStdOut.flush();
 	}
 	
 	public static void expand() {
