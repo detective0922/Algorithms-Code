@@ -3,10 +3,13 @@ package Part5_Strings.Chapter5_5_DataCompression;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
+import java.io.PrintStream;
 
 import com.sun.org.apache.bcel.internal.classfile.Code;
 
-import Part5_Strings.Chapter5_4_RegularExpressions.NFA;
 import edu.princeton.cs.algs4.BinaryStdIn;
 import edu.princeton.cs.algs4.BinaryStdOut;
 import edu.princeton.cs.algs4.In;
@@ -29,6 +32,31 @@ public class HuffmanTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		final PipedOutputStream binOutPut = new PipedOutputStream();
+		PrintStream ps = new PrintStream(binOutPut);
+		System.setOut(ps);
+		
+		Runnable runnable = new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				byte[] bys = new byte[1024];
+				try {
+					PipedInputStream binInput = new PipedInputStream();
+					binInput.connect(binOutPut);
+					binInput.read(bys);
+					System.out.println("读取到的信息：" + new String(bys).trim());
+					binInput.close();
+				} catch (IOException e) {
+					System.out.println(e.getMessage());
+				}
+
+			}
+		};
+		new Thread(runnable).start();;
+		Huffman.compress();
 
 	}
 
