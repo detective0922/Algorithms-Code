@@ -1,5 +1,7 @@
 package Part5_Strings.Chapter5_5_DataCompression;
 
+import com.sun.org.apache.bcel.internal.classfile.Code;
+
 import edu.princeton.cs.algs4.BinaryStdIn;
 import edu.princeton.cs.algs4.BinaryStdOut;
 import edu.princeton.cs.algs4.MinPQ;
@@ -20,6 +22,32 @@ class Huffman {
 	private static int R = 256;
 	
 	public static void compress() {
+		String s = BinaryStdIn.readString();
+        char[] input = s.toCharArray();
+
+        int[] freq = new int[R];
+        for (int i = 0; i < input.length; i++)
+            freq[input[i]]++;
+
+        Node root = buildTrie(freq);
+
+        String[] st = new String[R];
+        buildCode(st, root, "");
+
+        writeTrie(root);
+
+        BinaryStdOut.write(input.length);
+        
+		for (int i = 0; i < input.length; i++) {
+			String code = st[input[i]];
+			for (int j = 0; j < code.length(); j++) {
+				if(code.charAt(j)=='1'){
+					BinaryStdOut.write(true);
+				} else {
+					BinaryStdOut.write(false);
+				}
+			}			
+		}
 
 	}
 	
@@ -86,7 +114,7 @@ class Huffman {
 		return new Node('\0', 0, readTrie(), readTrie());
 	}
 	
-	private static void buildTrie(int[] freq) {
+	private static Node buildTrie(int[] freq) {
 		MinPQ<Node> pq = new MinPQ<Huffman.Node>();
 		for (char c = 0; c < R; c++) {
 			if (freq[c] > 0) {
@@ -100,6 +128,8 @@ class Huffman {
 			Node parent = new Node('\0', x.freq + y.freq, x, y);
 			pq.insert(parent);
 		}
+		
+		return pq.delMin();
 	}
 	
 	
