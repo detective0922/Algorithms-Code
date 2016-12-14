@@ -23,7 +23,7 @@ public class HuffmanTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		/*if      (args[0].equals("-")) compress();
-        else if (args[0].equals("+")) expand();*/
+        else if 
 		
 		
 		File tFile = new File("algs4-data//abra.txt");
