@@ -19,9 +19,28 @@ class Huffman {
 	
 	private static int R = 256;
 	
-	public static void compress();
+	public static void compress() {
+
+	}
 	
-	public static void expand();
+	public static void expand() {
+		Node root = readTrie();
+		int N = BinaryStdIn.readInt();
+		for (int i = 0; i < N; i++) {
+			Node x = root;
+			while(!x.isLeaf()){
+				if(BinaryStdIn.readBoolean()){
+					x = x.right;
+				} else {
+					x = x.left;
+				}
+			}
+			BinaryStdOut.write(x.ch);			
+		}
+		
+		BinaryStdOut.close();
+
+	}
 	
 	private static class Node implements Comparable<Node> {
 		
@@ -82,4 +101,6 @@ class Huffman {
 			pq.insert(parent);
 		}
 	}
+	
+	
 }
