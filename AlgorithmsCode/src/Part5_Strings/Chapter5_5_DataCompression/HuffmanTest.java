@@ -38,28 +38,17 @@ public class HuffmanTest {
 			e.printStackTrace();
 		}
 		
-		int bitsPerLine = 60;
-
-		int count;
+		Huffman.compress();
+		
 		try {
 			System.setIn(new FileInputStream(binFile.getAbsolutePath()));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		for (count = 0; !BinaryStdIn.isEmpty(); count++) {
-			if (count != 0 && count % bitsPerLine == 0) {
-				StdOut.println();
-			}
-			if (BinaryStdIn.readBoolean()) {
-				StdOut.print(1);
-			} else {
-				StdOut.print(0);
-			}
-		}
-		if (bitsPerLine != 0)
-			StdOut.println();
-		StdOut.println(count + " bits");
+		
+		Huffman.BinaryDump();
+		
 		
 		/*final PipedOutputStream binOutPut = new PipedOutputStream();
 		PrintStream ps = new PrintStream(binOutPut);*/
@@ -108,7 +97,7 @@ public class HuffmanTest {
 			}
 		};
 		new Thread(runnable).start();*/
-		Huffman.compress();
+		
 
 	}
 
@@ -244,5 +233,25 @@ class Huffman {
 		}
 		buildCode(st, x.left, "0");
 		buildCode(st, x.right, "0");
+	}
+	
+	public static void BinaryDump() {
+
+		int bitsPerLine = 60;
+		int count;
+		for (count = 0; !BinaryStdIn.isEmpty(); count++) {
+			if (count != 0 && count % bitsPerLine == 0) {
+				StdOut.println();
+			}
+			if (BinaryStdIn.readBoolean()) {
+				StdOut.print(1);
+			} else {
+				StdOut.print(0);
+			}
+		}
+		if (bitsPerLine != 0) {
+			StdOut.println();
+		}
+		StdOut.println(count + " bits");
 	}
 }
