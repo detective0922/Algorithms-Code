@@ -42,26 +42,30 @@ public class HuffmanTest {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				byte[] bys = new byte[1024];
+				byte[] bys = new byte[4096];
 				try {
 					PipedInputStream binInput = new PipedInputStream();
 					binInput.connect(binOutPut);
 					binInput.read(bys);
 					
-					int bitsPerLine = 16;
-			        if (args.length == 1) {
-			            bitsPerLine = Integer.parseInt(args[0]);
-			        }
+					int bitsPerLine = 60;
 
-			        int count;
-			        for (count = 0; !BinaryStdIn.isEmpty(); count++) {
-			            if (bitsPerLine == 0) {
-			                BinaryStdIn.readBoolean();
-			                continue;
-			            }
-			            else if (count != 0 && count % bitsPerLine == 0) StdOut.println();
+			        int count = 0;
+			        /*for (count = 0; !binInput.; count++) {
+			           if (count != 0 && count % bitsPerLine == 0) StdOut.println();
 			            if (BinaryStdIn.readBoolean()) StdOut.print(1);
 			            else                           StdOut.print(0);
+			        }*/
+			        while(binInput.read()>0){
+						if (count != 0 && count % bitsPerLine == 0) {
+							StdOut.println();
+						}
+						if (BinaryStdIn.readBoolean()) {
+							StdOut.print(1);
+						} else {
+							StdOut.print(0);
+						}
+						count++;
 			        }
 			        if (bitsPerLine != 0) StdOut.println();
 			        StdOut.println(count + " bits");
