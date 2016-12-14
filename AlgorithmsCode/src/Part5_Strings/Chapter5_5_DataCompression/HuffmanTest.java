@@ -1,17 +1,34 @@
 package Part5_Strings.Chapter5_5_DataCompression;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import com.sun.org.apache.bcel.internal.classfile.Code;
 
+import Part5_Strings.Chapter5_4_RegularExpressions.NFA;
 import edu.princeton.cs.algs4.BinaryStdIn;
 import edu.princeton.cs.algs4.BinaryStdOut;
+import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.MinPQ;
+import edu.princeton.cs.algs4.StdOut;
 
 public class HuffmanTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		if      (args[0].equals("-")) compress();
-        else if (args[0].equals("+")) expand();
+		/*if      (args[0].equals("-")) compress();
+        else if (args[0].equals("+")) expand();*/
+		
+		
+		File tFile = new File("algs4-data//abra.txt");		
+		In in = new In(tFile);
+		try {
+			System.setIn(new FileInputStream(tFile.getAbsolutePath()));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
@@ -25,9 +42,10 @@ class Huffman {
 		String s = BinaryStdIn.readString();
         char[] input = s.toCharArray();
 
-        int[] freq = new int[R];
-        for (int i = 0; i < input.length; i++)
-            freq[input[i]]++;
+		int[] freq = new int[R];
+		for (int i = 0; i < input.length; i++) {
+			freq[input[i]]++;
+		}
 
         Node root = buildTrie(freq);
 
