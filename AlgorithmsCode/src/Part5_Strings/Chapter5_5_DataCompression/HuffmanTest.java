@@ -3,6 +3,7 @@ package Part5_Strings.Chapter5_5_DataCompression;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
@@ -14,6 +15,7 @@ import edu.princeton.cs.algs4.BinaryStdIn;
 import edu.princeton.cs.algs4.BinaryStdOut;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.MinPQ;
+import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.StdOut;
 
 public class HuffmanTest {
@@ -24,20 +26,24 @@ public class HuffmanTest {
         else if (args[0].equals("+")) expand();*/
 		
 		
-		File tFile = new File("algs4-data//abra.txt");		
+		File tFile = new File("algs4-data//abra.txt");
+		File binFile = new File("bin.txt");
 		In in = new In(tFile);
 		try {
 			System.setIn(new FileInputStream(tFile.getAbsolutePath()));
+			PrintStream ps = new PrintStream(new FileOutputStream(binFile));
+			System.setOut(ps);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		final PipedOutputStream binOutPut = new PipedOutputStream();
-		PrintStream ps = new PrintStream(binOutPut);
-		System.setOut(ps);
+		/*final PipedOutputStream binOutPut = new PipedOutputStream();
+		PrintStream ps = new PrintStream(binOutPut);*/
+				
 		
-		Runnable runnable = new Runnable() {
+		
+		/*Runnable runnable = new Runnable() {
 			
 			@Override
 			public void run() {
@@ -51,11 +57,11 @@ public class HuffmanTest {
 					int bitsPerLine = 60;
 
 			        int count = 0;
-			        /*for (count = 0; !binInput.; count++) {
+			        for (count = 0; !binInput.; count++) {
 			           if (count != 0 && count % bitsPerLine == 0) StdOut.println();
 			            if (BinaryStdIn.readBoolean()) StdOut.print(1);
 			            else                           StdOut.print(0);
-			        }*/
+			        }
 			        while(binInput.read()>0){
 						if (count != 0 && count % bitsPerLine == 0) {
 							StdOut.println();
@@ -78,7 +84,7 @@ public class HuffmanTest {
 
 			}
 		};
-		new Thread(runnable).start();;
+		new Thread(runnable).start();*/
 		Huffman.compress();
 
 	}
