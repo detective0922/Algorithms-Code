@@ -4,19 +4,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
 import java.io.PrintStream;
 
-import com.sun.org.apache.bcel.internal.classfile.Code;
 
 import edu.princeton.cs.algs4.BinaryIn;
 import edu.princeton.cs.algs4.BinaryStdIn;
 import edu.princeton.cs.algs4.BinaryStdOut;
-import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.MinPQ;
-import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.StdOut;
 
 public class HuffmanTest {
