@@ -41,14 +41,9 @@ public class HuffmanTest {
 		
 		Huffman.compress();
 		
-		try {
-			System.setIn(new FileInputStream(binFile.getAbsolutePath()));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
-		Huffman.BinaryDump();
+		
+		Huffman.BinaryDump(binFile);
 		
 		
 		/*final PipedOutputStream binOutPut = new PipedOutputStream();
@@ -237,15 +232,29 @@ class Huffman {
 		buildCode(st, x.right, "0");
 	}
 	
-	public static void BinaryDump() {
+	public static void BinaryDump(File binFile) {
+		
+		try {
+			System.setIn(new FileInputStream(binFile.getAbsolutePath()));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+		BinaryIn binIn = null;
+		try {
+			binIn = new BinaryIn(new FileInputStream(binFile));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int bitsPerLine = 60;
 		int count;
-		for (count = 0; !BinaryIn.isEmpty(); count++) {
+		for (count = 0; !binIn.isEmpty(); count++) {
 			if (count != 0 && count % bitsPerLine == 0) {
 				StdOut.println();
 			}
-			if (BinaryIn.readBoolean()) {
+			if (binIn.readBoolean()) {
 				StdOut.print(1);
 			} else {
 				StdOut.print(0);
