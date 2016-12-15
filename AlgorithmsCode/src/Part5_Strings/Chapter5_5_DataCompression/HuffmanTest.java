@@ -40,12 +40,6 @@ public class HuffmanTest {
 		
 		Huffman.BinaryDump(binFile);
 		
-		
-		/*final PipedOutputStream binOutPut = new PipedOutputStream();
-		PrintStream ps = new PrintStream(binOutPut);*/
-				
-		
-		
 		/*Runnable runnable = new Runnable() {
 			
 			@Override
