@@ -223,8 +223,8 @@ class Huffman {
 			st[x.ch] = s;
 			return;
 		}
-		buildCode(st, x.left, "0");
-		buildCode(st, x.right, "0");
+		buildCode(st, x.left, s + '0');
+		buildCode(st, x.right, s + '1');
 	}
 	
 	public static void BinaryDump(File binFile) {
