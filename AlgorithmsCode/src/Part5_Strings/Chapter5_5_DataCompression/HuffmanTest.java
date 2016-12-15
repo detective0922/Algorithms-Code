@@ -75,9 +75,7 @@ public class HuffmanTest {
 			        
 			        
 					binInput.close();
-				} catch (IOException e) {
-					System.out.println(e.getMessage());
-				}
+				
 
 			}
 		};
