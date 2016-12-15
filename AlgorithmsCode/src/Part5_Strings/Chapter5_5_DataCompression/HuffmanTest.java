@@ -11,6 +11,7 @@ import java.io.PrintStream;
 
 import com.sun.org.apache.bcel.internal.classfile.Code;
 
+import edu.princeton.cs.algs4.BinaryIn;
 import edu.princeton.cs.algs4.BinaryStdIn;
 import edu.princeton.cs.algs4.BinaryStdOut;
 import edu.princeton.cs.algs4.In;
@@ -26,9 +27,9 @@ public class HuffmanTest {
         
 		
 		
-		File tFile = new File("algs4-data//abra.txt");
+		//File tFile = new File("algs4-data//abra.txt");
 		File binFile = new File("bin.txt");
-		In in = new In(tFile);
+		/*In in = new In(tFile);
 		try {
 			System.setIn(new FileInputStream(tFile.getAbsolutePath()));
 			PrintStream ps = new PrintStream(new FileOutputStream(binFile));
@@ -36,9 +37,9 @@ public class HuffmanTest {
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
-		Huffman.compress();
+		//Huffman.compress();
 		
 		try {
 			System.setIn(new FileInputStream(binFile.getAbsolutePath()));
@@ -240,11 +241,11 @@ class Huffman {
 
 		int bitsPerLine = 60;
 		int count;
-		for (count = 0; !BinaryStdIn.isEmpty(); count++) {
+		for (count = 0; !BinaryIn.isEmpty(); count++) {
 			if (count != 0 && count % bitsPerLine == 0) {
 				StdOut.println();
 			}
-			if (BinaryStdIn.readBoolean()) {
+			if (BinaryIn.readBoolean()) {
 				StdOut.print(1);
 			} else {
 				StdOut.print(0);
