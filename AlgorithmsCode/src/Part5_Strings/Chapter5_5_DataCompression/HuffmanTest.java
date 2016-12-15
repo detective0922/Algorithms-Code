@@ -27,9 +27,9 @@ public class HuffmanTest {
         
 		
 		
-		//File tFile = new File("algs4-data//abra.txt");
+		File tFile = new File("algs4-data//abra.txt");
 		File binFile = new File("bin.txt");
-		/*In in = new In(tFile);
+		In in = new In(tFile);
 		try {
 			System.setIn(new FileInputStream(tFile.getAbsolutePath()));
 			PrintStream ps = new PrintStream(new FileOutputStream(binFile));
@@ -37,9 +37,9 @@ public class HuffmanTest {
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 		
-		//Huffman.compress();
+		Huffman.compress();
 		
 		try {
 			System.setIn(new FileInputStream(binFile.getAbsolutePath()));
