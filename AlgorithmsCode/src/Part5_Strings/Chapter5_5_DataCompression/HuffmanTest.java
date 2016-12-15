@@ -29,6 +29,7 @@ public class HuffmanTest {
 			System.setIn(new FileInputStream(tFile.getAbsolutePath()));
 			PrintStream ps = new PrintStream(new FileOutputStream(binFile));
 			System.setOut(ps);
+			//edu.princeton.cs.algs4.Huffman.compress();
 			Huffman.compress();
 			System.setOut(standardOut);
 		} catch (FileNotFoundException e) {
