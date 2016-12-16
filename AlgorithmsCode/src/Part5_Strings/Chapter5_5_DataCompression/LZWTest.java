@@ -17,7 +17,7 @@ public class LZWTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		File tFile = new File("algs4-data//abra.txt");
+		File tFile = new File("algs4-data//abraLZW.txt");
 		File binFile = new File("binLZW.txt");
 		PrintStream standardOut = System.out;
 		
