@@ -214,9 +214,7 @@ class TST<Value> {
     }
 	
 	/*public Iterable<String> keysWithPrefix(String prefix){	
-		Queue<String> keys = new Queue<String>();
-		int prefixLen = prefix.length();
-		Node x = root;
+		
 		
 		int d = 0;
 		while (d < prefixLen - 1) {
