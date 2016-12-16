@@ -71,5 +71,9 @@ class LZW{
 		
 	}
 	
+	public static void expand() {
+		
+	}
+	
 }
 
