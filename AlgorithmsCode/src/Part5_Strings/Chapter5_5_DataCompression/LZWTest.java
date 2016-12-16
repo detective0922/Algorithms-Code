@@ -32,7 +32,7 @@ public class LZWTest {
 		}
 			
 		
-		LZW.BinaryDump(binFile);
+		LZW.HexDump(binFile);
 		
 	}
 
@@ -96,10 +96,12 @@ class LZW{
 			}
 			
 			if (i < L) {
-				
+				st[i++] = val + s.charAt(0);
 			}
+			val = s;
 		}
 		
+		BinaryStdOut.close();
 	}
 	
 }
