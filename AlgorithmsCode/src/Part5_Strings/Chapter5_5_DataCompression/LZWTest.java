@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 
 import edu.princeton.cs.algs4.BinaryStdIn;
+import edu.princeton.cs.algs4.BinaryStdOut;
 import edu.princeton.cs.algs4.TST;
 
 public class LZWTest {
@@ -50,6 +51,21 @@ class LZW{
 		for (int i = 0; i < R; i++) {
 			tst.put("" + (char) i, i);
 		}
+		
+		int code = R + 1;
+		
+		while (input.length() > 0) {
+			String s = tst.longestPrefixOf(input);
+			BinaryStdOut.write(tst.get(s), W);
+
+			int t = s.length();
+			if (t < input.length() && code < L) {
+				tst.put(input.substring(0, t + 1), code++);
+			}
+
+			input = input.substring(t);
+		}
+	
 		
 		
 
