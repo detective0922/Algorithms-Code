@@ -25,8 +25,8 @@ public class LZWTest {
 			System.setIn(new FileInputStream(tFile.getAbsolutePath()));
 			PrintStream ps = new PrintStream(new FileOutputStream(binFile));
 			System.setOut(ps);
-			edu.princeton.cs.algs4.LZW.compress();
-			//LZW.compress();
+			//edu.princeton.cs.algs4.LZW.compress();
+			LZW.compress();
 			System.setOut(standardOut);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
