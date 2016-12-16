@@ -83,6 +83,22 @@ class LZW{
 		int codeWord = BinaryStdIn.readInt(W);
 		String val = st[codeWord];
 		
+		while(true) {
+			BinaryStdOut.write(val);
+			codeWord = BinaryStdIn.readInt(W);
+			if (codeWord == R) {
+				break;
+			}
+			
+			String s = st[codeWord];
+			if (i == codeWord) {
+				s = val + val.charAt(0);
+			}
+			
+			if (i < L) {
+				
+			}
+		}
 		
 	}
 	
