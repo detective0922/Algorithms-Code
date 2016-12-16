@@ -38,7 +38,7 @@ public class HuffmanTest {
 		}
 			
 		
-		Huffman.BinaryDump(binFile);
+		Huffman.BinaryDump(binFile, 60);
 		
 		/*Runnable runnable = new Runnable() {
 			
@@ -219,7 +219,7 @@ class Huffman {
 		buildCode(st, x.right, s + '1');
 	}
 	
-	public static void BinaryDump(File binFile) {
+	public static void BinaryDump(File binFile, int bitsPerLine) {
 		
 		try {
 			System.setIn(new FileInputStream(binFile.getAbsolutePath()));
@@ -235,7 +235,7 @@ class Huffman {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		int bitsPerLine = 60;
+		//int bitsPerLine = 60;
 		int count;
 		for (count = 0; !binIn.isEmpty(); count++) {
 			if (count != 0 && count % bitsPerLine == 0) {
