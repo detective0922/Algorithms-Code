@@ -72,6 +72,13 @@ class LZW{
 	}
 	
 	public static void expand() {
+		String[] st = new String[L];
+		int i;
+		
+		for (i = 0; i < R; i++) {
+			st[i] = ""+(char)i;			
+		}
+		st[i++] = "";
 		
 	}
 	
