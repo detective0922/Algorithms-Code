@@ -80,6 +80,10 @@ class LZW{
 		}
 		st[i++] = "";
 		
+		int codeWord = BinaryStdIn.readInt(W);
+		String val = st[codeWord];
+		
+		
 	}
 	
 }
