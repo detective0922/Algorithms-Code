@@ -123,7 +123,20 @@ class LZW{
 			e.printStackTrace();
 		}
 
-       
+        int i;
+        for (i = 0; !binIn.isEmpty(); i++) {
+            if (bytesPerLine == 0) {
+            	binIn.readChar();
+                continue;
+            }
+            if (i == 0) StdOut.printf("");
+            else if (i % bytesPerLine == 0) StdOut.printf("\n", i);
+            else StdOut.print(" ");
+            char c = binIn.readChar();
+            StdOut.printf("%02x", c & 0xff);
+        }
+        if (bytesPerLine != 0) StdOut.println();
+        StdOut.println((i*8) + " bits");
 	}
 	
 }
