@@ -65,10 +65,10 @@ class LZW{
 
 			input = input.substring(t);
 		}
-	
 		
+		BinaryStdOut.write(R, W);
+		BinaryStdOut.close();
 		
-
 	}
 	
 }
