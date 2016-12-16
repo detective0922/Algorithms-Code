@@ -70,7 +70,7 @@ class LZW{
 		BinaryStdOut.close();
 		
 	}
-	
+
 	public static void expand() {
 		String[] st = new String[L];
 		int i;
@@ -102,6 +102,11 @@ class LZW{
 		}
 		
 		BinaryStdOut.close();
+	}
+	
+	public static void HexDump(File binFile) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
