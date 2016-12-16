@@ -6,8 +6,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 
+import edu.princeton.cs.algs4.BinaryIn;
 import edu.princeton.cs.algs4.BinaryStdIn;
 import edu.princeton.cs.algs4.BinaryStdOut;
+import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.TST;
 
 public class LZWTest {
@@ -104,9 +106,24 @@ class LZW{
 		BinaryStdOut.close();
 	}
 	
-	public static void HexDump(File binFile) {
+	public static void HexDump(File binFile, int bytesPerLine) {
 		// TODO Auto-generated method stub
-		
+		try {
+			System.setIn(new FileInputStream(binFile.getAbsolutePath()));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		BinaryIn binIn = null;
+		try {
+			binIn = new BinaryIn(new FileInputStream(binFile));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+       
 	}
 	
 }
