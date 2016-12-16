@@ -6,6 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 
+import edu.princeton.cs.algs4.BinaryStdIn;
+import edu.princeton.cs.algs4.TST;
+
 public class LZWTest {
 
 	public static void main(String[] args) {
@@ -40,6 +43,15 @@ class LZW{
 	private static final int W = 12;
 	
 	public static void compress() {
+		
+		String input = BinaryStdIn.readString();
+		TST<Integer> tst = new TST<Integer>();
+		
+		for (int i = 0; i < R; i++) {
+			tst.put("" + (char) i, i);
+		}
+		
+		
 
 	}
 	
