@@ -217,7 +217,7 @@ class TST<Value> {
 		
 		
 		
-		while (d < prefixLen - 1) {
+		{
 			char c = prefix.charAt(d);
 			if (c < x.c) {
 				x = x.left;
