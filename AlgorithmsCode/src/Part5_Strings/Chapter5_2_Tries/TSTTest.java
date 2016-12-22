@@ -217,8 +217,7 @@ class TST<Value> {
 		
 		
 		
-		{
-			char c = prefix.charAt(d);
+		
 			if (c < x.c) {
 				x = x.left;
 			} else if (c > x.c) {
