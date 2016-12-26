@@ -218,7 +218,7 @@ class TST<Value> {
 		
 		
 		
-			if (c < x.c) {
+			
 				x = x.left;
 			} else if (c > x.c) {
 				x = x.right;
