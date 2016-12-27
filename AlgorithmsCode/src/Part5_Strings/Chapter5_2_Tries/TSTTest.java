@@ -219,7 +219,7 @@ class TST<Value> {
 		
 		
 			
-				x = x.left;
+				
 			} else if (c > x.c) {
 				x = x.right;
 			} else {
