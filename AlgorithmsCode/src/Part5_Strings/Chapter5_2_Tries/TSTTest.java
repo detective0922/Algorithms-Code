@@ -220,7 +220,7 @@ class TST<Value> {
 		
 			
 				
-			} else if (c > x.c) {
+			
 				x = x.right;
 			} else {
 				x = x.mid;
