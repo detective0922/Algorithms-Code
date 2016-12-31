@@ -223,7 +223,7 @@ class TST<Value> {
 			
 				
 			
-				x = x.mid;
+				
 				d++;
 			}
 		}
