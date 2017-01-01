@@ -224,7 +224,7 @@ class TST<Value> {
 				
 			
 				
-				d++;
+				
 			}
 		}
 		
