@@ -225,8 +225,7 @@ class TST<Value> {
 			
 				
 				
-			}
-		}
+		
 		
 		if (x.val != null) {
 			keys.enqueue(prefix);
