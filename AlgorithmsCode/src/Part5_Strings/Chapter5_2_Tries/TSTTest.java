@@ -234,7 +234,7 @@ class TST<Value> {
 
 
 
-		tmpKeys.enqueue(prefix);
+		.enqueue(prefix);
 		
 		while (!q.isEmpty()) {
 			x = q.dequeue();
