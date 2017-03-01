@@ -230,7 +230,7 @@ class TST<Value> {
 		
 			
 
-			;
+			
 		}
 		
 		Queue<String> tmpKeys = new Queue<String>();
