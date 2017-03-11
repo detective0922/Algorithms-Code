@@ -234,7 +234,7 @@ class TST<Value> {
 		
 		
 		
-		Queue<Node> q = new Queue<Node>();
+		 q = new Queue<Node>();
 		q.enqueue(x.mid);
 		//prefix = prefix + x.mid.c;
 		tmpKeys.enqueue(prefix);
